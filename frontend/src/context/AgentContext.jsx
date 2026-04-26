@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import { api } from '../services/api';
 
 const AgentContext = createContext(null);
 
@@ -26,6 +27,21 @@ export function AgentProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
   const [queueSnapshot, setQueueSnapshot] = useState([]);
   const [surges, setSurges] = useState([]);
+  const [cvCameras, setCvCameras] = useState([]);
+  const [cvDetections, setCvDetections] = useState({});
+  const [cvStatus, setCvStatus] = useState({ status: 'idle', message: null });
+
+  useEffect(() => {
+    let cancelled = false;
+    api.getCameras()
+      .then(cameras => {
+        if (!cancelled) setCvCameras(cameras);
+      })
+      .catch(err => {
+        if (!cancelled) setCvStatus({ status: 'error', message: err.message });
+      });
+    return () => { cancelled = true; };
+  }, []);
 
   const handleWsMessage = useCallback((msg) => {
     switch (msg.type) {
@@ -54,13 +70,46 @@ export function AgentProvider({ children }) {
         });
         break;
 
+      case 'cv_update':
+        setCvDetections(prev => ({
+          ...prev,
+          [msg.payload.camera_id]: msg.payload,
+        }));
+        setCvCameras(prev => {
+          if (prev.some(camera => camera.id === msg.payload.camera_id)) return prev;
+          return [
+            ...prev,
+            {
+              id: msg.payload.camera_id,
+              name: msg.payload.camera_name,
+              lat: msg.payload.lat,
+              lng: msg.payload.lng,
+            },
+          ];
+        });
+        setCvStatus({ status: 'live', message: null });
+        break;
+
+      case 'cv_status':
+        setCvStatus(msg.payload);
+        break;
+
       default:
         break;
     }
   }, []);
 
   return (
-    <AgentContext.Provider value={{ agents, alerts, queueSnapshot, surges, handleWsMessage }}>
+    <AgentContext.Provider value={{
+      agents,
+      alerts,
+      queueSnapshot,
+      surges,
+      cvCameras,
+      cvDetections,
+      cvStatus,
+      handleWsMessage,
+    }}>
       {children}
     </AgentContext.Provider>
   );

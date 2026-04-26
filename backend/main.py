@@ -8,6 +8,7 @@ from routers import ws as ws_router
 from routers import graph as graph_router
 from routers import simulation as simulation_router
 from routers import briefing as briefing_router
+from routers import cv as cv_router
 
 app = FastAPI(title="CascadeOS", version="0.2.0")
 
@@ -23,6 +24,7 @@ app.include_router(ws_router.router)
 app.include_router(graph_router.router)
 app.include_router(simulation_router.router)
 app.include_router(briefing_router.router)
+app.include_router(cv_router.router)
 
 
 @app.get("/health")
@@ -43,6 +45,7 @@ async def start_background_agents():
     from agents.health_agent import HealthAgent
     from agents.emergency_agent import EmergencyAgent
     from agents.orchestrator import run_orchestrator
+    from routers.cv import run_cv_monitor
 
     broadcast = manager.broadcast
 
@@ -57,3 +60,4 @@ async def start_background_agents():
         asyncio.create_task(agent.run())
 
     asyncio.create_task(run_orchestrator(broadcast))
+    asyncio.create_task(run_cv_monitor())

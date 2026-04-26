@@ -1643,6 +1643,254 @@ button {
   border-color: var(--accent-blue);
 }
 
+/* ── Phase 5 — Computer Vision ───────────────────────────────────────────── */
+
+.cv-panel {
+  height: 100%;
+  overflow-y: auto;
+  background: var(--bg-primary);
+  padding: 16px;
+}
+
+.cv-panel-header {
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+
+.cv-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 8px 12px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cv-refresh-btn:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-blue);
+}
+
+.cv-refresh-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.cv-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.cv-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.cv-status-dot--live {
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+.cv-status-dot--error {
+  background: var(--cascade-critical);
+  box-shadow: var(--glow-red);
+}
+
+.cv-error {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  color: var(--cascade-critical);
+  background: var(--bg-card);
+  border: 1px solid var(--cascade-critical);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.cv-empty {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.camera-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.camera-feed {
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+}
+
+.camera-feed--anomaly {
+  border-color: var(--cascade-critical);
+  box-shadow: var(--glow-red);
+}
+
+.camera-feed-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+}
+
+.camera-feed-header h3 {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.camera-feed-header p {
+  margin-top: 3px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.camera-anomaly-banner,
+.camera-model-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 4px 7px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-secondary);
+}
+
+.camera-anomaly-banner {
+  color: var(--cascade-critical);
+  border-color: var(--cascade-critical);
+  animation: pulse-live 0.8s infinite;
+}
+
+.camera-frame-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.camera-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-box-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.camera-box rect {
+  fill: transparent;
+  stroke-width: 3;
+}
+
+.camera-box text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: var(--bg-primary);
+  stroke-width: 4;
+}
+
+.camera-box--congestion rect {
+  stroke: var(--accent-orange);
+}
+
+.camera-box--congestion text {
+  fill: var(--accent-orange);
+}
+
+.camera-box--stalled_vehicle rect {
+  stroke: var(--cascade-critical);
+}
+
+.camera-box--stalled_vehicle text {
+  fill: var(--cascade-critical);
+}
+
+.camera-box--crowd_density rect {
+  stroke: var(--accent-yellow);
+}
+
+.camera-box--crowd_density text {
+  fill: var(--accent-yellow);
+}
+
+.camera-box--potential_flooding rect {
+  stroke: var(--accent-blue);
+}
+
+.camera-box--potential_flooding text {
+  fill: var(--accent-blue);
+}
+
+.camera-frame-empty {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.camera-feed-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+}
+
+@media (min-width: 1280px) {
+  .camera-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* Mobile: simulation sidebar becomes full-width overlay */
 @media (max-width: 767px) {
   .simulation-view {

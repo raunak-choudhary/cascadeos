@@ -1,98 +1,172 @@
-# CascadeOS Knowledge Graph Report
-**Updated: 2026-04-26 — Phase 0 through Phase 3**
+# Graph Report - cascadeos  (2026-04-26)
+
+## Corpus Check
+- 62 files · ~29,186 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- **128 nodes** · **122 edges** · **27 communities**
-- **6 hyperedges** capturing multi-node architectural groupings
-- Phases covered: Foundation (P0), Infrastructure Graph + Map (P1), Agent Layer (P2), Cascade Engine (P3)
+- 298 nodes · 373 edges · 19 communities detected
+- Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 76 edges (avg confidence: 0.74)
+- Token cost: 0 input · 0 output
 
----
+## Community Hubs (Navigation)
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 1|Community 1]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
+- [[_COMMUNITY_Community 5|Community 5]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 12|Community 12]]
+- [[_COMMUNITY_Community 13|Community 13]]
+- [[_COMMUNITY_Community 14|Community 14]]
+- [[_COMMUNITY_Community 15|Community 15]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
 
-## God Nodes (Highest Connectivity)
+## God Nodes (most connected - your core abstractions)
+1. `AlertPriorityQueue` - 13 edges
+2. `BaseAgent` - 11 edges
+3. `run_orchestrator()` - 11 edges
+4. `start_background_agents()` - 9 edges
+5. `generate_briefing()` - 9 edges
+6. `poll_cv_once()` - 8 edges
+7. `CameraClient` - 8 edges
+8. `useAgent()` - 7 edges
+9. `fetch_311_complaints()` - 7 edges
+10. `CascadeOS System` - 7 edges
 
-These nodes sit at the center of the most cross-cutting relationships. Touch them carefully — changes ripple widely.
+## Surprising Connections (you probably didn't know these)
+- `generate_briefing()` --calls--> `get_last_reroute()`  [INFERRED]
+  backend/routers/briefing.py → backend/graph/dijkstra_reroute.py
+- `CascadeOS System` --implements--> `FastAPI — async Python web framework`  [EXTRACTED]
+  CLAUDE.md → backend/requirements.txt
+- `Phase 5 — Computer Vision Signal` --rationale_for--> `PyTorch — deferred to Phase 5 (requirements-ml.txt)`  [INFERRED]
+  CLAUDE.md → backend/requirements-ml.txt
+- `InfrastructureGraph — 40-node NYC DiGraph` --implements--> `NetworkX — graph algorithms library`  [EXTRACTED]
+  CLAUDE.md → backend/requirements.txt
+- `CascadeApp()` --calls--> `useCascade()`  [INFERRED]
+  frontend/src/App.jsx → frontend/src/context/CascadeContext.jsx
 
-| Rank | Node | Degree | File |
-|---|---|---|---|
-| 1 | **BaseAgent** | 8 | `backend/agents/base_agent.py` |
-| 2 | **CascadeOS System** | 7 | `CLAUDE.md` |
-| 3 | **InfrastructureGraph** (spec) | 7 | `CLAUDE.md` |
-| 4 | **AlertPriorityQueue** | 6 | `backend/utils/priority_queue.py` |
-| 5 | **InfrastructureGraph** (code) | 5 | `backend/graph/infrastructure_graph.py` |
-| 5 | **Phase 2 Agent Layer** | 5 | `CLAUDE.md` |
-| 8 | **GraphContext / useGraph** | 4 | `frontend/src/context/GraphContext.jsx` |
-| 8 | **SystemGraph.jsx** | 4 | `frontend/src/components/graph/SystemGraph.jsx` |
-| 8 | **cascade_bfs** | 4 | `backend/graph/cascade_bfs.py` |
-| 8 | **ConnectionManager** | 4 | `backend/routers/ws.py` |
-| 8 | **SlidingWindow311** | 4 | `backend/data/sliding_window_311.py` |
+## Hyperedges (group relationships)
+- **Cascade Engine Core Algorithms** — claude_weighted_bfs, claude_dijkstra, claude_infrastructure_graph [EXTRACTED 0.95]
+- **Phase 2 Real-Time Stack** — claude_alert_queue, claude_sliding_window, claude_connection_manager, claude_ws_events [EXTRACTED 0.90]
+- **Phase 1 Completed Components** — claude_infrastructure_graph, claude_betweenness, claude_deckgl, claude_reactflow, claude_graph_context [EXTRACTED 1.00]
 
-**Key insight:** `BaseAgent` is the highest-degree node in the entire graph — the central abstraction connecting all domain agents, AlertPriorityQueue, NYC Open Data client, and WebSocket broadcast layer. Any change to its interface cascades to 4 domain agents + orchestrator.
+## Communities
 
----
+### Community 0 - "Community 0"
+Cohesion: 0.07
+Nodes (12): useCascade(), CascadeTimeline(), CityMap(), useGraph(), NodeDetail(), buildRFNode(), cascadeBorderColor(), geoToCanvas() (+4 more)
 
-## Hyperedges (Multi-Node Groupings)
+### Community 1 - "Community 1"
+Cohesion: 0.08
+Nodes (30): Phase 0 Bootstrap Requirements R1-R15, AlertPriorityQueue — Max Heap from heapq, Betweenness Centrality — Times Square tops at 1.0, CASCADE_PLAYBACK_SPEED env var — scales asyncio delays, CascadeOS System, ConnectionManager — WebSocket broadcast hub (Phase 2), deck.gl v9.3.1 — ScatterplotLayer,LineLayer,ArcLayer, Demo Origin Node — water_34th (34th St Water Main) (+22 more)
 
-| ID | Label | Members |
-|---|---|---|
-| `phase3_cascade_pipeline` | Phase 3 Cascade Prediction Pipeline | cascade_bfs, SimulationRouter, CascadeContext, WhatIfPanel, CascadeTimeline, CityMap |
-| `phase2_real_time_stack_full` | Phase 2 Complete Real-Time Stack | AlertPriorityQueue, SlidingWindow311, ConnectionManager, BaseAgent, Orchestrator, AgentContext |
-| `four_domain_agents` | Four Domain Agents | WaterAgent, TransitAgent, HealthAgent, EmergencyAgent |
-| `cascade_engine_core` | Cascade Engine Core | cascade_bfs, InfrastructureGraph, SimulationRouter |
-| `phase2_real_time_stack` | Phase 2 Real-Time Stack (spec) | AlertQueue, SlidingWindow, ConnectionManager, WSEvents |
-| `phase1_completed` | Phase 1 Completed Components | InfrastructureGraph, betweenness, GraphContext, CityMap, SystemGraph |
+### Community 2 - "Community 2"
+Cohesion: 0.1
+Nodes (18): BaseAgent, EmergencyAgent, HealthAgent, Launch all domain agents + orchestrator as background asyncio tasks., start_background_agents(), fetch_311_complaints(), fetch_fdny_incidents(), fetch_hospital_capacity() (+10 more)
 
----
+### Community 3 - "Community 3"
+Cohesion: 0.11
+Nodes (12): _prune_stale(), Coordinator agent — pops from the shared AlertPriorityQueue, decides if multiple, Background loop — pop alerts, check for cascade, run 311 window., run_orchestrator(), Return and remove the highest-priority alert. Returns None if empty., 311 surge detector — sliding window implemented with collections.deque. Evicts c, Add new complaints. Evict stale entries older than window_seconds., Return neighborhoods currently in surge with severity score. (+4 more)
 
-## Surprising Cross-Cutting Connections
+### Community 4 - "Community 4"
+Cohesion: 0.15
+Nodes (10): BaseAgent, _now_iso(), BaseAgent — shared interface for all four domain agents. Each agent fetches live, Continuous polling loop — call this as an asyncio task., broadcast_fn is manager.broadcast from routers/ws.py., Send data summary to Claude Sonnet, return structured reasoning JSON., AlertPriorityQueue, Max-heap alert priority queue implemented from scratch using Python's heapq. hea (+2 more)
 
-1. **AlertPriorityQueue ↔ SlidingWindow311 ↔ cascade_bfs** — Three different temporal data structures (max-heap, deque sliding window, BFS queue) all feed the same alert pipeline. This is the DSA showcase trifecta for the demo.
+### Community 5 - "Community 5"
+Cohesion: 0.13
+Nodes (15): BaseModel, cascade_bfs(), Weighted BFS cascade propagation engine. Implemented from scratch using collecti, Run weighted BFS from origin_node_id across the infrastructure graph.      Retur, clear_last_reroute(), get_node_status(), _now_iso(), Simulation router — triggers cascade BFS, streams results over WebSocket, resets (+7 more)
 
-2. **SystemGraph.jsx ↔ CascadeContext** — The React Flow graph view directly consumes cascade state, mirroring CityMap during cascade events with no shared component code. Same data, two independent renderers.
+### Community 6 - "Community 6"
+Cohesion: 0.18
+Nodes (11): _emit_cv_alert(), get_cameras(), get_latest_frame(), _now_iso(), poll_cv_once(), poll_now(), Computer vision camera endpoints and polling loop., run_cv_monitor() (+3 more)
 
-3. **BaseAgent → Claude Sonnet → AlertPriorityQueue** — Every AI inference call produces structured JSON that lands in a pure-Python max-heap. The LLM output is a signal, not a display artifact.
+### Community 7 - "Community 7"
+Cohesion: 0.11
+Nodes (7): useAgent(), AgentPanel(), AlertFeed(), CascadeApp(), CVPanel(), PriorityQueueViz(), useWebSocket()
 
-4. **ConnectionManager** is the only node that `simulation_router`, `base_agent`, AND `orchestrator` all import — single broadcast choke point for all real-time events. If it fails, all WS event types stop.
+### Community 8 - "Community 8"
+Cohesion: 0.16
+Nodes (15): compute_betweenness(), Structural betweenness centrality (unweighted) so that topologically     critica, find_emergency_reroute(), _generate_recommendation(), get_last_reroute(), _node_name(), _path_cost_minutes(), Dijkstra emergency rerouting over the infrastructure graph.  NetworkX provides t (+7 more)
 
-5. **InfrastructureGraph appears twice** — once as a CLAUDE.md spec node (intent) and once as the code class (implementation). Their edges to the same neighbors confirm the spec was faithfully implemented.
+### Community 9 - "Community 9"
+Cohesion: 0.23
+Nodes (6): CameraClient, _flatten_camera_payload(), _float_or_none(), _now(), _pick(), NYC DOT traffic camera client with a small in-memory frame cache.
 
----
+### Community 10 - "Community 10"
+Cohesion: 0.39
+Nodes (7): Push an alert with a severity priority (0.0–10.0). Higher = processed first., buildRerouteLayers(), cssColor(), dashPairs(), hexToRgba(), interpolate(), pairsForPath()
 
-## Community Map (27 Communities)
+### Community 11 - "Community 11"
+Cohesion: 0.42
+Nodes (8): _affected_systems(), _cascade_origin(), _fallback_briefing(), generate_briefing(), _now(), _parse_json_response(), City briefing generation for current cascade state., _severity()
 
-| Community | Representative Node | Key Members |
-|---|---|---|
-| Agent Core | BaseAgent | water_agent, transit_agent, health_agent, emergency_agent, orchestrator |
-| Data Pipeline | AlertPriorityQueue | SlidingWindow311, nyc_open_data, alert_scorer |
-| Cascade Engine | cascade_bfs | simulation_router, CascadeContext |
-| Frontend Simulation | WhatIfPanel | CascadeTimeline, SimulationView |
-| Map Layer | CityMap | deck.gl layers, cascade overlays |
-| Graph Layer | SystemGraph | ReactFlow, NodeDetail, GraphContext |
-| Agent UI | AgentPanel | AgentCard, AlertFeed, PriorityQueueViz, AgentContext |
-| Infrastructure | InfrastructureGraph | betweenness, graph.py router, _centrality |
-| Theme System | ThemeProvider | theme.css, ThemeToggle, useTheme |
-| App Shell | AppShell | Sidebar, TopBar, StatusBar, ViewRouter |
+### Community 12 - "Community 12"
+Cohesion: 0.4
+Nodes (1): InfrastructureGraph
 
----
+### Community 13 - "Community 13"
+Cohesion: 0.4
+Nodes (2): BaseSettings, Settings
 
-## Phase Build Status
+### Community 14 - "Community 14"
+Cohesion: 0.5
+Nodes (3): Utility to compute a composite severity score for raw alert signals., Returns a severity score 0.0–10.0.     - base: domain baseline     - volume bonu, score_alert()
 
-| Phase | Status | Commit | Key Abstraction |
-|---|---|---|---|
-| 0 — Foundation | ✅ | `fba2f70` | ThemeProvider, useWebSocket, AppShell |
-| 1 — Map + Graph | ✅ | `363afce` | InfrastructureGraph (40 nodes), CityMap, SystemGraph |
-| 2 — Agent Layer | ✅ | `f024cd1` | BaseAgent, AlertPriorityQueue, SlidingWindow311 |
-| 3 — Cascade Engine | ✅ | `39e7caf` | cascade_bfs (26 events, ~37s), CascadeContext, SimulationView |
-| 4 — Dijkstra + Briefing | 🔲 | — | dijkstra_reroute, briefing.py, RerouteLayer, CityBriefing |
-| 5 — Computer Vision | 🔲 | — | YOLOv8, camera_client, CVPanel |
-| 6 — Polish | 🔲 | — | keyboard shortcuts, skeleton screens, README |
+### Community 15 - "Community 15"
+Cohesion: 1.0
+Nodes (2): CityBriefing(), formatAffected()
 
----
+### Community 28 - "Community 28"
+Cohesion: 1.0
+Nodes (2): Codex Handoff Phase 4, Phase 3 Cascade Engine
 
-## Query Suggestions
+### Community 37 - "Community 37"
+Cohesion: 1.0
+Nodes (1): Phase 2 Agent Layer
 
-```
-graphify query "how does an alert flow from NYC 311 to the frontend"
-graphify query "what does cascade_bfs depend on"
-graphify path "sliding_window_311" "agent_card"
-graphify explain "base_agent"
-```
+### Community 38 - "Community 38"
+Cohesion: 1.0
+Nodes (1): WebSocket Event Protocol
+
+## Knowledge Gaps
+- **47 isolated node(s):** `Simulation router — triggers cascade BFS, streams results over WebSocket, resets`, `Run BFS and stream cascade_node events with time-scaled delays.`, `Returns the current runtime status overrides for all affected nodes.`, `Broadcast server — all connected clients receive every event.`, `Computer vision camera endpoints and polling loop.` (+42 more)
+  These have ≤1 connection - possible missing edges or undocumented components.
+- **Thin community `Community 12`** (6 nodes): `infrastructure_graph.py`, `InfrastructureGraph`, `._build()`, `.get_edges()`, `.get_nodes()`, `.__init__()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 13`** (5 nodes): `config.py`, `BaseSettings`, `cors_origins_list()`, `Settings`, `validate_ml_paths()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 15`** (3 nodes): `CityBriefing()`, `formatAffected()`, `CityBriefing.jsx`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 28`** (2 nodes): `Codex Handoff Phase 4`, `Phase 3 Cascade Engine`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 37`** (1 nodes): `Phase 2 Agent Layer`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 38`** (1 nodes): `WebSocket Event Protocol`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+
+## Suggested Questions
+_Questions this graph is uniquely positioned to answer:_
+
+- **Why does `run_orchestrator()` connect `Community 3` to `Community 2`, `Community 4`?**
+  _High betweenness centrality (0.073) - this node is a cross-community bridge._
+- **Why does `AlertPriorityQueue` connect `Community 4` to `Community 10`, `Community 3`, `Community 5`?**
+  _High betweenness centrality (0.053) - this node is a cross-community bridge._
+- **Why does `generate_briefing()` connect `Community 11` to `Community 8`, `Community 4`?**
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
+- **Are the 5 inferred relationships involving `AlertPriorityQueue` (e.g. with `BaseAgent` and `BaseAgent — shared interface for all four domain agents. Each agent fetches live`) actually correct?**
+  _`AlertPriorityQueue` has 5 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 5 inferred relationships involving `BaseAgent` (e.g. with `HealthAgent` and `AlertPriorityQueue`) actually correct?**
+  _`BaseAgent` has 5 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 8 inferred relationships involving `run_orchestrator()` (e.g. with `start_background_agents()` and `.size()`) actually correct?**
+  _`run_orchestrator()` has 8 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 7 inferred relationships involving `start_background_agents()` (e.g. with `WaterAgent` and `TransitAgent`) actually correct?**
+  _`start_background_agents()` has 7 INFERRED edges - model-reasoned connections that need verification._

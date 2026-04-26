@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     # App
     APP_ENV: str = "development"
     CASCADE_PLAYBACK_SPEED: float = 1.0
+    CV_POLL_INTERVAL: int = 30
 
     # Feature flags
     ENABLE_CV: bool = True

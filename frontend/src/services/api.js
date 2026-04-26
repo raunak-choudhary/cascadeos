@@ -7,6 +7,7 @@ async function request(path, options = {}) {
 }
 
 export const api = {
+  baseUrl: BASE_URL,
   health: () => request('/health'),
   getNodes: () => request('/graph/nodes'),
   getEdges: () => request('/graph/edges'),
@@ -21,4 +22,9 @@ export const api = {
   getScenarios: () => request('/simulation/scenarios'),
   generateBriefing: () =>
     request('/briefing/generate', { method: 'POST' }),
+  getCameras: () => request('/cv/cameras'),
+  getLatestCv: () => request('/cv/latest'),
+  pollCv: () => request('/cv/poll', { method: 'POST' }),
+  cvFrameUrl: (cameraId, timestamp = Date.now()) =>
+    `${BASE_URL}/cv/latest-frame/${cameraId}?t=${timestamp}`,
 };

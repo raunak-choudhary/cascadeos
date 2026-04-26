@@ -5,6 +5,7 @@ import { Map } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useGraph } from '../../context/GraphContext';
 import { useCascade } from '../../context/CascadeContext';
+import { useAgent } from '../../context/AgentContext';
 import { useTheme } from '../../theme/ThemeProvider';
 import { buildRerouteLayers } from './RerouteLayer';
 
@@ -57,9 +58,23 @@ function cascadeColor(severity, alpha = 255) {
   return [...CASCADE_COLORS.low, alpha];
 }
 
+function cssVarRgba(varName, fallback, alpha) {
+  if (typeof window === 'undefined') return [...fallback, alpha];
+  const value = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+  const hex = value.startsWith('#') ? value.slice(1) : '';
+  if (hex.length !== 6) return [...fallback, alpha];
+  return [
+    parseInt(hex.slice(0, 2), 16),
+    parseInt(hex.slice(2, 4), 16),
+    parseInt(hex.slice(4, 6), 16),
+    alpha,
+  ];
+}
+
 export function CityMap() {
   const { nodes, edges, selectedNode, setSelectedNode, loading, error } = useGraph();
   const { affectedNodes, originNodeId, cascadeActive, reroute } = useCascade();
+  const { cvCameras, cvDetections } = useAgent();
   const { theme } = useTheme();
 
   const nodeMap = useMemo(
@@ -80,6 +95,15 @@ export function CityMap() {
     }
     return { intraDomainEdges: intra, crossDomainEdges: cross };
   }, [edges, nodeMap]);
+
+  const cameraMarkers = useMemo(() => (
+    cvCameras.map(camera => ({
+      ...camera,
+      kind: 'Camera feed',
+      result: cvDetections[camera.id],
+      anomaly: Boolean(cvDetections[camera.id]?.anomaly_detected),
+    }))
+  ), [cvCameras, cvDetections]);
 
   // Build cascade propagation path edges for overlay
   const cascadePathEdges = useMemo(() => {
@@ -193,8 +217,40 @@ export function CityMap() {
 
     baseLayers.push(...buildRerouteLayers({ reroute, nodeMap }));
 
+    if (cameraMarkers.length > 0) {
+      baseLayers.push(
+        new ScatterplotLayer({
+          id: 'cv-camera-anomaly-rings',
+          data: cameraMarkers.filter(camera => camera.anomaly),
+          getPosition: d => [d.lng, d.lat],
+          getRadius: 34,
+          getFillColor: cssVarRgba('--accent-orange', [255, 107, 53], 80),
+          radiusUnits: 'pixels',
+          pickable: false,
+        }),
+        new ScatterplotLayer({
+          id: 'cv-camera-markers',
+          data: cameraMarkers,
+          getPosition: d => [d.lng, d.lat],
+          getRadius: d => d.anomaly ? 11 : 8,
+          getFillColor: d => d.anomaly
+            ? cssVarRgba('--accent-orange', [255, 107, 53], 240)
+            : cssVarRgba('--accent-blue', [0, 212, 255], 220),
+          getLineColor: cssVarRgba('--bg-primary', [10, 14, 26], 255),
+          lineWidthMinPixels: 2,
+          stroked: true,
+          radiusUnits: 'pixels',
+          pickable: true,
+          updateTriggers: {
+            getRadius: [cameraMarkers],
+            getFillColor: [cameraMarkers, theme],
+          },
+        }),
+      );
+    }
+
     return baseLayers;
-  }, [nodes, intraDomainEdges, crossDomainEdges, selectedNode, theme, affectedNodes, originNodeId, cascadeActive, cascadePathEdges, reroute, nodeMap]);
+  }, [nodes, intraDomainEdges, crossDomainEdges, selectedNode, theme, affectedNodes, originNodeId, cascadeActive, cascadePathEdges, reroute, nodeMap, cameraMarkers]);
 
   const handleClick = useCallback(
     ({ object }) => {
@@ -212,6 +268,17 @@ export function CityMap() {
   const getTooltip = useCallback(({ object }) => {
     if (!object) return null;
     if (object.kind) {
+      if (object.kind === 'Camera feed') {
+        return {
+          html: `
+            <div class="map-tooltip">
+              <strong>${object.name}</strong>
+              <span class="tt-type">DOT camera · ${object.anomaly ? 'anomaly active' : 'monitoring'}</span>
+              <span class="tt-score">Severity ${Number(object.result?.overall_severity ?? 0).toFixed(1)}</span>
+            </div>`,
+          style: { background: 'transparent', padding: 0, border: 'none' },
+        };
+      }
       return {
         html: `
           <div class="map-tooltip">

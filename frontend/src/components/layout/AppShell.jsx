@@ -10,7 +10,7 @@ import { AgentPanel } from '../agents/AgentPanel';
 import { AlertFeed } from '../agents/AlertFeed';
 import { SimulationView } from '../simulation/SimulationView';
 import { CityBriefing } from '../ui/CityBriefing';
-import { ComingSoon } from '../ui/ComingSoon';
+import { CVPanel } from '../cv/CVPanel';
 
 function ViewRouter({ view }) {
   switch (view) {
@@ -19,7 +19,7 @@ function ViewRouter({ view }) {
     case 'agents':     return <AgentPanel />;
     case 'alerts':     return <AlertFeed />;
     case 'simulation': return <SimulationView />;
-    case 'cv':         return <ComingSoon label="Computer Vision Feeds" phase={5} />;
+    case 'cv':         return <CVPanel />;
     default:           return <CityMap />;
   }
 }
