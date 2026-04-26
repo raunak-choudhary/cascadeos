@@ -1,0 +1,5 @@
+torch
+torch-geometric
+ultralytics
+opencv-python-headless
+Pillow

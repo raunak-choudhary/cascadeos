@@ -1,0 +1,23 @@
+backend/cv/models/*.pt
+backend/cv/models/*.torchscript
+.env
+frontend/.env
+backend/.env
+
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+*.pyo
+requirements.lock
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+frontend/dist/
+frontend/.vite/
+
+# OS
+.DS_Store

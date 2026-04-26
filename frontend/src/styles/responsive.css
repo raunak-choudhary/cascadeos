@@ -1,0 +1,52 @@
+/* Mobile first — base targets 375px (iPhone 15) */
+
+/* Tablet: 768px */
+@media (min-width: 768px) {
+  .brand-tag {
+    display: block;
+  }
+
+  .sidebar--closed {
+    width: 56px;
+  }
+}
+
+/* Desktop: 1280px */
+@media (min-width: 1280px) {
+  .topbar {
+    padding: 0 24px;
+  }
+
+  .statusbar {
+    padding: 0 24px;
+  }
+}
+
+/* Large: 1920px */
+@media (min-width: 1920px) {
+  .sidebar {
+    width: 220px;
+  }
+}
+
+/* Mobile: collapse sidebar by default */
+@media (max-width: 767px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 52px;
+    bottom: 28px;
+    z-index: 200;
+    transform: translateX(-100%);
+    width: 200px !important;
+  }
+
+  .sidebar--open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .nav-label {
+    opacity: 1 !important;
+  }
+}
