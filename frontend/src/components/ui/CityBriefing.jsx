@@ -11,6 +11,63 @@ function formatAffected(systems = []) {
   ));
 }
 
+function formatRoute(route = []) {
+  return route.length ? route.join(' -> ') : 'Not available';
+}
+
+function formatBriefingForClipboard(briefing) {
+  const affected = briefing.affected_systems?.length
+    ? briefing.affected_systems
+      .map(system => `- ${system.name ?? system.node_id} (${system.node_id}): ${system.domain} / ${system.status}`)
+      .join('\n')
+    : '- No affected systems reported.';
+
+  const actions = briefing.recommended_actions?.length
+    ? briefing.recommended_actions.map(action => `- ${action}`).join('\n')
+    : '- No recommended actions reported.';
+
+  const origin = briefing.cascade_origin
+    ? `${briefing.cascade_origin.name ?? briefing.cascade_origin.node_id} (${briefing.cascade_origin.node_id})`
+    : 'No active cascade origin';
+
+  const rerouting = briefing.rerouting
+    ? [
+      `Recommendation: ${briefing.rerouting.recommendation}`,
+      `Origin: ${briefing.rerouting.origin ?? 'Not available'}`,
+      `Destination: ${briefing.rerouting.destination ?? 'Not available'}`,
+      `Original path: ${formatRoute(briefing.rerouting.original_path)}`,
+      `Rerouted path: ${formatRoute(briefing.rerouting.rerouted_path)}`,
+      `Blocked nodes: ${formatRoute(briefing.rerouting.blocked_nodes)}`,
+      `Delay: ${Number(briefing.rerouting.delay_minutes ?? 0).toFixed(1)} min`,
+    ].join('\n')
+    : 'No active reroute recommendation.';
+
+  return [
+    `City Briefing: ${briefing.incident_id ?? 'Incident Report'}`,
+    `Severity: ${briefing.severity ?? 'UNKNOWN'}`,
+    `Generated: ${briefing.generated_at ?? 'Not available'}`,
+    `Predicted peak impact: ${briefing.predicted_peak_impact ?? 'Not available'}`,
+    '',
+    'Summary',
+    briefing.summary ?? 'No summary reported.',
+    '',
+    'Cascade Origin',
+    origin,
+    '',
+    'Affected Systems',
+    affected,
+    '',
+    'Recommended Actions',
+    actions,
+    '',
+    'Rerouting',
+    rerouting,
+    '',
+    'Full Report',
+    briefing.full_report ?? 'No full report generated.',
+  ].join('\n');
+}
+
 export function CityBriefing() {
   const [briefing, setBriefing] = useState(null);
   const [open, setOpen] = useState(false);
@@ -33,9 +90,9 @@ export function CityBriefing() {
   };
 
   const copyReport = async () => {
-    if (!briefing?.full_report) return;
+    if (!briefing) return;
     try {
-      await navigator.clipboard.writeText(briefing.full_report);
+      await navigator.clipboard.writeText(formatBriefingForClipboard(briefing));
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1600);
     } catch (err) {
