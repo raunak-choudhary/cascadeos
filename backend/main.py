@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from config import settings
 from routers import ws as ws_router
+from routers import graph as graph_router
 
 app = FastAPI(title="CascadeOS", version="0.1.0")
 
@@ -16,6 +17,7 @@ app.add_middleware(
 )
 
 app.include_router(ws_router.router)
+app.include_router(graph_router.router)
 
 
 @app.get("/health")

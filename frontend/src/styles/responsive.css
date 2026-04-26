@@ -29,6 +29,26 @@
   }
 }
 
+/* NodeDetail — full-width on mobile */
+@media (max-width: 767px) {
+  .node-detail {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-height: 50vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .map-legend,
+  .graph-legend {
+    bottom: 8px;
+    left: 8px;
+    font-size: 11px;
+  }
+}
+
 /* Mobile: collapse sidebar by default */
 @media (max-width: 767px) {
   .sidebar {

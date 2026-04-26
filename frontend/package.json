@@ -19,6 +19,7 @@
     "mapbox-gl": "^3.22.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "react-map-gl": "^8.1.1",
     "reactflow": "^11.11.4"
   },
   "devDependencies": {

@@ -2,33 +2,46 @@ import { useState } from 'react';
 import { TopBar } from './TopBar';
 import { Sidebar } from './Sidebar';
 import { StatusBar } from './StatusBar';
+import { GraphProvider } from '../../context/GraphContext';
+import { CityMap } from '../map/CityMap';
+import { SystemGraph } from '../graph/SystemGraph';
+import { NodeDetail } from '../graph/NodeDetail';
+import { ComingSoon } from '../ui/ComingSoon';
 
-export function AppShell({ wsStatus, lastHeartbeat, children }) {
+function ViewRouter({ view }) {
+  switch (view) {
+    case 'map':    return <CityMap />;
+    case 'graph':  return <SystemGraph />;
+    case 'agents':     return <ComingSoon label="Agent Panel" phase={2} />;
+    case 'simulation': return <ComingSoon label="Cascade Simulator" phase={3} />;
+    case 'cv':         return <ComingSoon label="Computer Vision Feeds" phase={5} />;
+    case 'alerts':     return <ComingSoon label="Alert Feed" phase={2} />;
+    default:           return <CityMap />;
+  }
+}
+
+export function AppShell({ wsStatus, lastHeartbeat }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeView, setActiveView] = useState('map');
 
   return (
-    <div className="app-shell">
-      <TopBar onMenuToggle={() => setSidebarOpen(o => !o)} />
-      <div className="app-body">
-        <Sidebar
-          isOpen={sidebarOpen}
-          activeView={activeView}
-          onViewChange={setActiveView}
-        />
-        <main className="app-content">
-          {children}
-          <div className="placeholder-view">
-            <p className="placeholder-label">
-              Phase 0 — Foundation complete
-            </p>
-            <p className="placeholder-sub">
-              Active view: <span className="mono">{activeView}</span>
-            </p>
-          </div>
-        </main>
+    <GraphProvider>
+      <div className="app-shell">
+        <TopBar onMenuToggle={() => setSidebarOpen(o => !o)} />
+        <div className="app-body">
+          <Sidebar
+            isOpen={sidebarOpen}
+            activeView={activeView}
+            onViewChange={setActiveView}
+          />
+          <main className="app-content">
+            <ViewRouter view={activeView} />
+            {/* NodeDetail shared across all views — renders null when nothing is selected */}
+            <NodeDetail />
+          </main>
+        </div>
+        <StatusBar wsStatus={wsStatus} lastHeartbeat={lastHeartbeat} />
       </div>
-      <StatusBar wsStatus={wsStatus} lastHeartbeat={lastHeartbeat} />
-    </div>
+    </GraphProvider>
   );
 }
