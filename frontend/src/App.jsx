@@ -4,11 +4,15 @@ import { AppShell } from './components/layout/AppShell';
 import { AgentProvider, useAgent } from './context/AgentContext';
 import { CascadeProvider, useCascade } from './context/CascadeContext';
 import { useWebSocket } from './hooks/useWebSocket';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
+import { useTheme } from './theme/ThemeProvider';
 
 function CascadeApp() {
   const [lastHeartbeat, setLastHeartbeat] = useState(null);
+  const [shortcutToast, setShortcutToast] = useState(null);
   const { handleWsMessage: agentHandler } = useAgent();
   const { handleWsMessage: cascadeHandler } = useCascade();
+  const { toggleTheme } = useTheme();
 
   const handleMessage = useCallback((msg) => {
     if (msg.type === 'heartbeat') {
@@ -20,8 +24,21 @@ function CascadeApp() {
 
   const wsStatus = useWebSocket(handleMessage);
 
+  const handleShortcut = useCallback((message) => {
+    setShortcutToast(message);
+    window.setTimeout(() => setShortcutToast(null), 1800);
+  }, []);
+
+  useKeyboardShortcuts({
+    toggleTheme,
+    onShortcut: handleShortcut,
+  });
+
   return (
-    <AppShell wsStatus={wsStatus} lastHeartbeat={lastHeartbeat} />
+    <>
+      <AppShell wsStatus={wsStatus} lastHeartbeat={lastHeartbeat} />
+      {shortcutToast && <div className="shortcut-toast">{shortcutToast}</div>}
+    </>
   );
 }
 

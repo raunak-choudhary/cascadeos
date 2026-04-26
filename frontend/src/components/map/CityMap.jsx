@@ -8,6 +8,7 @@ import { useCascade } from '../../context/CascadeContext';
 import { useAgent } from '../../context/AgentContext';
 import { useTheme } from '../../theme/ThemeProvider';
 import { buildRerouteLayers } from './RerouteLayer';
+import { MapSkeleton } from '../ui/Skeleton';
 
 // ── Color palette matching CSS custom properties ─────────────────────────────
 const DOMAIN_COLORS = {
@@ -72,7 +73,7 @@ function cssVarRgba(varName, fallback, alpha) {
 }
 
 export function CityMap() {
-  const { nodes, edges, selectedNode, setSelectedNode, loading, error } = useGraph();
+  const { nodes, edges, selectedNode, setSelectedNode, loading, error, reloadGraph } = useGraph();
   const { affectedNodes, originNodeId, cascadeActive, reroute } = useCascade();
   const { cvCameras, cvDetections } = useAgent();
   const { theme } = useTheme();
@@ -303,20 +304,16 @@ export function CityMap() {
   }, [affectedNodes]);
 
   if (loading) {
-    return (
-      <div className="map-placeholder">
-        <div className="map-loading">
-          <div className="spinner" />
-          <p>Loading infrastructure graph…</p>
-        </div>
-      </div>
-    );
+    return <MapSkeleton label="Loading infrastructure graph..." />;
   }
 
   if (error) {
     return (
       <div className="map-placeholder">
-        <p className="map-error">Failed to load graph: {error}</p>
+        <div className="error-state">
+          <p className="map-error">Failed to load graph: {error}</p>
+          <button className="error-retry-btn" type="button" onClick={reloadGraph}>Retry</button>
+        </div>
       </div>
     );
   }

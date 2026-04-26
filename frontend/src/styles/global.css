@@ -49,6 +49,40 @@ button {
   position: relative;
 }
 
+.view-transition {
+  width: 100%;
+  height: 100%;
+  animation: view-fade-in 0.3s ease;
+}
+
+@keyframes view-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shortcut-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 44px;
+  z-index: 90;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  font-size: 12px;
+  font-weight: 700;
+  animation: view-fade-in 0.18s ease;
+}
+
 /* ── TopBar ─────────────────────────────────────────────── */
 
 .topbar {
@@ -282,6 +316,114 @@ button {
   width: 100%;
   height: 100%;
   background: var(--bg-primary);
+}
+
+.map-skeleton {
+  width: min(560px, calc(100% - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--text-muted);
+  font-size: 13px;
+  align-items: center;
+}
+
+.skeleton-block {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.skeleton-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--bg-card-hover), transparent);
+  animation: skeleton-shimmer 1.25s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  to { transform: translateX(100%); }
+}
+
+.map-skeleton-bar {
+  height: 12px;
+  border-radius: 6px;
+}
+
+.map-skeleton-bar--wide {
+  width: 70%;
+}
+
+.map-skeleton-grid {
+  width: 100%;
+  height: 260px;
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.map-skeleton-node {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.map-skeleton-node:nth-child(1) { left: 18%; top: 42%; }
+.map-skeleton-node:nth-child(2) { left: 28%; top: 36%; }
+.map-skeleton-node:nth-child(3) { left: 38%; top: 32%; }
+.map-skeleton-node:nth-child(4) { left: 47%; top: 34%; }
+.map-skeleton-node:nth-child(5) { left: 58%; top: 30%; }
+.map-skeleton-node:nth-child(6) { left: 67%; top: 38%; }
+.map-skeleton-node:nth-child(7) { left: 76%; top: 46%; }
+.map-skeleton-node:nth-child(8) { left: 22%; top: 58%; }
+.map-skeleton-node:nth-child(9) { left: 34%; top: 54%; }
+.map-skeleton-node:nth-child(10) { left: 44%; top: 52%; }
+.map-skeleton-node:nth-child(11) { left: 56%; top: 50%; }
+.map-skeleton-node:nth-child(12) { left: 68%; top: 58%; }
+.map-skeleton-node:nth-child(13) { left: 16%; top: 70%; }
+.map-skeleton-node:nth-child(14) { left: 30%; top: 72%; }
+.map-skeleton-node:nth-child(15) { left: 48%; top: 68%; }
+.map-skeleton-node:nth-child(16) { left: 62%; top: 72%; }
+.map-skeleton-node:nth-child(17) { left: 82%; top: 64%; }
+.map-skeleton-node:nth-child(18) { left: 14%; top: 26%; }
+.map-skeleton-node:nth-child(19) { left: 32%; top: 22%; }
+.map-skeleton-node:nth-child(20) { left: 52%; top: 20%; }
+.map-skeleton-node:nth-child(21) { left: 72%; top: 24%; }
+.map-skeleton-node:nth-child(22) { left: 84%; top: 34%; }
+.map-skeleton-node:nth-child(23) { left: 40%; top: 82%; }
+.map-skeleton-node:nth-child(24) { left: 58%; top: 84%; }
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.error-retry-btn {
+  min-height: 34px;
+  padding: 7px 12px;
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.error-retry-btn:hover {
+  border-color: var(--accent-blue);
 }
 
 .map-loading {
@@ -1902,6 +2044,7 @@ button {
     height: 40vh;
     border-left: none;
     border-top: 1px solid var(--border);
+    animation: bottom-sheet-rise 0.32s cubic-bezier(0.2, 0.9, 0.2, 1);
   }
 
   .whatif-presets {

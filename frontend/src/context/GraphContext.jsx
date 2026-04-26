@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { api } from '../services/api';
 
 const GraphContext = createContext(null);
@@ -10,7 +10,9 @@ export function GraphProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const reloadGraph = useCallback(() => {
+    setLoading(true);
+    setError(null);
     Promise.all([api.getNodes(), api.getEdges()])
       .then(([n, e]) => {
         setNodes(n);
@@ -20,9 +22,13 @@ export function GraphProvider({ children }) {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    reloadGraph();
+  }, [reloadGraph]);
+
   return (
     <GraphContext.Provider
-      value={{ nodes, edges, selectedNode, setSelectedNode, loading, error }}
+      value={{ nodes, edges, selectedNode, setSelectedNode, loading, error, reloadGraph }}
     >
       {children}
     </GraphContext.Provider>

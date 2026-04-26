@@ -39,7 +39,9 @@ export function AppShell({ wsStatus, lastHeartbeat }) {
             onViewChange={setActiveView}
           />
           <main className="app-content">
-            <ViewRouter view={activeView} />
+            <div key={activeView} className="view-transition">
+              <ViewRouter view={activeView} />
+            </div>
             {activeView === 'map' && <CityBriefing />}
             {/* NodeDetail: shared across map/graph, hidden in simulation (it has its own layout) */}
             {activeView !== 'simulation' && <NodeDetail />}

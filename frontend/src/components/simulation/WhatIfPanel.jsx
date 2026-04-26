@@ -24,6 +24,15 @@ export function WhatIfPanel() {
     api.getScenarios().then(setScenarios).catch(() => {});
   }, []);
 
+  useEffect(() => {
+    function handleDemoTrigger() {
+      setSelectedNode('water_34th');
+      setFailureType('main_break');
+    }
+    window.addEventListener('cascadeos:demo-trigger', handleDemoTrigger);
+    return () => window.removeEventListener('cascadeos:demo-trigger', handleDemoTrigger);
+  }, []);
+
   async function handleTrigger() {
     setTriggering(true);
     try {

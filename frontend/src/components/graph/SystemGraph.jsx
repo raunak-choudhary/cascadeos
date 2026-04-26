@@ -9,6 +9,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import { useGraph } from '../../context/GraphContext';
 import { useCascade } from '../../context/CascadeContext';
+import { MapSkeleton } from '../ui/Skeleton';
 
 // ── Geographic → canvas projection ──────────────────────────────────────────
 const LAT_MIN = 40.48, LAT_MAX = 40.91;
@@ -128,7 +129,7 @@ function buildRFEdges(edges) {
 }
 
 export function SystemGraph() {
-  const { nodes: rawNodes, edges: rawEdges, setSelectedNode, loading, error } = useGraph();
+  const { nodes: rawNodes, edges: rawEdges, setSelectedNode, loading, error, reloadGraph } = useGraph();
   const { affectedNodes, originNodeId, cascadeActive } = useCascade();
 
   const [rfNodes, setRfNodes, onNodesChange] = useNodesState([]);
@@ -156,20 +157,16 @@ export function SystemGraph() {
   );
 
   if (loading) {
-    return (
-      <div className="map-placeholder">
-        <div className="map-loading">
-          <div className="spinner" />
-          <p>Building system graph…</p>
-        </div>
-      </div>
-    );
+    return <MapSkeleton label="Building system graph..." />;
   }
 
   if (error) {
     return (
       <div className="map-placeholder">
-        <p className="map-error">Failed to load graph: {error}</p>
+        <div className="error-state">
+          <p className="map-error">Failed to load graph: {error}</p>
+          <button className="error-retry-btn" type="button" onClick={reloadGraph}>Retry</button>
+        </div>
       </div>
     );
   }
