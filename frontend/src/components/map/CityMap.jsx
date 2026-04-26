@@ -197,7 +197,15 @@ export function CityMap() {
   }, [nodes, intraDomainEdges, crossDomainEdges, selectedNode, theme, affectedNodes, originNodeId, cascadeActive, cascadePathEdges, reroute, nodeMap]);
 
   const handleClick = useCallback(
-    ({ object }) => { setSelectedNode(object ?? null); },
+    ({ object }) => {
+      if (!object) {
+        setSelectedNode(null);
+        return;
+      }
+      if (object.id && object.type) {
+        setSelectedNode(object);
+      }
+    },
     [setSelectedNode],
   );
 
