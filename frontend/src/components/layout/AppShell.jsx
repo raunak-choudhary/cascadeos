@@ -9,6 +9,7 @@ import { NodeDetail } from '../graph/NodeDetail';
 import { AgentPanel } from '../agents/AgentPanel';
 import { AlertFeed } from '../agents/AlertFeed';
 import { SimulationView } from '../simulation/SimulationView';
+import { CityBriefing } from '../ui/CityBriefing';
 import { ComingSoon } from '../ui/ComingSoon';
 
 function ViewRouter({ view }) {
@@ -39,6 +40,7 @@ export function AppShell({ wsStatus, lastHeartbeat }) {
           />
           <main className="app-content">
             <ViewRouter view={activeView} />
+            {activeView === 'map' && <CityBriefing />}
             {/* NodeDetail: shared across map/graph, hidden in simulation (it has its own layout) */}
             {activeView !== 'simulation' && <NodeDetail />}
           </main>

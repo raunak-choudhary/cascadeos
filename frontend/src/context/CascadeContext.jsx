@@ -12,6 +12,7 @@ export function CascadeProvider({ children }) {
   const [cascadeEvents, setCascadeEvents] = useState([]); // ordered list of arrived events
   const [affectedNodes, setAffectedNodes] = useState({}); // nodeId → { severity, status, depth }
   const [isComplete, setIsComplete] = useState(false);
+  const [reroute, setReroute] = useState(null);
 
   const handleWsMessage = useCallback((msg) => {
     switch (msg.type) {
@@ -21,6 +22,7 @@ export function CascadeProvider({ children }) {
         setOriginNodeId(msg.payload.origin_node_id);
         setCascadeEvents([]);
         setAffectedNodes({});
+        setReroute(null);
         break;
 
       case 'cascade_node':
@@ -47,6 +49,11 @@ export function CascadeProvider({ children }) {
         setCascadeEvents([]);
         setAffectedNodes({});
         setIsComplete(false);
+        setReroute(null);
+        break;
+
+      case 'reroute_update':
+        setReroute(msg.payload);
         break;
 
       default:
@@ -61,6 +68,7 @@ export function CascadeProvider({ children }) {
       cascadeEvents,
       affectedNodes,
       isComplete,
+      reroute,
       handleWsMessage,
     }}>
       {children}

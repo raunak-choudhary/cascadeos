@@ -7,6 +7,7 @@ from config import settings
 from routers import ws as ws_router
 from routers import graph as graph_router
 from routers import simulation as simulation_router
+from routers import briefing as briefing_router
 
 app = FastAPI(title="CascadeOS", version="0.2.0")
 
@@ -21,6 +22,7 @@ app.add_middleware(
 app.include_router(ws_router.router)
 app.include_router(graph_router.router)
 app.include_router(simulation_router.router)
+app.include_router(briefing_router.router)
 
 
 @app.get("/health")

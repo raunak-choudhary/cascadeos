@@ -6,6 +6,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { useGraph } from '../../context/GraphContext';
 import { useCascade } from '../../context/CascadeContext';
 import { useTheme } from '../../theme/ThemeProvider';
+import { buildRerouteLayers } from './RerouteLayer';
 
 // ── Color palette matching CSS custom properties ─────────────────────────────
 const DOMAIN_COLORS = {
@@ -58,7 +59,7 @@ function cascadeColor(severity, alpha = 255) {
 
 export function CityMap() {
   const { nodes, edges, selectedNode, setSelectedNode, loading, error } = useGraph();
-  const { affectedNodes, originNodeId, cascadeActive } = useCascade();
+  const { affectedNodes, originNodeId, cascadeActive, reroute } = useCascade();
   const { theme } = useTheme();
 
   const nodeMap = useMemo(
@@ -190,8 +191,10 @@ export function CityMap() {
       );
     }
 
+    baseLayers.push(...buildRerouteLayers({ reroute, nodeMap }));
+
     return baseLayers;
-  }, [nodes, intraDomainEdges, crossDomainEdges, selectedNode, theme, affectedNodes, originNodeId, cascadeActive, cascadePathEdges]);
+  }, [nodes, intraDomainEdges, crossDomainEdges, selectedNode, theme, affectedNodes, originNodeId, cascadeActive, cascadePathEdges, reroute, nodeMap]);
 
   const handleClick = useCallback(
     ({ object }) => { setSelectedNode(object ?? null); },
@@ -200,6 +203,16 @@ export function CityMap() {
 
   const getTooltip = useCallback(({ object }) => {
     if (!object) return null;
+    if (object.kind) {
+      return {
+        html: `
+          <div class="map-tooltip">
+            <strong>${object.kind}</strong>
+            <span class="tt-type">Added delay ${Number(object.delayMinutes ?? 0).toFixed(1)} min</span>
+          </div>`,
+        style: { background: 'transparent', padding: 0, border: 'none' },
+      };
+    }
     const score = ((object.centrality_score ?? 0) * 100).toFixed(1);
     const cascadeInfo = affectedNodes[object.id];
     return {

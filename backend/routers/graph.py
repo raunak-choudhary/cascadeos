@@ -1,6 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
 from graph.infrastructure_graph import graph
 from graph.betweenness import compute_betweenness
+from graph.dijkstra_reroute import find_emergency_reroute
 
 router = APIRouter(prefix="/graph", tags=["graph"])
 
@@ -52,3 +53,13 @@ async def get_stats() -> dict:
         "nodes_by_type": by_type,
         "top_centrality_nodes": top_nodes,
     }
+
+
+@router.get("/reroute")
+async def get_reroute(
+    blocked: str = "",
+    from_node: str = Query("transit_penn", alias="from"),
+    to_node: str = Query("transit_grand_central", alias="to"),
+) -> dict:
+    blocked_nodes = [node.strip() for node in blocked.split(",") if node.strip()]
+    return find_emergency_reroute(graph.G, blocked_nodes, from_node, to_node)

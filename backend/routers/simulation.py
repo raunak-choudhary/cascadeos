@@ -12,6 +12,7 @@ from pydantic import BaseModel
 from config import settings
 from graph.infrastructure_graph import graph as infra_graph
 from graph.cascade_bfs import cascade_bfs
+from graph.dijkstra_reroute import clear_last_reroute, find_emergency_reroute
 from routers.ws import manager
 
 router = APIRouter(prefix="/simulation", tags=["simulation"])
@@ -60,6 +61,18 @@ class TriggerRequest(BaseModel):
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def _reroute_blocked_nodes(events: list[dict]) -> list[str]:
+    impacted = [
+        event["node_id"]
+        for event in events
+        if event.get("cascade_depth", 0) >= 2
+        and event.get("domain") in {"transit", "emergency"}
+    ]
+    default_route_nodes = {"transit_times_sq"}
+    route_impacts = [node_id for node_id in impacted if node_id in default_route_nodes]
+    return route_impacts or impacted[:1]
 
 
 async def _stream_cascade(node_id: str, failure_type: str) -> None:
@@ -119,6 +132,33 @@ async def _stream_cascade(node_id: str, failure_type: str) -> None:
         },
     })
 
+    blocked_nodes = _reroute_blocked_nodes(events)
+    if blocked_nodes:
+        try:
+            reroute = await asyncio.to_thread(
+                find_emergency_reroute,
+                infra_graph.G,
+                blocked_nodes,
+                "transit_penn",
+                "transit_grand_central",
+            )
+            await manager.broadcast({
+                "type": "reroute_update",
+                "payload": {
+                    **reroute,
+                    "timestamp": _now_iso(),
+                },
+            })
+        except Exception as exc:
+            await manager.broadcast({
+                "type": "reroute_update",
+                "payload": {
+                    "error": str(exc),
+                    "blocked_nodes": blocked_nodes,
+                    "timestamp": _now_iso(),
+                },
+            })
+
 
 @router.post("/trigger")
 async def trigger_cascade(req: TriggerRequest, background_tasks: BackgroundTasks):
@@ -137,6 +177,7 @@ async def trigger_cascade(req: TriggerRequest, background_tasks: BackgroundTasks
 @router.post("/reset")
 async def reset_simulation():
     _node_status.clear()
+    clear_last_reroute()
     await manager.broadcast({
         "type": "simulation_reset",
         "payload": {"reset_at": _now_iso()},

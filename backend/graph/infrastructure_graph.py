@@ -399,6 +399,8 @@ _RAW_EDGES: list[tuple[str, str, dict[str, Any]]] = [
     ("transit_union_sq",  "transit_grand_central",{"weight": 0.9,"type": "operational", "bidirectional": True}),
     ("transit_grand_central","transit_times_sq",{"weight": 0.85,"type": "proximity",    "bidirectional": True}),
     ("transit_grand_central","transit_59th",    {"weight": 0.8, "type": "operational",  "bidirectional": True}),
+    # 14th St crosstown L corridor — emergency fallback when Times Sq is blocked
+    ("transit_14th_8th",  "transit_union_sq",   {"weight": 0.75,"type": "operational",  "bidirectional": True}),
     # 2/3 line fragment
     ("transit_fulton",    "transit_union_sq",   {"weight": 0.85,"type": "operational",  "bidirectional": True}),
     ("transit_union_sq",  "transit_times_sq",   {"weight": 0.8, "type": "operational",  "bidirectional": True}),
