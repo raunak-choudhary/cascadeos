@@ -53,648 +53,648 @@
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/vite.config.js",
       "source_location": "L1",
-      "id": "frontend_vite_config_js",
-      "community": 20,
-      "norm_label": "vite.config.js"
+      "community": 22,
+      "norm_label": "vite.config.js",
+      "id": "frontend_vite_config_js"
     },
     {
       "label": "eslint.config.js",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/eslint.config.js",
       "source_location": "L1",
-      "id": "frontend_eslint_config_js",
-      "community": 21,
-      "norm_label": "eslint.config.js"
+      "community": 23,
+      "norm_label": "eslint.config.js",
+      "id": "frontend_eslint_config_js"
     },
     {
       "label": "main.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/main.jsx",
       "source_location": "L1",
-      "id": "frontend_src_main_jsx",
-      "community": 22,
-      "norm_label": "main.jsx"
+      "community": 24,
+      "norm_label": "main.jsx",
+      "id": "frontend_src_main_jsx"
     },
     {
       "label": "App.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/App.jsx",
       "source_location": "L1",
-      "id": "frontend_src_app_jsx",
-      "community": 6,
-      "norm_label": "app.jsx"
+      "community": 8,
+      "norm_label": "app.jsx",
+      "id": "frontend_src_app_jsx"
     },
     {
       "label": "CascadeApp()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/App.jsx",
       "source_location": "L6",
-      "id": "app_cascadeapp",
-      "community": 6,
-      "norm_label": "cascadeapp()"
+      "community": 8,
+      "norm_label": "cascadeapp()",
+      "id": "app_cascadeapp"
     },
     {
       "label": "App()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/App.jsx",
       "source_location": "L23",
-      "id": "app_app",
-      "community": 6,
-      "norm_label": "app()"
+      "community": 8,
+      "norm_label": "app()",
+      "id": "app_app"
     },
     {
       "label": "GraphContext.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/context/GraphContext.jsx",
       "source_location": "L1",
-      "id": "frontend_src_context_graphcontext_jsx",
-      "community": 1,
-      "norm_label": "graphcontext.jsx"
+      "community": 2,
+      "norm_label": "graphcontext.jsx",
+      "id": "frontend_src_context_graphcontext_jsx"
     },
     {
       "label": "GraphProvider()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/context/GraphContext.jsx",
       "source_location": "L6",
-      "id": "graphcontext_graphprovider",
-      "community": 1,
-      "norm_label": "graphprovider()"
+      "community": 2,
+      "norm_label": "graphprovider()",
+      "id": "graphcontext_graphprovider"
     },
     {
       "label": "useGraph()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/context/GraphContext.jsx",
       "source_location": "L32",
-      "id": "graphcontext_usegraph",
-      "community": 1,
-      "norm_label": "usegraph()"
+      "community": 2,
+      "norm_label": "usegraph()",
+      "id": "graphcontext_usegraph"
     },
     {
       "label": "ThemeToggle.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/ui/ThemeToggle.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_ui_themetoggle_jsx",
-      "community": 2,
-      "norm_label": "themetoggle.jsx"
+      "community": 3,
+      "norm_label": "themetoggle.jsx",
+      "id": "frontend_src_components_ui_themetoggle_jsx"
     },
     {
       "label": "ThemeToggle()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/ui/ThemeToggle.jsx",
       "source_location": "L4",
-      "id": "themetoggle_themetoggle",
-      "community": 2,
-      "norm_label": "themetoggle()"
+      "community": 3,
+      "norm_label": "themetoggle()",
+      "id": "themetoggle_themetoggle"
     },
     {
       "label": "ComingSoon.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/ui/ComingSoon.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_ui_comingsoon_jsx",
-      "community": 11,
-      "norm_label": "comingsoon.jsx"
+      "community": 13,
+      "norm_label": "comingsoon.jsx",
+      "id": "frontend_src_components_ui_comingsoon_jsx"
     },
     {
       "label": "ComingSoon()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/ui/ComingSoon.jsx",
       "source_location": "L1",
-      "id": "comingsoon_comingsoon",
-      "community": 11,
-      "norm_label": "comingsoon()"
+      "community": 13,
+      "norm_label": "comingsoon()",
+      "id": "comingsoon_comingsoon"
     },
     {
       "label": "StatusBar.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/StatusBar.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_layout_statusbar_jsx",
-      "community": 12,
-      "norm_label": "statusbar.jsx"
+      "community": 14,
+      "norm_label": "statusbar.jsx",
+      "id": "frontend_src_components_layout_statusbar_jsx"
     },
     {
       "label": "StatusBar()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/StatusBar.jsx",
       "source_location": "L1",
-      "id": "statusbar_statusbar",
-      "community": 12,
-      "norm_label": "statusbar()"
+      "community": 14,
+      "norm_label": "statusbar()",
+      "id": "statusbar_statusbar"
     },
     {
       "label": "Sidebar.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/Sidebar.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_layout_sidebar_jsx",
-      "community": 13,
-      "norm_label": "sidebar.jsx"
+      "community": 15,
+      "norm_label": "sidebar.jsx",
+      "id": "frontend_src_components_layout_sidebar_jsx"
     },
     {
       "label": "Sidebar()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/Sidebar.jsx",
       "source_location": "L12",
-      "id": "sidebar_sidebar",
-      "community": 13,
-      "norm_label": "sidebar()"
+      "community": 15,
+      "norm_label": "sidebar()",
+      "id": "sidebar_sidebar"
     },
     {
       "label": "TopBar.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/TopBar.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_layout_topbar_jsx",
-      "community": 14,
-      "norm_label": "topbar.jsx"
+      "community": 16,
+      "norm_label": "topbar.jsx",
+      "id": "frontend_src_components_layout_topbar_jsx"
     },
     {
       "label": "TopBar()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/TopBar.jsx",
       "source_location": "L3",
-      "id": "topbar_topbar",
-      "community": 14,
-      "norm_label": "topbar()"
+      "community": 16,
+      "norm_label": "topbar()",
+      "id": "topbar_topbar"
     },
     {
       "label": "AppShell.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/AppShell.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_layout_appshell_jsx",
-      "community": 9,
-      "norm_label": "appshell.jsx"
+      "community": 11,
+      "norm_label": "appshell.jsx",
+      "id": "frontend_src_components_layout_appshell_jsx"
     },
     {
       "label": "ViewRouter()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/AppShell.jsx",
       "source_location": "L11",
-      "id": "appshell_viewrouter",
-      "community": 9,
-      "norm_label": "viewrouter()"
+      "community": 11,
+      "norm_label": "viewrouter()",
+      "id": "appshell_viewrouter"
     },
     {
       "label": "AppShell()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/layout/AppShell.jsx",
       "source_location": "L23",
-      "id": "appshell_appshell",
-      "community": 9,
-      "norm_label": "appshell()"
+      "community": 11,
+      "norm_label": "appshell()",
+      "id": "appshell_appshell"
     },
     {
       "label": "SystemGraph.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/SystemGraph.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_graph_systemgraph_jsx",
-      "community": 1,
-      "norm_label": "systemgraph.jsx"
+      "community": 2,
+      "norm_label": "systemgraph.jsx",
+      "id": "frontend_src_components_graph_systemgraph_jsx"
     },
     {
       "label": "geoToCanvas()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/SystemGraph.jsx",
       "source_location": "L17",
-      "id": "systemgraph_geotocanvas",
-      "community": 1,
-      "norm_label": "geotocanvas()"
+      "community": 2,
+      "norm_label": "geotocanvas()",
+      "id": "systemgraph_geotocanvas"
     },
     {
       "label": "buildRFNodes()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/SystemGraph.jsx",
       "source_location": "L37",
-      "id": "systemgraph_buildrfnodes",
-      "community": 1,
-      "norm_label": "buildrfnodes()"
+      "community": 2,
+      "norm_label": "buildrfnodes()",
+      "id": "systemgraph_buildrfnodes"
     },
     {
       "label": "buildRFEdges()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/SystemGraph.jsx",
       "source_location": "L65",
-      "id": "systemgraph_buildrfedges",
-      "community": 1,
-      "norm_label": "buildrfedges()"
+      "community": 2,
+      "norm_label": "buildrfedges()",
+      "id": "systemgraph_buildrfedges"
     },
     {
       "label": "SystemGraph()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/SystemGraph.jsx",
       "source_location": "L83",
-      "id": "systemgraph_systemgraph",
-      "community": 1,
-      "norm_label": "systemgraph()"
+      "community": 2,
+      "norm_label": "systemgraph()",
+      "id": "systemgraph_systemgraph"
     },
     {
       "label": "NodeDetail.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/NodeDetail.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_graph_nodedetail_jsx",
-      "community": 1,
-      "norm_label": "nodedetail.jsx"
+      "community": 2,
+      "norm_label": "nodedetail.jsx",
+      "id": "frontend_src_components_graph_nodedetail_jsx"
     },
     {
       "label": "CapacityBar()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/NodeDetail.jsx",
       "source_location": "L11",
-      "id": "nodedetail_capacitybar",
-      "community": 1,
-      "norm_label": "capacitybar()"
+      "community": 2,
+      "norm_label": "capacitybar()",
+      "id": "nodedetail_capacitybar"
     },
     {
       "label": "NodeDetail()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/NodeDetail.jsx",
       "source_location": "L32",
-      "id": "nodedetail_nodedetail",
-      "community": 1,
-      "norm_label": "nodedetail()"
+      "community": 2,
+      "norm_label": "nodedetail()",
+      "id": "nodedetail_nodedetail"
     },
     {
       "label": "GraphControls.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/GraphControls.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_graph_graphcontrols_jsx",
-      "community": 15,
-      "norm_label": "graphcontrols.jsx"
+      "community": 17,
+      "norm_label": "graphcontrols.jsx",
+      "id": "frontend_src_components_graph_graphcontrols_jsx"
     },
     {
       "label": "GraphControls()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/graph/GraphControls.jsx",
       "source_location": "L1",
-      "id": "graphcontrols_graphcontrols",
-      "community": 15,
-      "norm_label": "graphcontrols()"
+      "community": 17,
+      "norm_label": "graphcontrols()",
+      "id": "graphcontrols_graphcontrols"
     },
     {
       "label": "CityMap.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/map/CityMap.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_map_citymap_jsx",
-      "community": 2,
-      "norm_label": "citymap.jsx"
+      "community": 3,
+      "norm_label": "citymap.jsx",
+      "id": "frontend_src_components_map_citymap_jsx"
     },
     {
       "label": "getColor()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/map/CityMap.jsx",
       "source_location": "L38",
-      "id": "citymap_getcolor",
-      "community": 2,
-      "norm_label": "getcolor()"
+      "community": 3,
+      "norm_label": "getcolor()",
+      "id": "citymap_getcolor"
     },
     {
       "label": "CityMap()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/map/CityMap.jsx",
       "source_location": "L44",
-      "id": "citymap_citymap",
-      "community": 2,
-      "norm_label": "citymap()"
+      "community": 3,
+      "norm_label": "citymap()",
+      "id": "citymap_citymap"
     },
     {
       "label": "MapControls.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/map/MapControls.jsx",
       "source_location": "L1",
-      "id": "frontend_src_components_map_mapcontrols_jsx",
-      "community": 16,
-      "norm_label": "mapcontrols.jsx"
+      "community": 18,
+      "norm_label": "mapcontrols.jsx",
+      "id": "frontend_src_components_map_mapcontrols_jsx"
     },
     {
       "label": "MapControls()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/components/map/MapControls.jsx",
       "source_location": "L3",
-      "id": "mapcontrols_mapcontrols",
-      "community": 16,
-      "norm_label": "mapcontrols()"
+      "community": 18,
+      "norm_label": "mapcontrols()",
+      "id": "mapcontrols_mapcontrols"
     },
     {
       "label": "ThemeProvider.jsx",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/theme/ThemeProvider.jsx",
       "source_location": "L1",
-      "id": "frontend_src_theme_themeprovider_jsx",
-      "community": 2,
-      "norm_label": "themeprovider.jsx"
+      "community": 3,
+      "norm_label": "themeprovider.jsx",
+      "id": "frontend_src_theme_themeprovider_jsx"
     },
     {
       "label": "ThemeProvider()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/theme/ThemeProvider.jsx",
       "source_location": "L7",
-      "id": "themeprovider_themeprovider",
-      "community": 2,
-      "norm_label": "themeprovider()"
+      "community": 3,
+      "norm_label": "themeprovider()",
+      "id": "themeprovider_themeprovider"
     },
     {
       "label": "useTheme()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/theme/ThemeProvider.jsx",
       "source_location": "L36",
-      "id": "themeprovider_usetheme",
-      "community": 2,
-      "norm_label": "usetheme()"
+      "community": 3,
+      "norm_label": "usetheme()",
+      "id": "themeprovider_usetheme"
     },
     {
       "label": "useWebSocket.js",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/hooks/useWebSocket.js",
       "source_location": "L1",
-      "id": "frontend_src_hooks_usewebsocket_js",
-      "community": 6,
-      "norm_label": "usewebsocket.js"
+      "community": 8,
+      "norm_label": "usewebsocket.js",
+      "id": "frontend_src_hooks_usewebsocket_js"
     },
     {
       "label": "useWebSocket()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/hooks/useWebSocket.js",
       "source_location": "L6",
-      "id": "usewebsocket_usewebsocket",
-      "community": 6,
-      "norm_label": "usewebsocket()"
+      "community": 8,
+      "norm_label": "usewebsocket()",
+      "id": "usewebsocket_usewebsocket"
     },
     {
       "label": "api.js",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/services/api.js",
       "source_location": "L1",
-      "id": "frontend_src_services_api_js",
-      "community": 17,
-      "norm_label": "api.js"
+      "community": 19,
+      "norm_label": "api.js",
+      "id": "frontend_src_services_api_js"
     },
     {
       "label": "request()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/frontend/src/services/api.js",
       "source_location": "L3",
-      "id": "api_request",
-      "community": 17,
-      "norm_label": "request()"
+      "community": 19,
+      "norm_label": "request()",
+      "id": "api_request"
     },
     {
       "label": "counter.ts",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/vite-project/src/counter.ts",
       "source_location": "L1",
-      "id": "vite_project_src_counter_ts",
-      "community": 10,
-      "norm_label": "counter.ts"
+      "community": 12,
+      "norm_label": "counter.ts",
+      "id": "vite_project_src_counter_ts"
     },
     {
       "label": "setupCounter()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/vite-project/src/counter.ts",
       "source_location": "L1",
-      "id": "counter_setupcounter",
-      "community": 10,
-      "norm_label": "setupcounter()"
+      "community": 12,
+      "norm_label": "setupcounter()",
+      "id": "counter_setupcounter"
     },
     {
       "label": "main.ts",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/vite-project/src/main.ts",
       "source_location": "L1",
-      "id": "vite_project_src_main_ts",
-      "community": 10,
-      "norm_label": "main.ts"
+      "community": 12,
+      "norm_label": "main.ts",
+      "id": "vite_project_src_main_ts"
     },
     {
       "label": "config.py",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/config.py",
       "source_location": "L1",
-      "id": "backend_config_py",
-      "community": 7,
-      "norm_label": "config.py"
+      "community": 9,
+      "norm_label": "config.py",
+      "id": "backend_config_py"
     },
     {
       "label": "Settings",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/config.py",
       "source_location": "L6",
-      "id": "config_settings",
-      "community": 7,
-      "norm_label": "settings"
+      "community": 9,
+      "norm_label": "settings",
+      "id": "config_settings"
     },
     {
       "label": "BaseSettings",
       "file_type": "code",
       "source_file": "",
       "source_location": "",
-      "id": "basesettings",
-      "community": 7,
-      "norm_label": "basesettings"
+      "community": 9,
+      "norm_label": "basesettings",
+      "id": "basesettings"
     },
     {
       "label": "validate_ml_paths()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/config.py",
       "source_location": "L35",
-      "id": "config_validate_ml_paths",
-      "community": 7,
-      "norm_label": "validate_ml_paths()"
+      "community": 9,
+      "norm_label": "validate_ml_paths()",
+      "id": "config_validate_ml_paths"
     },
     {
       "label": "cors_origins_list()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/config.py",
       "source_location": "L43",
-      "id": "config_cors_origins_list",
-      "community": 7,
-      "norm_label": "cors_origins_list()"
+      "community": 9,
+      "norm_label": "cors_origins_list()",
+      "id": "config_cors_origins_list"
     },
     {
       "label": "main.py",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/main.py",
       "source_location": "L1",
-      "id": "backend_main_py",
-      "community": 18,
-      "norm_label": "main.py"
+      "community": 20,
+      "norm_label": "main.py",
+      "id": "backend_main_py"
     },
     {
       "label": "health()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/main.py",
       "source_location": "L24",
-      "id": "main_health",
-      "community": 18,
-      "norm_label": "health()"
+      "community": 20,
+      "norm_label": "health()",
+      "id": "main_health"
     },
     {
       "label": "graph.py",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/routers/graph.py",
       "source_location": "L1",
-      "id": "backend_routers_graph_py",
-      "community": 3,
-      "norm_label": "graph.py"
+      "community": 4,
+      "norm_label": "graph.py",
+      "id": "backend_routers_graph_py"
     },
     {
       "label": "_get_centrality()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/routers/graph.py",
       "source_location": "L11",
-      "id": "graph_get_centrality",
-      "community": 3,
-      "norm_label": "_get_centrality()"
+      "community": 4,
+      "norm_label": "_get_centrality()",
+      "id": "graph_get_centrality"
     },
     {
       "label": "get_nodes()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/routers/graph.py",
       "source_location": "L19",
-      "id": "graph_get_nodes",
-      "community": 3,
-      "norm_label": "get_nodes()"
+      "community": 4,
+      "norm_label": "get_nodes()",
+      "id": "graph_get_nodes"
     },
     {
       "label": "get_edges()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/routers/graph.py",
       "source_location": "L28",
-      "id": "graph_get_edges",
-      "community": 3,
-      "norm_label": "get_edges()"
+      "community": 4,
+      "norm_label": "get_edges()",
+      "id": "graph_get_edges"
     },
     {
       "label": "get_stats()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/routers/graph.py",
       "source_location": "L33",
-      "id": "graph_get_stats",
-      "community": 3,
-      "norm_label": "get_stats()"
+      "community": 4,
+      "norm_label": "get_stats()",
+      "id": "graph_get_stats"
     },
     {
       "label": "__init__.py",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/routers/__init__.py",
       "source_location": "L1",
-      "id": "backend_routers_init_py",
-      "community": 23,
-      "norm_label": "__init__.py"
+      "community": 25,
+      "norm_label": "__init__.py",
+      "id": "backend_routers_init_py"
     },
     {
       "label": "ws.py",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/routers/ws.py",
       "source_location": "L1",
-      "id": "backend_routers_ws_py",
-      "community": 19,
-      "norm_label": "ws.py"
+      "community": 21,
+      "norm_label": "ws.py",
+      "id": "backend_routers_ws_py"
     },
     {
       "label": "websocket_main()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/routers/ws.py",
       "source_location": "L9",
-      "id": "ws_websocket_main",
-      "community": 19,
-      "norm_label": "websocket_main()"
+      "community": 21,
+      "norm_label": "websocket_main()",
+      "id": "ws_websocket_main"
     },
     {
       "label": "__init__.py",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/__init__.py",
       "source_location": "L1",
-      "id": "backend_graph_init_py",
-      "community": 24,
-      "norm_label": "__init__.py"
+      "community": 26,
+      "norm_label": "__init__.py",
+      "id": "backend_graph_init_py"
     },
     {
       "label": "infrastructure_graph.py",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/infrastructure_graph.py",
       "source_location": "L1",
-      "id": "backend_graph_infrastructure_graph_py",
-      "community": 5,
-      "norm_label": "infrastructure_graph.py"
+      "community": 7,
+      "norm_label": "infrastructure_graph.py",
+      "id": "backend_graph_infrastructure_graph_py"
     },
     {
       "label": "InfrastructureGraph",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/infrastructure_graph.py",
       "source_location": "L472",
-      "id": "infrastructure_graph_infrastructuregraph",
-      "community": 5,
-      "norm_label": "infrastructuregraph"
+      "community": 7,
+      "norm_label": "infrastructuregraph",
+      "id": "infrastructure_graph_infrastructuregraph"
     },
     {
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/infrastructure_graph.py",
       "source_location": "L473",
-      "id": "infrastructure_graph_infrastructuregraph_init",
-      "community": 5,
-      "norm_label": ".__init__()"
+      "community": 7,
+      "norm_label": ".__init__()",
+      "id": "infrastructure_graph_infrastructuregraph_init"
     },
     {
       "label": "._build()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/infrastructure_graph.py",
       "source_location": "L477",
-      "id": "infrastructure_graph_infrastructuregraph_build",
-      "community": 5,
-      "norm_label": "._build()"
+      "community": 7,
+      "norm_label": "._build()",
+      "id": "infrastructure_graph_infrastructuregraph_build"
     },
     {
       "label": ".get_nodes()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/infrastructure_graph.py",
       "source_location": "L486",
-      "id": "infrastructure_graph_infrastructuregraph_get_nodes",
-      "community": 5,
-      "norm_label": ".get_nodes()"
+      "community": 7,
+      "norm_label": ".get_nodes()",
+      "id": "infrastructure_graph_infrastructuregraph_get_nodes"
     },
     {
       "label": ".get_edges()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/infrastructure_graph.py",
       "source_location": "L494",
-      "id": "infrastructure_graph_infrastructuregraph_get_edges",
-      "community": 5,
-      "norm_label": ".get_edges()"
+      "community": 7,
+      "norm_label": ".get_edges()",
+      "id": "infrastructure_graph_infrastructuregraph_get_edges"
     },
     {
       "label": "betweenness.py",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/betweenness.py",
       "source_location": "L1",
-      "id": "backend_graph_betweenness_py",
-      "community": 3,
-      "norm_label": "betweenness.py"
+      "community": 4,
+      "norm_label": "betweenness.py",
+      "id": "backend_graph_betweenness_py"
     },
     {
       "label": "compute_betweenness()",
       "file_type": "code",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/betweenness.py",
       "source_location": "L4",
-      "id": "betweenness_compute_betweenness",
-      "community": 3,
-      "norm_label": "compute_betweenness()"
+      "community": 4,
+      "norm_label": "compute_betweenness()",
+      "id": "betweenness_compute_betweenness"
     },
     {
       "label": "Structural betweenness centrality (unweighted) so that topologically     critica",
       "file_type": "rationale",
       "source_file": "/Users/raunakchoudhary/Data/Projects/cascadeos/backend/graph/betweenness.py",
       "source_location": "L5",
-      "id": "betweenness_rationale_5",
-      "community": 3,
-      "norm_label": "structural betweenness centrality (unweighted) so that topologically     critica"
+      "community": 4,
+      "norm_label": "structural betweenness centrality (unweighted) so that topologically     critica",
+      "id": "betweenness_rationale_5"
     },
     {
       "label": "CascadeOS System",
@@ -705,9 +705,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_cascadeos_system",
       "community": 0,
-      "norm_label": "cascadeos system"
+      "norm_label": "cascadeos system",
+      "id": "claude_cascadeos_system"
     },
     {
       "label": "Phase 0 \u2014 Foundation",
@@ -718,9 +718,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_phase0_foundation",
-      "community": 8,
-      "norm_label": "phase 0 \u2014 foundation"
+      "community": 0,
+      "norm_label": "phase 0 \u2014 foundation",
+      "id": "claude_phase0_foundation"
     },
     {
       "label": "Phase 1 \u2014 Map and Infrastructure Graph",
@@ -731,9 +731,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_phase1_map",
       "community": 0,
-      "norm_label": "phase 1 \u2014 map and infrastructure graph"
+      "norm_label": "phase 1 \u2014 map and infrastructure graph",
+      "id": "claude_phase1_map"
     },
     {
       "label": "Phase 2 \u2014 Agent Layer",
@@ -744,9 +744,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_phase2_agents",
-      "community": 4,
-      "norm_label": "phase 2 \u2014 agent layer"
+      "community": 5,
+      "norm_label": "phase 2 \u2014 agent layer",
+      "id": "claude_phase2_agents"
     },
     {
       "label": "Phase 3 \u2014 Cascade Prediction Engine",
@@ -757,9 +757,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_phase3_cascade",
       "community": 0,
-      "norm_label": "phase 3 \u2014 cascade prediction engine"
+      "norm_label": "phase 3 \u2014 cascade prediction engine",
+      "id": "claude_phase3_cascade"
     },
     {
       "label": "Phase 4 \u2014 Dijkstra Rerouting and City Briefing",
@@ -770,9 +770,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_phase4_reroute",
       "community": 0,
-      "norm_label": "phase 4 \u2014 dijkstra rerouting and city briefing"
+      "norm_label": "phase 4 \u2014 dijkstra rerouting and city briefing",
+      "id": "claude_phase4_reroute"
     },
     {
       "label": "Phase 5 \u2014 Computer Vision Signal",
@@ -783,9 +783,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_phase5_cv",
       "community": 0,
-      "norm_label": "phase 5 \u2014 computer vision signal"
+      "norm_label": "phase 5 \u2014 computer vision signal",
+      "id": "claude_phase5_cv"
     },
     {
       "label": "InfrastructureGraph \u2014 40-node NYC DiGraph",
@@ -796,9 +796,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_infrastructure_graph",
       "community": 0,
-      "norm_label": "infrastructuregraph \u2014 40-node nyc digraph"
+      "norm_label": "infrastructuregraph \u2014 40-node nyc digraph",
+      "id": "claude_infrastructure_graph"
     },
     {
       "label": "Betweenness Centrality \u2014 Times Square tops at 1.0",
@@ -809,9 +809,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_betweenness",
       "community": 0,
-      "norm_label": "betweenness centrality \u2014 times square tops at 1.0"
+      "norm_label": "betweenness centrality \u2014 times square tops at 1.0",
+      "id": "claude_betweenness"
     },
     {
       "label": "Weighted BFS Cascade Propagation",
@@ -822,9 +822,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_weighted_bfs",
       "community": 0,
-      "norm_label": "weighted bfs cascade propagation"
+      "norm_label": "weighted bfs cascade propagation",
+      "id": "claude_weighted_bfs"
     },
     {
       "label": "Dijkstra Emergency Rerouting",
@@ -835,9 +835,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_dijkstra",
       "community": 0,
-      "norm_label": "dijkstra emergency rerouting"
+      "norm_label": "dijkstra emergency rerouting",
+      "id": "claude_dijkstra"
     },
     {
       "label": "AlertPriorityQueue \u2014 Max Heap from heapq",
@@ -848,9 +848,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_alert_queue",
-      "community": 4,
-      "norm_label": "alertpriorityqueue \u2014 max heap from heapq"
+      "community": 5,
+      "norm_label": "alertpriorityqueue \u2014 max heap from heapq",
+      "id": "claude_alert_queue"
     },
     {
       "label": "SlidingWindow311 \u2014 311 surge detector using deque",
@@ -861,9 +861,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_sliding_window",
-      "community": 4,
-      "norm_label": "slidingwindow311 \u2014 311 surge detector using deque"
+      "community": 5,
+      "norm_label": "slidingwindow311 \u2014 311 surge detector using deque",
+      "id": "claude_sliding_window"
     },
     {
       "label": "ConnectionManager \u2014 WebSocket broadcast hub (Phase 2)",
@@ -874,9 +874,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_connection_manager",
-      "community": 4,
-      "norm_label": "connectionmanager \u2014 websocket broadcast hub (phase 2)"
+      "community": 5,
+      "norm_label": "connectionmanager \u2014 websocket broadcast hub (phase 2)",
+      "id": "claude_connection_manager"
     },
     {
       "label": "WebSocket Event Types \u2014 heartbeat,agent_update,alert,cascade_*",
@@ -887,9 +887,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_ws_events",
-      "community": 4,
-      "norm_label": "websocket event types \u2014 heartbeat,agent_update,alert,cascade_*"
+      "community": 5,
+      "norm_label": "websocket event types \u2014 heartbeat,agent_update,alert,cascade_*",
+      "id": "claude_ws_events"
     },
     {
       "label": "CSS Custom Properties Theme System \u2014 dark/light",
@@ -900,9 +900,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_theme_system",
-      "community": 8,
-      "norm_label": "css custom properties theme system \u2014 dark/light"
+      "community": 0,
+      "norm_label": "css custom properties theme system \u2014 dark/light",
+      "id": "claude_theme_system"
     },
     {
       "label": "GraphContext \u2014 shared nodes/edges/selectedNode state",
@@ -913,9 +913,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_graph_context",
       "community": 0,
-      "norm_label": "graphcontext \u2014 shared nodes/edges/selectednode state"
+      "norm_label": "graphcontext \u2014 shared nodes/edges/selectednode state",
+      "id": "claude_graph_context"
     },
     {
       "label": "LangGraph Agents \u2014 transit,water,health,emergency",
@@ -926,9 +926,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_langgraph_agents",
-      "community": 4,
-      "norm_label": "langgraph agents \u2014 transit,water,health,emergency"
+      "community": 5,
+      "norm_label": "langgraph agents \u2014 transit,water,health,emergency",
+      "id": "claude_langgraph_agents"
     },
     {
       "label": "Demo Origin Node \u2014 water_34th (34th St Water Main)",
@@ -939,9 +939,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_demo_node_water34th",
       "community": 0,
-      "norm_label": "demo origin node \u2014 water_34th (34th st water main)"
+      "norm_label": "demo origin node \u2014 water_34th (34th st water main)",
+      "id": "claude_demo_node_water34th"
     },
     {
       "label": "NYC Open Data API \u2014 transit,water,311 complaints",
@@ -952,9 +952,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_nyc_open_data",
-      "community": 4,
-      "norm_label": "nyc open data api \u2014 transit,water,311 complaints"
+      "community": 5,
+      "norm_label": "nyc open data api \u2014 transit,water,311 complaints",
+      "id": "claude_nyc_open_data"
     },
     {
       "label": "deck.gl v9.3.1 \u2014 ScatterplotLayer,LineLayer,ArcLayer",
@@ -965,9 +965,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_deckgl",
       "community": 0,
-      "norm_label": "deck.gl v9.3.1 \u2014 scatterplotlayer,linelayer,arclayer"
+      "norm_label": "deck.gl v9.3.1 \u2014 scatterplotlayer,linelayer,arclayer",
+      "id": "claude_deckgl"
     },
     {
       "label": "React Flow v11.11.4 \u2014 geographic node layout",
@@ -978,9 +978,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_reactflow",
       "community": 0,
-      "norm_label": "react flow v11.11.4 \u2014 geographic node layout"
+      "norm_label": "react flow v11.11.4 \u2014 geographic node layout",
+      "id": "claude_reactflow"
     },
     {
       "label": "CASCADE_PLAYBACK_SPEED env var \u2014 scales asyncio delays",
@@ -991,9 +991,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_cascade_playback",
       "community": 0,
-      "norm_label": "cascade_playback_speed env var \u2014 scales asyncio delays"
+      "norm_label": "cascade_playback_speed env var \u2014 scales asyncio delays",
+      "id": "claude_cascade_playback"
     },
     {
       "label": "FastAPI \u2014 async Python web framework",
@@ -1004,9 +1004,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "requirements_fastapi",
       "community": 0,
-      "norm_label": "fastapi \u2014 async python web framework"
+      "norm_label": "fastapi \u2014 async python web framework",
+      "id": "requirements_fastapi"
     },
     {
       "label": "LangGraph \u2014 agent orchestration framework",
@@ -1017,9 +1017,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "requirements_langgraph",
-      "community": 4,
-      "norm_label": "langgraph \u2014 agent orchestration framework"
+      "community": 5,
+      "norm_label": "langgraph \u2014 agent orchestration framework",
+      "id": "requirements_langgraph"
     },
     {
       "label": "NetworkX \u2014 graph algorithms library",
@@ -1030,9 +1030,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "requirements_networkx",
       "community": 0,
-      "norm_label": "networkx \u2014 graph algorithms library"
+      "norm_label": "networkx \u2014 graph algorithms library",
+      "id": "requirements_networkx"
     },
     {
       "label": "PyTorch \u2014 deferred to Phase 5 (requirements-ml.txt)",
@@ -1043,9 +1043,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "requirements_ml_torch",
       "community": 0,
-      "norm_label": "pytorch \u2014 deferred to phase 5 (requirements-ml.txt)"
+      "norm_label": "pytorch \u2014 deferred to phase 5 (requirements-ml.txt)",
+      "id": "requirements_ml_torch"
     },
     {
       "label": "Ultralytics YOLOv8 \u2014 deferred to Phase 5",
@@ -1056,9 +1056,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "requirements_ml_yolo",
       "community": 0,
-      "norm_label": "ultralytics yolov8 \u2014 deferred to phase 5"
+      "norm_label": "ultralytics yolov8 \u2014 deferred to phase 5",
+      "id": "requirements_ml_yolo"
     },
     {
       "label": "Phase 0 Implementation Units \u2014 7 units",
@@ -1069,9 +1069,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "plan_phase0_impl_units",
-      "community": 8,
-      "norm_label": "phase 0 implementation units \u2014 7 units"
+      "community": 0,
+      "norm_label": "phase 0 implementation units \u2014 7 units",
+      "id": "plan_phase0_impl_units"
     },
     {
       "label": "Phase 0 Bootstrap Requirements R1-R15",
@@ -1082,9 +1082,295 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "brainstorm_phase0_reqs",
-      "community": 8,
-      "norm_label": "phase 0 bootstrap requirements r1-r15"
+      "community": 0,
+      "norm_label": "phase 0 bootstrap requirements r1-r15",
+      "id": "brainstorm_phase0_reqs"
+    },
+    {
+      "label": "ConnectionManager",
+      "file_type": "code",
+      "source_file": "backend/routers/ws.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "connection_manager",
+      "norm_label": "connectionmanager"
+    },
+    {
+      "label": "AlertPriorityQueue",
+      "file_type": "code",
+      "source_file": "backend/utils/priority_queue.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "alert_priority_queue",
+      "norm_label": "alertpriorityqueue"
+    },
+    {
+      "label": "SlidingWindow311",
+      "file_type": "code",
+      "source_file": "backend/data/sliding_window_311.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "sliding_window_311",
+      "norm_label": "slidingwindow311"
+    },
+    {
+      "label": "NYCOpenDataClient",
+      "file_type": "code",
+      "source_file": "backend/data/nyc_open_data.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "nyc_open_data",
+      "norm_label": "nycopendataclient"
+    },
+    {
+      "label": "BaseAgent",
+      "file_type": "code",
+      "source_file": "backend/agents/base_agent.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "base_agent",
+      "norm_label": "baseagent"
+    },
+    {
+      "label": "WaterAgent",
+      "file_type": "code",
+      "source_file": "backend/agents/water_agent.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "water_agent",
+      "norm_label": "wateragent"
+    },
+    {
+      "label": "TransitAgent",
+      "file_type": "code",
+      "source_file": "backend/agents/transit_agent.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "transit_agent",
+      "norm_label": "transitagent"
+    },
+    {
+      "label": "HealthAgent",
+      "file_type": "code",
+      "source_file": "backend/agents/health_agent.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "health_agent",
+      "norm_label": "healthagent"
+    },
+    {
+      "label": "EmergencyAgent",
+      "file_type": "code",
+      "source_file": "backend/agents/emergency_agent.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "emergency_agent",
+      "norm_label": "emergencyagent"
+    },
+    {
+      "label": "Orchestrator",
+      "file_type": "code",
+      "source_file": "backend/agents/orchestrator.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "orchestrator",
+      "norm_label": "orchestrator"
+    },
+    {
+      "label": "AlertScorer",
+      "file_type": "code",
+      "source_file": "backend/utils/alert_scorer.py",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "alert_scorer",
+      "norm_label": "alertscorer"
+    },
+    {
+      "label": "AgentContext",
+      "file_type": "code",
+      "source_file": "frontend/src/context/AgentContext.jsx",
+      "community": 10,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "agent_context",
+      "norm_label": "agentcontext"
+    },
+    {
+      "label": "AgentPanel",
+      "file_type": "code",
+      "source_file": "frontend/src/components/agents/AgentPanel.jsx",
+      "community": 10,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "agent_panel",
+      "norm_label": "agentpanel"
+    },
+    {
+      "label": "AgentCard",
+      "file_type": "code",
+      "source_file": "frontend/src/components/agents/AgentCard.jsx",
+      "community": 10,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "agent_card",
+      "norm_label": "agentcard"
+    },
+    {
+      "label": "AlertFeed",
+      "file_type": "code",
+      "source_file": "frontend/src/components/agents/AlertFeed.jsx",
+      "community": 10,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "alert_feed",
+      "norm_label": "alertfeed"
+    },
+    {
+      "label": "PriorityQueueViz",
+      "file_type": "code",
+      "source_file": "frontend/src/components/ui/PriorityQueue.jsx",
+      "community": 10,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "priority_queue_viz",
+      "norm_label": "priorityqueueviz"
+    },
+    {
+      "label": "cascade_bfs",
+      "file_type": "code",
+      "source_file": "backend/graph/cascade_bfs.py",
+      "community": 6,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "cascade_bfs",
+      "norm_label": "cascade_bfs"
+    },
+    {
+      "label": "SimulationRouter",
+      "file_type": "code",
+      "source_file": "backend/routers/simulation.py",
+      "community": 6,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "simulation_router",
+      "norm_label": "simulationrouter"
+    },
+    {
+      "label": "CascadeContext",
+      "file_type": "code",
+      "source_file": "frontend/src/context/CascadeContext.jsx",
+      "community": 6,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "cascade_context",
+      "norm_label": "cascadecontext"
+    },
+    {
+      "label": "SimulationView",
+      "file_type": "code",
+      "source_file": "frontend/src/components/simulation/SimulationView.jsx",
+      "community": 6,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "simulation_view",
+      "norm_label": "simulationview"
+    },
+    {
+      "label": "WhatIfPanel",
+      "file_type": "code",
+      "source_file": "frontend/src/components/simulation/WhatIfPanel.jsx",
+      "community": 6,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "whatif_panel",
+      "norm_label": "whatifpanel"
+    },
+    {
+      "label": "CascadeTimeline",
+      "file_type": "code",
+      "source_file": "frontend/src/components/simulation/CascadeTimeline.jsx",
+      "community": 6,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "cascade_timeline",
+      "norm_label": "cascadetimeline"
+    },
+    {
+      "label": "Phase 2 Agent Layer",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "phase2_agent_layer",
+      "norm_label": "phase 2 agent layer"
+    },
+    {
+      "label": "Phase 3 Cascade Engine",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "community": 6,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "phase3_cascade_engine",
+      "norm_label": "phase 3 cascade engine"
+    },
+    {
+      "label": "WebSocket Event Protocol",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "community": 1,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "ws_event_protocol",
+      "norm_label": "websocket event protocol"
+    },
+    {
+      "label": "Codex Handoff Phase 4",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "community": 6,
+      "community_label": "Phase 2-3 Layer",
+      "degree": 0,
+      "betweenness": 0.0,
+      "id": "codex_handoff_p4",
+      "norm_label": "codex handoff phase 4"
     }
   ],
   "links": [
@@ -1096,9 +1382,9 @@
       "weight": 1.0,
       "_src": "frontend_src_app_jsx",
       "_tgt": "app_cascadeapp",
+      "confidence_score": 1.0,
       "source": "frontend_src_app_jsx",
-      "target": "app_cascadeapp",
-      "confidence_score": 1.0
+      "target": "app_cascadeapp"
     },
     {
       "relation": "contains",
@@ -1108,9 +1394,9 @@
       "weight": 1.0,
       "_src": "frontend_src_app_jsx",
       "_tgt": "app_app",
+      "confidence_score": 1.0,
       "source": "frontend_src_app_jsx",
-      "target": "app_app",
-      "confidence_score": 1.0
+      "target": "app_app"
     },
     {
       "relation": "calls",
@@ -1132,9 +1418,9 @@
       "weight": 1.0,
       "_src": "frontend_src_context_graphcontext_jsx",
       "_tgt": "graphcontext_graphprovider",
+      "confidence_score": 1.0,
       "source": "frontend_src_context_graphcontext_jsx",
-      "target": "graphcontext_graphprovider",
-      "confidence_score": 1.0
+      "target": "graphcontext_graphprovider"
     },
     {
       "relation": "contains",
@@ -1144,9 +1430,9 @@
       "weight": 1.0,
       "_src": "frontend_src_context_graphcontext_jsx",
       "_tgt": "graphcontext_usegraph",
+      "confidence_score": 1.0,
       "source": "frontend_src_context_graphcontext_jsx",
-      "target": "graphcontext_usegraph",
-      "confidence_score": 1.0
+      "target": "graphcontext_usegraph"
     },
     {
       "relation": "calls",
@@ -1192,9 +1478,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_ui_themetoggle_jsx",
       "_tgt": "themetoggle_themetoggle",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_ui_themetoggle_jsx",
-      "target": "themetoggle_themetoggle",
-      "confidence_score": 1.0
+      "target": "themetoggle_themetoggle"
     },
     {
       "relation": "calls",
@@ -1216,9 +1502,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_ui_comingsoon_jsx",
       "_tgt": "comingsoon_comingsoon",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_ui_comingsoon_jsx",
-      "target": "comingsoon_comingsoon",
-      "confidence_score": 1.0
+      "target": "comingsoon_comingsoon"
     },
     {
       "relation": "contains",
@@ -1228,9 +1514,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_layout_statusbar_jsx",
       "_tgt": "statusbar_statusbar",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_layout_statusbar_jsx",
-      "target": "statusbar_statusbar",
-      "confidence_score": 1.0
+      "target": "statusbar_statusbar"
     },
     {
       "relation": "contains",
@@ -1240,9 +1526,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_layout_sidebar_jsx",
       "_tgt": "sidebar_sidebar",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_layout_sidebar_jsx",
-      "target": "sidebar_sidebar",
-      "confidence_score": 1.0
+      "target": "sidebar_sidebar"
     },
     {
       "relation": "contains",
@@ -1252,9 +1538,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_layout_topbar_jsx",
       "_tgt": "topbar_topbar",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_layout_topbar_jsx",
-      "target": "topbar_topbar",
-      "confidence_score": 1.0
+      "target": "topbar_topbar"
     },
     {
       "relation": "contains",
@@ -1264,9 +1550,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_layout_appshell_jsx",
       "_tgt": "appshell_viewrouter",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_layout_appshell_jsx",
-      "target": "appshell_viewrouter",
-      "confidence_score": 1.0
+      "target": "appshell_viewrouter"
     },
     {
       "relation": "contains",
@@ -1276,9 +1562,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_layout_appshell_jsx",
       "_tgt": "appshell_appshell",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_layout_appshell_jsx",
-      "target": "appshell_appshell",
-      "confidence_score": 1.0
+      "target": "appshell_appshell"
     },
     {
       "relation": "contains",
@@ -1288,9 +1574,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_graph_systemgraph_jsx",
       "_tgt": "systemgraph_geotocanvas",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_graph_systemgraph_jsx",
-      "target": "systemgraph_geotocanvas",
-      "confidence_score": 1.0
+      "target": "systemgraph_geotocanvas"
     },
     {
       "relation": "contains",
@@ -1300,9 +1586,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_graph_systemgraph_jsx",
       "_tgt": "systemgraph_buildrfnodes",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_graph_systemgraph_jsx",
-      "target": "systemgraph_buildrfnodes",
-      "confidence_score": 1.0
+      "target": "systemgraph_buildrfnodes"
     },
     {
       "relation": "contains",
@@ -1312,9 +1598,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_graph_systemgraph_jsx",
       "_tgt": "systemgraph_buildrfedges",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_graph_systemgraph_jsx",
-      "target": "systemgraph_buildrfedges",
-      "confidence_score": 1.0
+      "target": "systemgraph_buildrfedges"
     },
     {
       "relation": "contains",
@@ -1324,9 +1610,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_graph_systemgraph_jsx",
       "_tgt": "systemgraph_systemgraph",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_graph_systemgraph_jsx",
-      "target": "systemgraph_systemgraph",
-      "confidence_score": 1.0
+      "target": "systemgraph_systemgraph"
     },
     {
       "relation": "contains",
@@ -1336,9 +1622,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_graph_nodedetail_jsx",
       "_tgt": "nodedetail_capacitybar",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_graph_nodedetail_jsx",
-      "target": "nodedetail_capacitybar",
-      "confidence_score": 1.0
+      "target": "nodedetail_capacitybar"
     },
     {
       "relation": "contains",
@@ -1348,9 +1634,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_graph_nodedetail_jsx",
       "_tgt": "nodedetail_nodedetail",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_graph_nodedetail_jsx",
-      "target": "nodedetail_nodedetail",
-      "confidence_score": 1.0
+      "target": "nodedetail_nodedetail"
     },
     {
       "relation": "contains",
@@ -1360,9 +1646,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_graph_graphcontrols_jsx",
       "_tgt": "graphcontrols_graphcontrols",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_graph_graphcontrols_jsx",
-      "target": "graphcontrols_graphcontrols",
-      "confidence_score": 1.0
+      "target": "graphcontrols_graphcontrols"
     },
     {
       "relation": "contains",
@@ -1372,9 +1658,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_map_citymap_jsx",
       "_tgt": "citymap_getcolor",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_map_citymap_jsx",
-      "target": "citymap_getcolor",
-      "confidence_score": 1.0
+      "target": "citymap_getcolor"
     },
     {
       "relation": "contains",
@@ -1384,9 +1670,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_map_citymap_jsx",
       "_tgt": "citymap_citymap",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_map_citymap_jsx",
-      "target": "citymap_citymap",
-      "confidence_score": 1.0
+      "target": "citymap_citymap"
     },
     {
       "relation": "calls",
@@ -1408,9 +1694,9 @@
       "weight": 1.0,
       "_src": "frontend_src_components_map_mapcontrols_jsx",
       "_tgt": "mapcontrols_mapcontrols",
+      "confidence_score": 1.0,
       "source": "frontend_src_components_map_mapcontrols_jsx",
-      "target": "mapcontrols_mapcontrols",
-      "confidence_score": 1.0
+      "target": "mapcontrols_mapcontrols"
     },
     {
       "relation": "contains",
@@ -1420,9 +1706,9 @@
       "weight": 1.0,
       "_src": "frontend_src_theme_themeprovider_jsx",
       "_tgt": "themeprovider_themeprovider",
+      "confidence_score": 1.0,
       "source": "frontend_src_theme_themeprovider_jsx",
-      "target": "themeprovider_themeprovider",
-      "confidence_score": 1.0
+      "target": "themeprovider_themeprovider"
     },
     {
       "relation": "contains",
@@ -1432,9 +1718,9 @@
       "weight": 1.0,
       "_src": "frontend_src_theme_themeprovider_jsx",
       "_tgt": "themeprovider_usetheme",
+      "confidence_score": 1.0,
       "source": "frontend_src_theme_themeprovider_jsx",
-      "target": "themeprovider_usetheme",
-      "confidence_score": 1.0
+      "target": "themeprovider_usetheme"
     },
     {
       "relation": "contains",
@@ -1444,9 +1730,9 @@
       "weight": 1.0,
       "_src": "frontend_src_hooks_usewebsocket_js",
       "_tgt": "usewebsocket_usewebsocket",
+      "confidence_score": 1.0,
       "source": "frontend_src_hooks_usewebsocket_js",
-      "target": "usewebsocket_usewebsocket",
-      "confidence_score": 1.0
+      "target": "usewebsocket_usewebsocket"
     },
     {
       "relation": "contains",
@@ -1456,9 +1742,9 @@
       "weight": 1.0,
       "_src": "frontend_src_services_api_js",
       "_tgt": "api_request",
+      "confidence_score": 1.0,
       "source": "frontend_src_services_api_js",
-      "target": "api_request",
-      "confidence_score": 1.0
+      "target": "api_request"
     },
     {
       "relation": "contains",
@@ -1468,9 +1754,9 @@
       "weight": 1.0,
       "_src": "vite_project_src_counter_ts",
       "_tgt": "counter_setupcounter",
+      "confidence_score": 1.0,
       "source": "vite_project_src_counter_ts",
-      "target": "counter_setupcounter",
-      "confidence_score": 1.0
+      "target": "counter_setupcounter"
     },
     {
       "relation": "imports_from",
@@ -1480,9 +1766,9 @@
       "weight": 1.0,
       "_src": "vite_project_src_main_ts",
       "_tgt": "vite_project_src_counter_ts",
+      "confidence_score": 1.0,
       "source": "vite_project_src_counter_ts",
-      "target": "vite_project_src_main_ts",
-      "confidence_score": 1.0
+      "target": "vite_project_src_main_ts"
     },
     {
       "relation": "contains",
@@ -1492,9 +1778,9 @@
       "weight": 1.0,
       "_src": "backend_config_py",
       "_tgt": "config_settings",
+      "confidence_score": 1.0,
       "source": "backend_config_py",
-      "target": "config_settings",
-      "confidence_score": 1.0
+      "target": "config_settings"
     },
     {
       "relation": "contains",
@@ -1504,9 +1790,9 @@
       "weight": 1.0,
       "_src": "backend_config_py",
       "_tgt": "config_validate_ml_paths",
+      "confidence_score": 1.0,
       "source": "backend_config_py",
-      "target": "config_validate_ml_paths",
-      "confidence_score": 1.0
+      "target": "config_validate_ml_paths"
     },
     {
       "relation": "contains",
@@ -1516,9 +1802,9 @@
       "weight": 1.0,
       "_src": "backend_config_py",
       "_tgt": "config_cors_origins_list",
+      "confidence_score": 1.0,
       "source": "backend_config_py",
-      "target": "config_cors_origins_list",
-      "confidence_score": 1.0
+      "target": "config_cors_origins_list"
     },
     {
       "relation": "inherits",
@@ -1528,9 +1814,9 @@
       "weight": 1.0,
       "_src": "config_settings",
       "_tgt": "basesettings",
+      "confidence_score": 1.0,
       "source": "config_settings",
-      "target": "basesettings",
-      "confidence_score": 1.0
+      "target": "basesettings"
     },
     {
       "relation": "contains",
@@ -1540,9 +1826,9 @@
       "weight": 1.0,
       "_src": "backend_main_py",
       "_tgt": "main_health",
+      "confidence_score": 1.0,
       "source": "backend_main_py",
-      "target": "main_health",
-      "confidence_score": 1.0
+      "target": "main_health"
     },
     {
       "relation": "contains",
@@ -1552,9 +1838,9 @@
       "weight": 1.0,
       "_src": "backend_routers_graph_py",
       "_tgt": "graph_get_centrality",
+      "confidence_score": 1.0,
       "source": "backend_routers_graph_py",
-      "target": "graph_get_centrality",
-      "confidence_score": 1.0
+      "target": "graph_get_centrality"
     },
     {
       "relation": "contains",
@@ -1564,9 +1850,9 @@
       "weight": 1.0,
       "_src": "backend_routers_graph_py",
       "_tgt": "graph_get_nodes",
+      "confidence_score": 1.0,
       "source": "backend_routers_graph_py",
-      "target": "graph_get_nodes",
-      "confidence_score": 1.0
+      "target": "graph_get_nodes"
     },
     {
       "relation": "contains",
@@ -1576,9 +1862,9 @@
       "weight": 1.0,
       "_src": "backend_routers_graph_py",
       "_tgt": "graph_get_edges",
+      "confidence_score": 1.0,
       "source": "backend_routers_graph_py",
-      "target": "graph_get_edges",
-      "confidence_score": 1.0
+      "target": "graph_get_edges"
     },
     {
       "relation": "contains",
@@ -1588,9 +1874,9 @@
       "weight": 1.0,
       "_src": "backend_routers_graph_py",
       "_tgt": "graph_get_stats",
+      "confidence_score": 1.0,
       "source": "backend_routers_graph_py",
-      "target": "graph_get_stats",
-      "confidence_score": 1.0
+      "target": "graph_get_stats"
     },
     {
       "relation": "calls",
@@ -1600,9 +1886,9 @@
       "weight": 1.0,
       "_src": "graph_get_nodes",
       "_tgt": "graph_get_centrality",
+      "confidence_score": 1.0,
       "source": "graph_get_centrality",
-      "target": "graph_get_nodes",
-      "confidence_score": 1.0
+      "target": "graph_get_nodes"
     },
     {
       "relation": "calls",
@@ -1612,9 +1898,9 @@
       "weight": 1.0,
       "_src": "graph_get_stats",
       "_tgt": "graph_get_centrality",
+      "confidence_score": 1.0,
       "source": "graph_get_centrality",
-      "target": "graph_get_stats",
-      "confidence_score": 1.0
+      "target": "graph_get_stats"
     },
     {
       "relation": "calls",
@@ -1636,9 +1922,9 @@
       "weight": 1.0,
       "_src": "graph_get_stats",
       "_tgt": "graph_get_nodes",
+      "confidence_score": 1.0,
       "source": "graph_get_nodes",
-      "target": "graph_get_stats",
-      "confidence_score": 1.0
+      "target": "graph_get_stats"
     },
     {
       "relation": "calls",
@@ -1648,9 +1934,9 @@
       "weight": 1.0,
       "_src": "graph_get_stats",
       "_tgt": "graph_get_edges",
+      "confidence_score": 1.0,
       "source": "graph_get_edges",
-      "target": "graph_get_stats",
-      "confidence_score": 1.0
+      "target": "graph_get_stats"
     },
     {
       "relation": "contains",
@@ -1660,9 +1946,9 @@
       "weight": 1.0,
       "_src": "backend_routers_ws_py",
       "_tgt": "ws_websocket_main",
+      "confidence_score": 1.0,
       "source": "backend_routers_ws_py",
-      "target": "ws_websocket_main",
-      "confidence_score": 1.0
+      "target": "ws_websocket_main"
     },
     {
       "relation": "contains",
@@ -1672,9 +1958,9 @@
       "weight": 1.0,
       "_src": "backend_graph_infrastructure_graph_py",
       "_tgt": "infrastructure_graph_infrastructuregraph",
+      "confidence_score": 1.0,
       "source": "backend_graph_infrastructure_graph_py",
-      "target": "infrastructure_graph_infrastructuregraph",
-      "confidence_score": 1.0
+      "target": "infrastructure_graph_infrastructuregraph"
     },
     {
       "relation": "method",
@@ -1684,9 +1970,9 @@
       "weight": 1.0,
       "_src": "infrastructure_graph_infrastructuregraph",
       "_tgt": "infrastructure_graph_infrastructuregraph_init",
+      "confidence_score": 1.0,
       "source": "infrastructure_graph_infrastructuregraph",
-      "target": "infrastructure_graph_infrastructuregraph_init",
-      "confidence_score": 1.0
+      "target": "infrastructure_graph_infrastructuregraph_init"
     },
     {
       "relation": "method",
@@ -1696,9 +1982,9 @@
       "weight": 1.0,
       "_src": "infrastructure_graph_infrastructuregraph",
       "_tgt": "infrastructure_graph_infrastructuregraph_build",
+      "confidence_score": 1.0,
       "source": "infrastructure_graph_infrastructuregraph",
-      "target": "infrastructure_graph_infrastructuregraph_build",
-      "confidence_score": 1.0
+      "target": "infrastructure_graph_infrastructuregraph_build"
     },
     {
       "relation": "method",
@@ -1708,9 +1994,9 @@
       "weight": 1.0,
       "_src": "infrastructure_graph_infrastructuregraph",
       "_tgt": "infrastructure_graph_infrastructuregraph_get_nodes",
+      "confidence_score": 1.0,
       "source": "infrastructure_graph_infrastructuregraph",
-      "target": "infrastructure_graph_infrastructuregraph_get_nodes",
-      "confidence_score": 1.0
+      "target": "infrastructure_graph_infrastructuregraph_get_nodes"
     },
     {
       "relation": "method",
@@ -1720,9 +2006,9 @@
       "weight": 1.0,
       "_src": "infrastructure_graph_infrastructuregraph",
       "_tgt": "infrastructure_graph_infrastructuregraph_get_edges",
+      "confidence_score": 1.0,
       "source": "infrastructure_graph_infrastructuregraph",
-      "target": "infrastructure_graph_infrastructuregraph_get_edges",
-      "confidence_score": 1.0
+      "target": "infrastructure_graph_infrastructuregraph_get_edges"
     },
     {
       "relation": "calls",
@@ -1732,9 +2018,9 @@
       "weight": 1.0,
       "_src": "infrastructure_graph_infrastructuregraph_init",
       "_tgt": "infrastructure_graph_infrastructuregraph_build",
+      "confidence_score": 1.0,
       "source": "infrastructure_graph_infrastructuregraph_init",
-      "target": "infrastructure_graph_infrastructuregraph_build",
-      "confidence_score": 1.0
+      "target": "infrastructure_graph_infrastructuregraph_build"
     },
     {
       "relation": "contains",
@@ -1744,9 +2030,9 @@
       "weight": 1.0,
       "_src": "backend_graph_betweenness_py",
       "_tgt": "betweenness_compute_betweenness",
+      "confidence_score": 1.0,
       "source": "backend_graph_betweenness_py",
-      "target": "betweenness_compute_betweenness",
-      "confidence_score": 1.0
+      "target": "betweenness_compute_betweenness"
     },
     {
       "relation": "rationale_for",
@@ -1756,9 +2042,9 @@
       "weight": 1.0,
       "_src": "betweenness_rationale_5",
       "_tgt": "betweenness_compute_betweenness",
+      "confidence_score": 1.0,
       "source": "betweenness_compute_betweenness",
-      "target": "betweenness_rationale_5",
-      "confidence_score": 1.0
+      "target": "betweenness_rationale_5"
     },
     {
       "relation": "implements",
@@ -2167,6 +2453,262 @@
       "_tgt": "plan_phase0_impl_units",
       "source": "plan_phase0_impl_units",
       "target": "brainstorm_phase0_reqs"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "connection_manager",
+      "target": "base_agent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "connection_manager",
+      "target": "simulation_router"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "connection_manager",
+      "target": "orchestrator"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "connection_manager",
+      "target": "ws_event_protocol"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "alert_priority_queue",
+      "target": "base_agent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "alert_priority_queue",
+      "target": "orchestrator"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "weight": 0.8,
+      "source": "alert_priority_queue",
+      "target": "alert_scorer"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "weight": 0.8,
+      "source": "alert_priority_queue",
+      "target": "agent_context"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "weight": 0.7,
+      "source": "alert_priority_queue",
+      "target": "sliding_window_311"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "weight": 0.65,
+      "source": "alert_priority_queue",
+      "target": "cascade_bfs"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "sliding_window_311",
+      "target": "orchestrator"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 0.9,
+      "source": "sliding_window_311",
+      "target": "nyc_open_data"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "sliding_window_311",
+      "target": "phase2_agent_layer"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 0.9,
+      "source": "nyc_open_data",
+      "target": "base_agent"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "base_agent",
+      "target": "water_agent"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "base_agent",
+      "target": "transit_agent"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "base_agent",
+      "target": "health_agent"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "base_agent",
+      "target": "emergency_agent"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "base_agent",
+      "target": "phase2_agent_layer"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "agent_context",
+      "target": "agent_panel"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "agent_context",
+      "target": "agent_card"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "agent_context",
+      "target": "alert_feed"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 0.9,
+      "source": "agent_panel",
+      "target": "priority_queue_viz"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "cascade_bfs",
+      "target": "simulation_router"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "weight": 0.9,
+      "source": "cascade_bfs",
+      "target": "cascade_context"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "cascade_bfs",
+      "target": "phase3_cascade_engine"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "simulation_router",
+      "target": "phase3_cascade_engine"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "cascade_context",
+      "target": "whatif_panel"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "cascade_context",
+      "target": "cascade_timeline"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "simulation_view",
+      "target": "whatif_panel"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 1.0,
+      "source": "simulation_view",
+      "target": "cascade_timeline"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "weight": 0.9,
+      "source": "phase3_cascade_engine",
+      "target": "codex_handoff_p4"
     }
   ],
   "hyperedges": [
