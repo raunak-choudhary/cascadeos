@@ -153,9 +153,8 @@ ANTHROPIC_API_KEY=your_anthropic_api_key_here
 NYC_OPEN_DATA_APP_TOKEN=your_nyc_open_data_token_here
 NYC_311_ENDPOINT=https://data.cityofnewyork.us/resource/erm2-nwe9.json
 
-# NYC DOT Camera
+# NYC DOT Camera — fully public, no key required
 NYC_DOT_CAMERA_API_URL=https://webcams.nyctmc.org/api/cameras
-NYC_DOT_CAMERA_API_KEY=your_dot_camera_key_here
 
 # Server
 HOST=0.0.0.0
@@ -797,135 +796,117 @@ CV panel shows at least one camera frame updating every 30 seconds. When YOLO de
 
 ---
 
-## Pre-Hackathon Checklist — Complete Tonight
+## Pre-Hackathon Checklist — Status as of April 25, 2026
 
-### Accounts and Keys
-- [ ] Anthropic API key obtained and tested — `console.anthropic.com`
-- [ ] NYC Open Data app token — `data.cityofnewyork.us/profile/edit` → Developer Settings
-- [ ] Mapbox public token — `account.mapbox.com`
-- [ ] NYC DOT camera API access — `webcams.nyctmc.org` (check if public key required)
-- [ ] Railway account created — `railway.app`
-- [ ] Vercel account connected to GitHub — `vercel.com`
+### Already Completed — Claude Code must NOT redo these
+- [x] GitHub repo created and live: https://github.com/raunak-choudhary/cascadeos
+- [x] CLAUDE.md pushed to repo root on `main` branch
+- [x] Anthropic API key obtained and stored in `backend/.env`
+- [x] NYC Open Data app token obtained and stored in `backend/.env`
+- [x] Mapbox public token obtained and stored in `frontend/.env`
+- [x] NYC DOT Camera API confirmed fully public — no key needed
+- [x] `backend/.env` created with all real keys — 546 bytes, verified
+- [x] `frontend/.env` created with all real keys — 110 bytes, verified
+- [x] `backend/.env.example` created with empty values — safe to commit
+- [x] `frontend/.env.example` created with empty values — safe to commit
+- [x] `.gitignore` created at repo root with all correct entries
+- [x] YOLOv8 weights downloaded to `backend/cv/models/yolov8n.pt`
+- [x] YOLOv8 torchscript downloaded to `backend/cv/models/yolov8n.torchscript`
+- [x] Python 3.11+ confirmed on local machine
+- [x] Node 20+ confirmed on local machine
 
-### Local Environment
-- [ ] Python 3.11+ confirmed: `python --version`
-- [ ] Node 20+ confirmed: `node --version`
-- [ ] Git configured with SSH key
-- [ ] GitHub repo created: `cascadeos` — initialized with this CLAUDE.md at root
-- [ ] Python virtual environment created and all backend deps installed (see below)
-- [ ] `npm create vite@latest frontend -- --template react` tested successfully
+### Still Pending — Raunak must complete these manually (browser required)
+- [ ] Railway account created — `railway.app` — needed for backend deployment
+- [ ] Vercel account connected to GitHub — `vercel.com` — needed for frontend deployment
+
+### What Claude Code handles automatically
+- Python venv creation and all pip installs
+- Frontend Vite scaffold and all npm installs
+- All file and folder creation for every phase
+- All git commits and pushes after each phase
 
 ---
 
-## Python Environment Setup — Mandatory
+## Claude Code Bootstrap Instructions
 
-**Never install backend dependencies into your global Python environment.** Always use the `.venv` inside the `backend/` directory.
+**This entire section is for Claude Code to execute autonomously at the start of Phase 0. The user will not run any of these manually. Read every warning carefully before executing.**
 
-### Creating the environment
+### CRITICAL WARNINGS — Read before running anything
+
+- **DO NOT create or overwrite `backend/.env` or `frontend/.env`** — these files already exist with real API keys. Any overwrite destroys the keys and breaks the project.
+- **DO NOT create or overwrite `.gitignore`** — it already exists with correct entries. Append only if a new entry is needed.
+- **DO NOT re-download YOLOv8 weights** — `backend/cv/models/yolov8n.pt` and `backend/cv/models/yolov8n.torchscript` already exist.
+- **DO NOT create the GitHub repo** — it is already live at https://github.com/raunak-choudhary/cascadeos
+- **The `backend/` directory already exists** — only create files inside it, do not reinitialize it.
+
+### Step 1 — Verify environment
+
+```bash
+python --version   # must be 3.11+
+node --version     # must be 20+
+npm --version
+git remote -v      # must show https://github.com/raunak-choudhary/cascadeos.git
+ls backend/.env    # must exist — if missing, STOP and tell the user
+ls frontend/.env   # must exist — if missing, STOP and tell the user
+ls backend/cv/models/yolov8n.pt  # must exist — if missing, STOP and tell the user
+```
+
+If any of the last three checks fail, stop completely and tell the user which file is missing. Do not proceed.
+
+### Step 2 — Create Python virtual environment
 
 ```bash
 cd backend
 python -m venv .venv
-```
-
-### Activating the environment
-
-```bash
-# macOS / Linux
 source .venv/bin/activate
-
-# Windows (PowerShell)
-.venv\Scripts\Activate.ps1
-
-# Windows (CMD)
-.venv\Scripts\activate.bat
-```
-
-Your terminal prompt will show `(.venv)` when active. Every `pip install` and `uvicorn` command must be run with the venv active.
-
-### Installing all dependencies
-
-With the venv active:
-
-```bash
 pip install --upgrade pip
-pip install -r requirements.txt
 ```
 
-### `backend/requirements.txt` — complete and pinned
+### Step 3 — Create `backend/requirements.txt` then install
+
+Create this file if it does not exist. If it exists already, do not overwrite — skip to the install command.
 
 ```
-# Web framework
 fastapi==0.115.0
 uvicorn[standard]==0.30.6
 websockets==13.0
 python-multipart==0.0.9
-
-# Environment and config
 python-dotenv==1.0.1
 pydantic-settings==2.4.0
 pydantic==2.8.2
-
-# Anthropic and agents
 anthropic==0.34.2
 langchain==0.3.0
 langchain-anthropic==0.2.0
 langgraph==0.2.16
-
-# Graph algorithms
 networkx==3.3
-
-# Machine learning
 torch==2.4.0
 torch-geometric==2.6.0
 numpy==1.26.4
 scikit-learn==1.5.1
-
-# Computer vision
 ultralytics==8.2.90
 opencv-python-headless==4.10.0.84
 Pillow==10.4.0
-
-# HTTP client for NYC Open Data and DOT camera API
 httpx==0.27.2
 aiohttp==3.10.5
-
-# Utilities
 python-dateutil==2.9.0
 pytz==2024.1
 ```
 
-### After installing, lock the exact versions
-
 ```bash
+pip install -r requirements.txt
 pip freeze > requirements.lock
 ```
 
-Commit both `requirements.txt` (human-editable, approximate) and `requirements.lock` (exact, for reproducible installs) to git.
+### Step 4 — Scaffold the frontend
 
-Any new library added during development must be immediately added to `requirements.txt` and `requirements.lock` regenerated. Never leave an installed library undocumented.
-
-### `.gitignore` must include
-
-```
-backend/.venv/
-backend/__pycache__/
-backend/**/__pycache__/
-**/*.pyc
-.env
-.env.local
-frontend/node_modules/
-frontend/dist/
-*.pt          # YOLO and PyTorch model weights — too large for git
-*.pth
-```
-
-### Node dependencies (`frontend/package.json`)
-
-After `npm create vite@latest frontend -- --template react`, install:
+The `frontend/` directory does not exist yet. The `frontend/.env` file exists one level up because it was pre-created. Before running the scaffold, temporarily move the `.env` file so Vite does not get confused:
 
 ```bash
+cd ..
+mv frontend/.env /tmp/frontend_env_backup
+npm create vite@latest frontend -- --template react
 cd frontend
+mv /tmp/frontend_env_backup .env
 npm install
 npm install @deck.gl/core @deck.gl/layers @deck.gl/react @deck.gl/mapbox
 npm install reactflow
@@ -934,27 +915,49 @@ npm install lucide-react
 npm install clsx
 ```
 
-`package.json` and `package-lock.json` both committed to git. `node_modules/` never committed.
+### Step 5 — Verify .env files are intact after scaffold
 
-### Another developer onboarding — complete steps
+```bash
+cat frontend/.env   # must show VITE_API_URL, VITE_WS_URL, VITE_MAPBOX_TOKEN with real values
+cat backend/.env    # must show ANTHROPIC_API_KEY with real value starting with sk-ant-
+```
+
+If either file is empty or missing values, stop and tell the user immediately.
+
+### Step 6 — Commit the scaffold
+
+```bash
+cd ..
+git add .
+git commit -m "bootstrap: venv, requirements.txt, frontend scaffold"
+git push origin main
+```
+
+### Ongoing library rule
+
+Every time Claude Code installs a new Python library it must run `pip freeze > requirements.lock` and add the library to `requirements.txt`. Every npm install auto-updates `package-lock.json` which must be committed. No library is ever left undocumented.
+
+---
+
+## Another Developer Onboarding — Zero Manual Steps
 
 ```bash
 git clone https://github.com/raunak-choudhary/cascadeos
 cd cascadeos/backend
 python -m venv .venv
-source .venv/bin/activate       # or Windows equivalent
+source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env            # then fill in real keys
+cp .env.example .env
 cd ../frontend
 npm install
-cp .env.example .env            # then fill in real keys
+cp .env.example .env
 ```
 
-That is all another developer needs to do. Zero manual library hunting.
 
 ### Pre-downloaded Assets
-- [ ] YOLOv8n weights downloaded: `yolo export model=yolov8n.pt` — do this now, not during hackathon
-- [ ] Google Fonts `DM+Sans` and `IBM+Plex+Mono` embed link ready
+- [x] YOLOv8n weights already at `backend/cv/models/yolov8n.pt` — do not re-download
+- [x] YOLOv8 torchscript already at `backend/cv/models/yolov8n.torchscript` — do not re-download
+- [ ] Google Fonts `DM+Sans` and `IBM+Plex+Mono` — Claude Code loads these via Google Fonts CDN link in `index.html`, no manual download needed
 
 ### Demo Script Ready
 1. Open app in dark mode on a large screen or external monitor
