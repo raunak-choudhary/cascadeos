@@ -796,6 +796,88 @@ CV panel shows at least one camera frame updating every 30 seconds. When YOLO de
 
 ---
 
+## Build Status — Updated 2026-04-26
+
+### Phase 0 ✅ — COMPLETE (commit fba2f70)
+All exit conditions met. Both servers verified running. Theme toggle works. WebSocket heartbeat confirmed.
+
+### Phase 1 ✅ — COMPLETE (commit 363afce)
+All exit conditions met. 40-node NYC graph live. Betweenness centrality computed. deck.gl map renders with glow rings. React Flow system graph renders with geographic layout. NodeDetail panel works in both views. Both themes verified.
+
+---
+
+## Phase 2 Handoff Notes — READ BEFORE STARTING PHASE 2
+
+These are decisions and facts that are NOT derivable from the code alone. A new session (Codex or Claude) must read this section before writing a single line for Phase 2.
+
+### Python interpreter
+**Always use `python` (conda 3.12.2), never `python3` (Homebrew 3.14.2 — wrong version).**
+The venv is at `backend/.venv/`. Activate: `source backend/.venv/bin/activate`.
+
+### ML dependencies — NOT installed
+`backend/requirements-ml.txt` lists torch, torch-geometric, ultralytics, opencv, Pillow.
+These are NOT installed in the current venv. Do not install them until Phase 5.
+The `ENABLE_CV` and `ENABLE_TGNN` feature flags in `config.py` gate their config validation.
+
+### Additional npm package installed in Phase 1
+`react-map-gl@8.1.1` was installed (not in the original bootstrap list). It is in `package.json`.
+
+### Graph singleton
+`from graph.infrastructure_graph import graph` — module-level instance, built at import time.
+Betweenness centrality is cached in `backend/routers/graph.py` as `_centrality` (computed on first request, then cached for process lifetime).
+
+### Node IDs for demo scenarios
+- 34th St water main: `water_34th` — this is the primary demo trigger node
+- Times Square transit: `transit_times_sq`
+- Bellevue hospital: `health_bellevue`
+
+### WebSocket broadcast — NEEDS UPGRADE in Phase 2
+`backend/routers/ws.py` currently only sends heartbeats to individual connections.
+Phase 2 needs a **ConnectionManager** class that tracks all active connections and can broadcast to all of them. Pattern:
+```python
+class ConnectionManager:
+    def __init__(self):
+        self.active: list[WebSocket] = []
+    async def connect(self, ws): ...
+    def disconnect(self, ws): ...
+    async def broadcast(self, data: dict): ...
+
+manager = ConnectionManager()
+```
+Import `manager` from `ws.py` into agent/simulation routers to broadcast events.
+
+### WebSocket message types (Phase 2 must emit all of these)
+```
+heartbeat       — already implemented (every 5s)
+agent_update    — agent reasoning in progress
+alert           — new alert pushed to queue
+queue_snapshot  — current priority queue state
+311_surge       — 311 sliding window surge detected
+```
+Phase 3 adds: `cascade_start`, `cascade_node`, `cascade_complete`
+
+### Frontend WebSocket hook
+`frontend/src/hooks/useWebSocket.js` — already has exponential backoff. Connects to `VITE_WS_URL + /main`. Returns connection status. Phase 2 only needs to route incoming `msg.type` values in `App.jsx`.
+
+### GraphContext
+`frontend/src/context/GraphContext.jsx` — holds `nodes`, `edges`, `selectedNode`, `setSelectedNode`. Wraps the entire app via `AppShell`. Phase 2 agent state should live in a separate `AgentContext` (don't bloat GraphContext).
+
+### View routing
+`AppShell.jsx` has a `ViewRouter` switch on `activeView`. Add `case 'agents'` and `case 'alerts'` to route to real Phase 2 components (currently they show `<ComingSoon>`).
+
+### CASCADE_PLAYBACK_SPEED
+Already in `config.py` as `CASCADE_PLAYBACK_SPEED: float = 1.0`. Phase 3 simulation uses this to scale `asyncio.sleep` delays. Default: 1 real second per predicted minute.
+
+### Installed package versions (pin-compatible)
+| Package | Version |
+|---|---|
+| deck.gl | 9.3.1 |
+| reactflow | 11.11.4 |
+| mapbox-gl | 3.22.0 |
+| react-map-gl | 8.1.1 |
+
+---
+
 ## Pre-Hackathon Checklist — Status as of April 25, 2026
 
 ### Already Completed — Claude Code must NOT redo these
@@ -829,7 +911,8 @@ CV panel shows at least one camera frame updating every 30 seconds. When YOLO de
 
 ## Claude Code Bootstrap Instructions
 
-**This entire section is for Claude Code to execute autonomously at the start of Phase 0. The user will not run any of these manually. Read every warning carefully before executing.**
+**ALREADY COMPLETED 2026-04-26 — DO NOT RE-RUN ANY OF THESE STEPS.**
+The venv exists, requirements are installed, and the frontend scaffold is live. Starting a new session does NOT mean re-running bootstrap. Jump straight to the next pending phase.
 
 ### CRITICAL WARNINGS — Read before running anything
 
