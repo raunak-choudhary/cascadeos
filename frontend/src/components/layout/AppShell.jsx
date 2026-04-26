@@ -6,16 +6,19 @@ import { GraphProvider } from '../../context/GraphContext';
 import { CityMap } from '../map/CityMap';
 import { SystemGraph } from '../graph/SystemGraph';
 import { NodeDetail } from '../graph/NodeDetail';
+import { AgentPanel } from '../agents/AgentPanel';
+import { AlertFeed } from '../agents/AlertFeed';
+import { PriorityQueueViz } from '../ui/PriorityQueue';
 import { ComingSoon } from '../ui/ComingSoon';
 
 function ViewRouter({ view }) {
   switch (view) {
-    case 'map':    return <CityMap />;
-    case 'graph':  return <SystemGraph />;
-    case 'agents':     return <ComingSoon label="Agent Panel" phase={2} />;
+    case 'map':        return <CityMap />;
+    case 'graph':      return <SystemGraph />;
+    case 'agents':     return <AgentPanel />;
+    case 'alerts':     return <AlertFeed />;
     case 'simulation': return <ComingSoon label="Cascade Simulator" phase={3} />;
     case 'cv':         return <ComingSoon label="Computer Vision Feeds" phase={5} />;
-    case 'alerts':     return <ComingSoon label="Alert Feed" phase={2} />;
     default:           return <CityMap />;
   }
 }
@@ -36,7 +39,7 @@ export function AppShell({ wsStatus, lastHeartbeat }) {
           />
           <main className="app-content">
             <ViewRouter view={activeView} />
-            {/* NodeDetail shared across all views — renders null when nothing is selected */}
+            {/* NodeDetail shared across map/graph views */}
             <NodeDetail />
           </main>
         </div>

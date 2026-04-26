@@ -1,3 +1,4 @@
+import asyncio
 from datetime import datetime, timezone
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -6,7 +7,7 @@ from config import settings
 from routers import ws as ws_router
 from routers import graph as graph_router
 
-app = FastAPI(title="CascadeOS", version="0.1.0")
+app = FastAPI(title="CascadeOS", version="0.2.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -27,3 +28,28 @@ async def health():
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "env": settings.APP_ENV,
     }
+
+
+@app.on_event("startup")
+async def start_background_agents():
+    """Launch all domain agents + orchestrator as background asyncio tasks."""
+    from routers.ws import manager
+    from agents.water_agent import WaterAgent
+    from agents.transit_agent import TransitAgent
+    from agents.health_agent import HealthAgent
+    from agents.emergency_agent import EmergencyAgent
+    from agents.orchestrator import run_orchestrator
+
+    broadcast = manager.broadcast
+
+    agents = [
+        WaterAgent(broadcast),
+        TransitAgent(broadcast),
+        HealthAgent(broadcast),
+        EmergencyAgent(broadcast),
+    ]
+
+    for agent in agents:
+        asyncio.create_task(agent.run())
+
+    asyncio.create_task(run_orchestrator(broadcast))
