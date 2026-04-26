@@ -8,7 +8,7 @@ import { SystemGraph } from '../graph/SystemGraph';
 import { NodeDetail } from '../graph/NodeDetail';
 import { AgentPanel } from '../agents/AgentPanel';
 import { AlertFeed } from '../agents/AlertFeed';
-import { PriorityQueueViz } from '../ui/PriorityQueue';
+import { SimulationView } from '../simulation/SimulationView';
 import { ComingSoon } from '../ui/ComingSoon';
 
 function ViewRouter({ view }) {
@@ -17,7 +17,7 @@ function ViewRouter({ view }) {
     case 'graph':      return <SystemGraph />;
     case 'agents':     return <AgentPanel />;
     case 'alerts':     return <AlertFeed />;
-    case 'simulation': return <ComingSoon label="Cascade Simulator" phase={3} />;
+    case 'simulation': return <SimulationView />;
     case 'cv':         return <ComingSoon label="Computer Vision Feeds" phase={5} />;
     default:           return <CityMap />;
   }
@@ -39,8 +39,8 @@ export function AppShell({ wsStatus, lastHeartbeat }) {
           />
           <main className="app-content">
             <ViewRouter view={activeView} />
-            {/* NodeDetail shared across map/graph views */}
-            <NodeDetail />
+            {/* NodeDetail: shared across map/graph, hidden in simulation (it has its own layout) */}
+            {activeView !== 'simulation' && <NodeDetail />}
           </main>
         </div>
         <StatusBar wsStatus={wsStatus} lastHeartbeat={lastHeartbeat} />

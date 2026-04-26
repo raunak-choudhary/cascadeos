@@ -4,6 +4,7 @@ import { ScatterplotLayer, LineLayer, ArcLayer } from '@deck.gl/layers';
 import { Map } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useGraph } from '../../context/GraphContext';
+import { useCascade } from '../../context/CascadeContext';
 import { useTheme } from '../../theme/ThemeProvider';
 
 // ── Color palette matching CSS custom properties ─────────────────────────────
@@ -20,6 +21,13 @@ const DOMAIN_COLORS = {
     health:    [204,   0,  51],
     emergency: [0,   128,  63],
   },
+};
+
+const CASCADE_COLORS = {
+  critical: [255,  51, 102],
+  high:     [255, 107,  53],
+  medium:   [255, 215,   0],
+  low:      [0,   255, 159],
 };
 
 const MAP_STYLES = {
@@ -41,11 +49,18 @@ function getColor(type, theme, alpha = 255) {
   return [...rgb, alpha];
 }
 
+function cascadeColor(severity, alpha = 255) {
+  if (severity >= 0.8) return [...CASCADE_COLORS.critical, alpha];
+  if (severity >= 0.55) return [...CASCADE_COLORS.high,     alpha];
+  if (severity >= 0.35) return [...CASCADE_COLORS.medium,   alpha];
+  return [...CASCADE_COLORS.low, alpha];
+}
+
 export function CityMap() {
   const { nodes, edges, selectedNode, setSelectedNode, loading, error } = useGraph();
+  const { affectedNodes, originNodeId, cascadeActive } = useCascade();
   const { theme } = useTheme();
 
-  // Build a lookup so layers can resolve positions from edge source/target IDs
   const nodeMap = useMemo(
     () => Object.fromEntries(nodes.map(n => [n.id, n])),
     [nodes],
@@ -65,11 +80,27 @@ export function CityMap() {
     return { intraDomainEdges: intra, crossDomainEdges: cross };
   }, [edges, nodeMap]);
 
+  // Build cascade propagation path edges for overlay
+  const cascadePathEdges = useMemo(() => {
+    if (!cascadeActive) return [];
+    const pairs = [];
+    for (const [nodeId, info] of Object.entries(affectedNodes)) {
+      const path = info.path ?? [];
+      for (let i = 1; i < path.length; i++) {
+        const src = nodeMap[path[i - 1]];
+        const tgt = nodeMap[path[i]];
+        if (src && tgt) {
+          pairs.push({ src, tgt, severity: info.severity });
+        }
+      }
+    }
+    return pairs;
+  }, [affectedNodes, cascadeActive, nodeMap]);
+
   const layers = useMemo(() => {
     if (!nodes.length) return [];
 
-    return [
-      // Intra-domain edges — flat lines
+    const baseLayers = [
       new LineLayer({
         id: 'edges-intra',
         data: intraDomainEdges,
@@ -80,8 +111,6 @@ export function CityMap() {
         widthUnits: 'pixels',
         pickable: false,
       }),
-
-      // Cross-domain edges — arcs showing dependencies
       new ArcLayer({
         id: 'edges-cross',
         data: crossDomainEdges,
@@ -94,29 +123,43 @@ export function CityMap() {
         greatCircle: false,
         pickable: false,
       }),
-
-      // Node glow ring (outer, low alpha)
+      // Glow ring
       new ScatterplotLayer({
         id: 'nodes-glow',
         data: nodes,
         getPosition: d => [d.lng, d.lat],
-        getRadius: d => 20 + (d.centrality_score ?? 0) * 30,
-        getFillColor: d => getColor(d.type, theme, Math.round(30 + (d.centrality_score ?? 0) * 50)),
+        getRadius: d => {
+          if (cascadeActive && affectedNodes[d.id]) {
+            return 35 + affectedNodes[d.id].severity * 40;
+          }
+          return 20 + (d.centrality_score ?? 0) * 30;
+        },
+        getFillColor: d => {
+          if (cascadeActive && affectedNodes[d.id]) {
+            return cascadeColor(affectedNodes[d.id].severity, 80);
+          }
+          return getColor(d.type, theme, Math.round(30 + (d.centrality_score ?? 0) * 50));
+        },
         radiusUnits: 'pixels',
         pickable: false,
+        updateTriggers: { getRadius: [affectedNodes, cascadeActive], getFillColor: [affectedNodes, cascadeActive, theme] },
       }),
-
-      // Node fill (main circle)
+      // Node fill
       new ScatterplotLayer({
         id: 'nodes',
         data: nodes,
         getPosition: d => [d.lng, d.lat],
         getRadius: d => 8 + (d.centrality_score ?? 0) * 16,
-        getFillColor: d =>
-          selectedNode?.id === d.id
-            ? [255, 255, 255, 255]
-            : getColor(d.type, theme, 220),
-        getLineColor: d => getColor(d.type, theme, 255),
+        getFillColor: d => {
+          if (d.id === originNodeId) return [255, 51, 102, 255];
+          if (cascadeActive && affectedNodes[d.id]) return cascadeColor(affectedNodes[d.id].severity, 230);
+          if (selectedNode?.id === d.id) return [255, 255, 255, 255];
+          return getColor(d.type, theme, 220);
+        },
+        getLineColor: d => {
+          if (d.id === originNodeId) return [255, 51, 102, 255];
+          return getColor(d.type, theme, 255);
+        },
         lineWidthMinPixels: 1.5,
         stroked: true,
         radiusUnits: 'pixels',
@@ -124,39 +167,52 @@ export function CityMap() {
         autoHighlight: true,
         highlightColor: [255, 255, 255, 80],
         updateTriggers: {
-          getFillColor: [selectedNode?.id, theme],
+          getFillColor: [selectedNode?.id, theme, affectedNodes, originNodeId, cascadeActive],
+          getLineColor:  [originNodeId],
         },
       }),
     ];
-  }, [nodes, intraDomainEdges, crossDomainEdges, selectedNode, theme]);
+
+    // Cascade propagation path overlay
+    if (cascadeActive && cascadePathEdges.length > 0) {
+      baseLayers.push(
+        new LineLayer({
+          id: 'cascade-paths',
+          data: cascadePathEdges,
+          getSourcePosition: d => [d.src.lng, d.src.lat],
+          getTargetPosition: d => [d.tgt.lng, d.tgt.lat],
+          getColor: d => cascadeColor(d.severity, 200),
+          getWidth: 2.5,
+          widthUnits: 'pixels',
+          pickable: false,
+          updateTriggers: { getColor: [affectedNodes] },
+        })
+      );
+    }
+
+    return baseLayers;
+  }, [nodes, intraDomainEdges, crossDomainEdges, selectedNode, theme, affectedNodes, originNodeId, cascadeActive, cascadePathEdges]);
 
   const handleClick = useCallback(
-    ({ object }) => {
-      setSelectedNode(object ?? null);
-    },
+    ({ object }) => { setSelectedNode(object ?? null); },
     [setSelectedNode],
   );
 
-  const getTooltip = useCallback(
-    ({ object }) => {
-      if (!object) return null;
-      const score = ((object.centrality_score ?? 0) * 100).toFixed(1);
-      return {
-        html: `
-          <div class="map-tooltip">
-            <strong>${object.name}</strong>
-            <span class="tt-type">${object.type} · ${object.status}</span>
-            <span class="tt-score">Centrality ${score}% · Load ${Math.round(object.capacity * 100)}%</span>
-          </div>`,
-        style: {
-          background: 'transparent',
-          padding: 0,
-          border: 'none',
-        },
-      };
-    },
-    [],
-  );
+  const getTooltip = useCallback(({ object }) => {
+    if (!object) return null;
+    const score = ((object.centrality_score ?? 0) * 100).toFixed(1);
+    const cascadeInfo = affectedNodes[object.id];
+    return {
+      html: `
+        <div class="map-tooltip">
+          <strong>${object.name}</strong>
+          <span class="tt-type">${object.type} · ${object.status}</span>
+          <span class="tt-score">Centrality ${score}% · Load ${Math.round(object.capacity * 100)}%</span>
+          ${cascadeInfo ? `<span class="tt-cascade">Cascade impact in ${cascadeInfo.minutes?.toFixed(1)}m · Severity ${(cascadeInfo.severity * 10).toFixed(1)}</span>` : ''}
+        </div>`,
+      style: { background: 'transparent', padding: 0, border: 'none' },
+    };
+  }, [affectedNodes]);
 
   if (loading) {
     return (
@@ -193,7 +249,6 @@ export function CityMap() {
         />
       </DeckGL>
 
-      {/* Map legend */}
       <div className="map-legend">
         {['water', 'transit', 'health', 'emergency'].map(type => (
           <div key={type} className="legend-item">
@@ -202,7 +257,6 @@ export function CityMap() {
           </div>
         ))}
       </div>
-
     </div>
   );
 }

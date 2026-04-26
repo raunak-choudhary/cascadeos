@@ -1122,3 +1122,341 @@ button {
   width: 28px;
   text-align: right;
 }
+
+/* ── Phase 3 — Cascade Simulation ──────────────────────────────────────────── */
+
+/* Simulation layout: map left, sidebar right */
+.simulation-view {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.simulation-map-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.simulation-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* ── What-If Panel ───────────────────────────────────────────────────────────── */
+
+.whatif-panel {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.whatif-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.whatif-presets {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.whatif-preset-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text-primary);
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.whatif-preset-btn:hover {
+  border-color: var(--accent-blue);
+  background: var(--bg-card-hover);
+}
+
+.whatif-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.whatif-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.whatif-select {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--text-primary);
+  font-family: inherit;
+  outline: none;
+}
+
+.whatif-select:focus {
+  border-color: var(--accent-blue);
+}
+
+.whatif-trigger-btn {
+  margin-top: 4px;
+  background: linear-gradient(135deg, #ff3366 0%, #ff6b35 100%);
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(255, 51, 102, 0.3);
+}
+
+.whatif-trigger-btn:hover:not(:disabled) {
+  box-shadow: 0 4px 24px rgba(255, 51, 102, 0.55);
+}
+
+.whatif-trigger-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.whatif-trigger-btn--active {
+  animation: trigger-pulse 1.2s ease infinite;
+}
+
+@keyframes trigger-pulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(255, 51, 102, 0.4); }
+  50%       { box-shadow: 0 4px 32px rgba(255, 51, 102, 0.8); }
+}
+
+.whatif-reset-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.whatif-reset-btn:hover:not(:disabled) {
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+}
+
+/* ── Cascade Timeline ────────────────────────────────────────────────────────── */
+
+.cascade-timeline {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px 0;
+}
+
+.cascade-timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cascade-timeline-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cascade-timeline-live {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--accent-red);
+  font-weight: 600;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  animation: dot-blink 0.8s ease infinite;
+}
+
+.cascade-timeline-complete {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--accent-green);
+}
+
+.cascade-timeline-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px;
+}
+
+/* Timeline items */
+.ct-item {
+  display: grid;
+  grid-template-columns: 44px 20px 1fr;
+  gap: 0 8px;
+  padding: 6px 0;
+  animation: slide-in-right 0.25s ease;
+}
+
+.ct-item--origin .ct-dot {
+  background: var(--cascade-critical);
+  box-shadow: 0 0 8px rgba(255,51,102,0.6);
+  width: 12px;
+  height: 12px;
+  margin-top: -2px;
+}
+
+.ct-time {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: right;
+  padding-top: 2px;
+  white-space: nowrap;
+}
+
+.ct-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ct-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--domain-color, var(--border));
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ct-item--cascade-critical .ct-dot { background: var(--cascade-critical); }
+.ct-item--cascade-high .ct-dot     { background: var(--cascade-high); }
+.ct-item--cascade-medium .ct-dot   { background: var(--cascade-medium); }
+.ct-item--cascade-low .ct-dot      { background: var(--cascade-low); }
+
+.ct-line {
+  flex: 1;
+  width: 1px;
+  background: var(--border-subtle);
+  margin: 2px 0;
+  min-height: 12px;
+}
+
+.ct-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 6px;
+}
+
+.ct-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.ct-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ct-domain-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ct-severity {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+.ct-depth {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* tooltip cascade info */
+.tt-cascade {
+  display: block;
+  font-size: 11px;
+  color: var(--cascade-high);
+  margin-top: 2px;
+}
+
+/* Mobile: simulation sidebar becomes full-width overlay */
+@media (max-width: 767px) {
+  .simulation-view {
+    flex-direction: column;
+  }
+
+  .simulation-sidebar {
+    width: 100%;
+    height: 40vh;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .whatif-presets {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .cascade-timeline-scroll {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .ct-item {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    min-width: 120px;
+    padding: 0 8px;
+  }
+
+  .ct-connector { flex-direction: row; }
+  .ct-line { width: 12px; height: 1px; }
+}
