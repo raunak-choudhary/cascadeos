@@ -70,12 +70,14 @@ export function NodeDetail() {
       <div className="node-detail-section">
         <p className="node-detail-label">Centrality Score</p>
         <div className="centrality-row">
-          <div
-            className="centrality-bar"
-            style={{
-              width: `${Math.round((selectedNode.centrality_score || 0) * 100)}%`,
-            }}
-          />
+          <div className="centrality-track">
+            <div
+              className="centrality-bar"
+              style={{
+                width: `${Math.round((selectedNode.centrality_score || 0) * 100)}%`,
+              }}
+            />
+          </div>
           <span className="centrality-value">
             {((selectedNode.centrality_score || 0) * 100).toFixed(1)}%
           </span>
