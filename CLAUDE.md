@@ -804,77 +804,202 @@ All exit conditions met. Both servers verified running. Theme toggle works. WebS
 ### Phase 1 ✅ — COMPLETE (commit 363afce)
 All exit conditions met. 40-node NYC graph live. Betweenness centrality computed. deck.gl map renders with glow rings. React Flow system graph renders with geographic layout. NodeDetail panel works in both views. Both themes verified.
 
+### Phase 2 ✅ — COMPLETE (commit f024cd1)
+All exit conditions met. Four domain agents live (water, transit, health, emergency). AlertPriorityQueue max-heap built from scratch. SlidingWindow311 deque detector running. Agent cards update in real time via WebSocket with typewriter animation. PriorityQueue visualizer visible in Agent Panel. Both themes verified.
+
+### Phase 3 ✅ — COMPLETE (commit 876e04d + SystemGraph cascade fix)
+All exit conditions met. Weighted BFS cascade engine produces 26 events from `water_34th` across water/transit/health domains in ~37 seconds at default playback speed. WhatIfPanel has all 4 preset scenarios + custom trigger. CascadeTimeline animates in as events stream. CityMap shows cascade overlays (origin red, severity-graded affected nodes, propagation path lines). SystemGraph React Flow view simultaneously updates node colors during cascade. Both themes verified.
+
 ---
 
-## Phase 2 Handoff Notes — READ BEFORE STARTING PHASE 2
+## Architectural Decisions — Deviations from Original Spec
 
-These are decisions and facts that are NOT derivable from the code alone. A new session (Codex or Claude) must read this section before writing a single line for Phase 2.
+These are intentional design changes made during implementation. Codex must NOT revert them.
 
-### Python interpreter
-**Always use `python` (conda 3.12.2), never `python3` (Homebrew 3.14.2 — wrong version).**
-The venv is at `backend/.venv/`. Activate: `source backend/.venv/bin/activate`.
+### Files that exist under different names than originally planned
+| Spec name | Actual file | Reason |
+|---|---|---|
+| `CascadeLayer.jsx` | Built into `CityMap.jsx` | Cascade overlays share deck.gl layer stack — separating would require lifting all layer state |
+| `InfrastructureLayer.jsx` | Built into `CityMap.jsx` | Same reason — all layers in one DeckGL component |
+| `SimulationControls.jsx` | `SimulationView.jsx` | WhatIfPanel+CascadeTimeline are inside SimulationView; SimulationView is the composite view |
+| `useCascade.js` / `useAgents.js` | `CascadeContext.jsx` / `AgentContext.jsx` | Context API is the correct React pattern; hooks are just wrappers that read context |
+| `SeverityBadge.jsx` | CSS classes (`severity--cascade-*`) | Inline badge component was unnecessary — CSS classes cover all severity states |
 
-### ML dependencies — NOT installed
-`backend/requirements-ml.txt` lists torch, torch-geometric, ultralytics, opencv, Pillow.
-These are NOT installed in the current venv. Do not install them until Phase 5.
-The `ENABLE_CV` and `ENABLE_TGNN` feature flags in `config.py` gate their config validation.
+### Context architecture (do not change)
+```
+App.jsx
+  ThemeProvider
+    AgentProvider          ← agent_update, alert, queue_snapshot, 311_surge
+      CascadeProvider      ← cascade_start, cascade_node, cascade_complete, simulation_reset
+        GraphProvider      ← nodes, edges, selectedNode (wraps AppShell only)
+          AppShell
+```
+All WebSocket messages route through `handleWsMessage` callbacks from each context. Phase 4 should add a `RerouteContext` OR extend `CascadeContext` with reroute state — do NOT add reroute state to `GraphContext`.
 
-### Additional npm package installed in Phase 1
-`react-map-gl@8.1.1` was installed (not in the original bootstrap list). It is in `package.json`.
+### Emergency domain not in cascade path from water_34th
+The BFS from `water_34th` hits water/transit/health but NOT emergency nodes. This is because the graph edges from water/transit/health to emergency nodes are proximity-only with low weight. This is realistic (water main breaks don't directly cascade to FDNY dispatch). The demo still covers 3 of 4 domains. If Codex wants emergency in the path, add a `dependency` edge from `health_bellevue` → `emergency_ems_central` in `infrastructure_graph.py`.
 
-### Graph singleton
-`from graph.infrastructure_graph import graph` — module-level instance, built at import time.
-Betweenness centrality is cached in `backend/routers/graph.py` as `_centrality` (computed on first request, then cached for process lifetime).
+---
 
-### Node IDs for demo scenarios
-- 34th St water main: `water_34th` — this is the primary demo trigger node
-- Times Square transit: `transit_times_sq`
-- Bellevue hospital: `health_bellevue`
+## Codex Handoff — Phase 4 (Dijkstra Rerouting + City Briefing)
 
-### WebSocket broadcast — NEEDS UPGRADE in Phase 2
-`backend/routers/ws.py` currently only sends heartbeats to individual connections.
-Phase 2 needs a **ConnectionManager** class that tracks all active connections and can broadcast to all of them. Pattern:
+**READ THIS ENTIRE SECTION before writing a single line for Phase 4.**
+
+### Environment setup (same as all prior phases)
+```bash
+cd /path/to/cascadeos/backend
+source .venv/bin/activate   # conda python 3.12.2
+# frontend: cd frontend && npm install (already done)
+```
+**Always use `python` (conda 3.12.2), never `python3` (Homebrew 3.14.2 — wrong).**
+
+### What already exists that Phase 4 builds on
+
+**Backend:**
+- `graph/infrastructure_graph.py` — module singleton: `from graph.infrastructure_graph import graph`; access NetworkX DiGraph via `graph.G`
+- `routers/simulation.py` — `_node_status: dict[str, str]` holds current runtime node statuses (key=node_id, value=`"failed"|"critical"|"warning"`). Import this for Dijkstra trigger logic.
+- `routers/ws.py` — `manager` is the ConnectionManager singleton. Import: `from routers.ws import manager` then `await manager.broadcast({...})`
+- `agents/base_agent.py` — `alert_queue` is the shared AlertPriorityQueue instance. Import: `from agents.base_agent import alert_queue`
+- `config.py` — `settings` holds all env vars including `ANTHROPIC_API_KEY`
+
+**Frontend:**
+- `context/CascadeContext.jsx` — `affectedNodes` (dict nodeId→{severity,status,depth,path,minutes}), `originNodeId`, `cascadeActive`. Add `reroute_update` WS handler here.
+- `services/api.js` — `api.generateBriefing()` already wired to `POST /briefing/generate`
+- `context/AgentContext.jsx` — `alerts`, `queueSnapshot` available for briefing data
+- `App.jsx` — routes all WS messages to `agentHandler(msg)` and `cascadeHandler(msg)`. Add a third handler for reroute events if you add a RerouteContext.
+
+### Phase 4 new files to create
+
+**Backend:**
+- `backend/graph/dijkstra_reroute.py` — Dijkstra implementation (see spec below)
+- `backend/routers/briefing.py` — City briefing endpoint
+- Register both routers in `backend/main.py`
+
+**Frontend:**
+- `frontend/src/components/map/RerouteLayer.jsx` — dashed red + solid green line layers on the deck.gl map
+- `frontend/src/components/ui/CityBriefing.jsx` — floating button + slide-up briefing panel
+
+### Dijkstra implementation guidance
+
+Use `networkx` — **do not implement from scratch** (unlike BFS which was deliberately from scratch for DSA demo value; Dijkstra is about the UX of rerouting, not the algorithm). Use:
 ```python
-class ConnectionManager:
-    def __init__(self):
-        self.active: list[WebSocket] = []
-    async def connect(self, ws): ...
-    def disconnect(self, ws): ...
-    async def broadcast(self, data: dict): ...
-
-manager = ConnectionManager()
+import networkx as nx
+# Exclude blocked nodes by working on a subgraph view
+available = [n for n in graph.G.nodes if n not in blocked_nodes]
+subgraph = graph.G.subgraph(available)
+rerouted_path = nx.dijkstra_path(subgraph, source=origin, target=destination, weight='weight')
 ```
-Import `manager` from `ws.py` into agent/simulation routers to broadcast events.
+Invert edge weights before Dijkstra: weight 1.0 = fast propagation = should be PREFERRED route (lower cost). Use `cost = 1.0 / edge_weight` when building cost for Dijkstra path length.
 
-### WebSocket message types (Phase 2 must emit all of these)
+The function must return:
+```python
+{
+    "original_path": list[str],        # node IDs
+    "rerouted_path": list[str],
+    "original_cost_minutes": float,
+    "rerouted_cost_minutes": float,
+    "delay_minutes": float,
+    "recommendation": str,             # Claude Sonnet generated 1-2 sentences
+}
 ```
-heartbeat       — already implemented (every 5s)
-agent_update    — agent reasoning in progress
-alert           — new alert pushed to queue
-queue_snapshot  — current priority queue state
-311_surge       — 311 sliding window surge detected
+
+Auto-trigger rerouting: In `routers/simulation.py`, after broadcasting `cascade_complete`, check if any affected transit or emergency node has depth >= 2. If so, call `find_emergency_reroute` with those nodes as `blocked_nodes` and broadcast the result as `reroute_update` WS event. Default origin/destination: `transit_penn` → `transit_grand_central`.
+
+**Expose via:** `GET /graph/reroute?blocked=node1,node2&from=transit_penn&to=transit_grand_central`
+
+### City Briefing guidance
+
+`POST /briefing/generate` collects:
+```python
+from routers.simulation import _node_status
+from agents.base_agent import alert_queue, agent_states
 ```
-Phase 3 adds: `cascade_start`, `cascade_node`, `cascade_complete`
+Pass all of this context to Claude Sonnet with this system prompt:
+> "You are the Emergency Operations Director for New York City. Generate a structured incident briefing for city officials and emergency responders. Be concise, factual, and actionable."
 
-### Frontend WebSocket hook
-`frontend/src/hooks/useWebSocket.js` — already has exponential backoff. Connects to `VITE_WS_URL + /main`. Returns connection status. Phase 2 only needs to route incoming `msg.type` values in `App.jsx`.
+Return structure:
+```json
+{
+  "incident_id": "CASCADE-YYYYMMDD-HHmm",
+  "generated_at": "ISO timestamp",
+  "severity": "LOW|MEDIUM|HIGH|CRITICAL",
+  "summary": "2 sentence executive summary",
+  "affected_systems": [{"node_id": ..., "status": ..., "domain": ...}],
+  "cascade_origin": {"node_id": ..., "name": ...},
+  "predicted_peak_impact": "ISO timestamp (now + 30min if critical)",
+  "recommended_actions": ["action 1", "action 2"],
+  "rerouting": { ...dijkstra result or null },
+  "full_report": "full plain English paragraph"
+}
+```
 
-### GraphContext
-`frontend/src/context/GraphContext.jsx` — holds `nodes`, `edges`, `selectedNode`, `setSelectedNode`. Wraps the entire app via `AppShell`. Phase 2 agent state should live in a separate `AgentContext` (don't bloat GraphContext).
+### WebSocket message types Phase 4 adds
+```
+reroute_update   — { original_path, rerouted_path, delay_minutes, recommendation }
+```
+Briefing is delivered via REST response (not WebSocket). No new WS types needed for briefing.
 
-### View routing
-`AppShell.jsx` has a `ViewRouter` switch on `activeView`. Add `case 'agents'` and `case 'alerts'` to route to real Phase 2 components (currently they show `<ComingSoon>`).
+### Frontend: RerouteLayer.jsx
 
-### CASCADE_PLAYBACK_SPEED
-Already in `config.py` as `CASCADE_PLAYBACK_SPEED: float = 1.0`. Phase 3 simulation uses this to scale `asyncio.sleep` delays. Default: 1 real second per predicted minute.
+Add inside `CityMap.jsx`'s layers array (do NOT create a separate DeckGL — everything goes in the same DeckGL):
+```jsx
+// Listen for reroute state from context, then:
+new LineLayer({
+  id: 'reroute-blocked',
+  data: blockedEdgePairs,
+  getColor: [255, 51, 102, 200],
+  getDashArray: [6, 4],
+  // dashJustified: true (requires PathLayer or TripsLayer for animated dashes)
+})
+new LineLayer({
+  id: 'reroute-path',
+  data: reroutedEdgePairs,
+  getColor: [0, 255, 159, 220],
+  getWidth: 3,
+})
+```
+Animated dashes: use a `TripsLayer` or simply a CSS `stroke-dashoffset` animation via SVG overlay if deck.gl animated dashes are complex. Keep it simple for the demo.
 
-### Installed package versions (pin-compatible)
+### Frontend: CityBriefing.jsx
+
+Floating button at bottom-right of `app-content`. On click: calls `api.generateBriefing()`, shows spinner, then slides up a full-height overlay panel. Use `position: fixed; bottom: 0; right: 0; width: min(600px, 100vw); height: 80vh` for the panel. Add a "Copy Report" button that calls `navigator.clipboard.writeText(briefing.full_report)`.
+
+### AppShell update for Phase 4
+- Add `CityBriefing` button to the map view only (not agents/alerts views)
+- `RerouteLayer` renders inside `CityMap.jsx` automatically when reroute state is present
+
+### Installed packages — do not reinstall
 | Package | Version |
 |---|---|
 | deck.gl | 9.3.1 |
 | reactflow | 11.11.4 |
 | mapbox-gl | 3.22.0 |
 | react-map-gl | 8.1.1 |
+
+---
+
+## Codex Tips — General Rules for Phase 4+
+
+1. **Always activate venv first:** `source backend/.venv/bin/activate`
+2. **Always test imports before running the server:** `python -c "from main import app; print('OK')"`
+3. **Never install ML deps** (`torch`, `ultralytics`, `torch-geometric`, `opencv`) until Phase 5. They are in `backend/requirements-ml.txt`, NOT in the active venv.
+4. **BUILD_CHECK:** After any frontend change, run `npm run build` in `frontend/` to catch import errors. A passing build does not guarantee correct behavior — also verify the dev server renders the feature.
+5. **CSS variables only** — never use hardcoded colors. Use `var(--accent-blue)`, `var(--cascade-critical)` etc. Both dark and light themes must work.
+6. **DO NOT overwrite `.env` files** — real API keys live there. Always `cat` to verify before any file operation touching env files.
+7. **CASCADE_PLAYBACK_SPEED** default 1.0 → demo completes in ~37 seconds. If the demo feels slow, set to 2.0 in `backend/.env` (no code change needed). Do NOT change the default.
+8. **Commit pattern:** One commit per phase. Stage only the files you changed. Never use `git add -A`.
+9. **Push to origin/main** after each phase commit.
+10. **graphify** — after each phase, update the knowledge graph: `graphify-out/` contains the prior graph. Run `/graphify . --update` or write a manual semantic chunk (see `graphify-out/.graphify_chunk_01.json` for the format used in Phase 1-3).
+
+### Demo node IDs (do not change these)
+| Demo scenario | Node ID |
+|---|---|
+| Primary demo origin | `water_34th` |
+| Times Square trigger | `transit_times_sq` |
+| Bellevue surge | `health_bellevue` |
+| FDNY depletion | `emergency_fdny_downtown` |
+| Default reroute from | `transit_penn` |
+| Default reroute to | `transit_grand_central` |
 
 ---
 

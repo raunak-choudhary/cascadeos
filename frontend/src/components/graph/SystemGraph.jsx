@@ -8,6 +8,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { useGraph } from '../../context/GraphContext';
+import { useCascade } from '../../context/CascadeContext';
 
 // ── Geographic → canvas projection ──────────────────────────────────────────
 const LAT_MIN = 40.48, LAT_MAX = 40.91;
@@ -28,38 +29,84 @@ const DOMAIN_COLOR = {
   emergency: { bg: 'rgba(0,255,159,0.12)',  border: '#00ff9f' },
 };
 
+// ── Cascade severity → border/glow colour ────────────────────────────────────
+function cascadeBorderColor(severity) {
+  if (severity >= 0.8) return '#ff3366';
+  if (severity >= 0.55) return '#ff6b35';
+  if (severity >= 0.35) return '#ffd700';
+  return '#00ff9f';
+}
+
 const EDGE_COLOR = {
   dependency:  '#ff3366',
   operational: '#00d4ff',
   proximity:   '#4a7090',
 };
 
-function buildRFNodes(nodes) {
-  return nodes.map(node => {
-    const pos = geoToCanvas(node.lat, node.lng);
-    const c   = DOMAIN_COLOR[node.type] ?? DOMAIN_COLOR.water;
-    const cs  = node.centrality_score ?? 0;
+function buildRFNode(node, cascadeInfo, isOrigin) {
+  const pos = geoToCanvas(node.lat, node.lng);
+  const c   = DOMAIN_COLOR[node.type] ?? DOMAIN_COLOR.water;
+  const cs  = node.centrality_score ?? 0;
 
+  if (isOrigin) {
     return {
       id:       node.id,
       position: pos,
       data:     { label: node.name, node },
       style: {
-        background:  c.bg,
-        border:      `${Math.round(1 + cs * 1.5)}px solid ${c.border}`,
+        background:  'rgba(255,51,102,0.25)',
+        border:      '3px solid #ff3366',
         borderRadius: 8,
         padding:     '3px 7px',
         fontSize:    `${Math.round(9 + cs * 4)}px`,
         color:       'var(--text-primary)',
         maxWidth:    130,
         minWidth:    80,
-        boxShadow:   cs > 0.5
-          ? `0 0 ${Math.round(cs * 18)}px ${c.border}44`
-          : 'none',
-        cursor: 'pointer',
+        boxShadow:   '0 0 20px #ff336688',
+        cursor:      'pointer',
+        animation:   'rf-origin-pulse 1.2s ease infinite',
       },
     };
-  });
+  }
+
+  if (cascadeInfo) {
+    const color = cascadeBorderColor(cascadeInfo.severity);
+    return {
+      id:       node.id,
+      position: pos,
+      data:     { label: node.name, node },
+      style: {
+        background:  `${color}22`,
+        border:      `2px solid ${color}`,
+        borderRadius: 8,
+        padding:     '3px 7px',
+        fontSize:    `${Math.round(9 + cs * 4)}px`,
+        color:       'var(--text-primary)',
+        maxWidth:    130,
+        minWidth:    80,
+        boxShadow:   `0 0 12px ${color}66`,
+        cursor:      'pointer',
+      },
+    };
+  }
+
+  return {
+    id:       node.id,
+    position: pos,
+    data:     { label: node.name, node },
+    style: {
+      background:  c.bg,
+      border:      `${Math.round(1 + cs * 1.5)}px solid ${c.border}`,
+      borderRadius: 8,
+      padding:     '3px 7px',
+      fontSize:    `${Math.round(9 + cs * 4)}px`,
+      color:       'var(--text-primary)',
+      maxWidth:    130,
+      minWidth:    80,
+      boxShadow:   cs > 0.5 ? `0 0 ${Math.round(cs * 18)}px ${c.border}44` : 'none',
+      cursor:      'pointer',
+    },
+  };
 }
 
 function buildRFEdges(edges) {
@@ -82,14 +129,22 @@ function buildRFEdges(edges) {
 
 export function SystemGraph() {
   const { nodes: rawNodes, edges: rawEdges, setSelectedNode, loading, error } = useGraph();
+  const { affectedNodes, originNodeId, cascadeActive } = useCascade();
 
   const [rfNodes, setRfNodes, onNodesChange] = useNodesState([]);
   const [rfEdges, setRfEdges, onEdgesChange] = useEdgesState([]);
 
-  // Sync React Flow state whenever API data arrives
+  // Rebuild nodes whenever graph data OR cascade state changes
   useEffect(() => {
-    if (rawNodes.length) setRfNodes(buildRFNodes(rawNodes));
-  }, [rawNodes, setRfNodes]);
+    if (!rawNodes.length) return;
+    setRfNodes(rawNodes.map(node =>
+      buildRFNode(
+        node,
+        cascadeActive ? affectedNodes[node.id] : null,
+        cascadeActive && node.id === originNodeId,
+      )
+    ));
+  }, [rawNodes, affectedNodes, originNodeId, cascadeActive, setRfNodes]);
 
   useEffect(() => {
     if (rawEdges.length) setRfEdges(buildRFEdges(rawEdges));
@@ -121,6 +176,13 @@ export function SystemGraph() {
 
   return (
     <div className="system-graph-wrap">
+      <style>{`
+        @keyframes rf-origin-pulse {
+          0%, 100% { box-shadow: 0 0 20px #ff336688; }
+          50%       { box-shadow: 0 0 40px #ff3366cc; }
+        }
+      `}</style>
+
       <ReactFlow
         nodes={rfNodes}
         edges={rfEdges}
@@ -142,7 +204,11 @@ export function SystemGraph() {
           }}
         />
         <MiniMap
-          nodeColor={n => DOMAIN_COLOR[n.data?.node?.type]?.border ?? '#4a7090'}
+          nodeColor={n => {
+            if (cascadeActive && n.id === originNodeId) return '#ff3366';
+            if (cascadeActive && affectedNodes[n.id]) return cascadeBorderColor(affectedNodes[n.id].severity);
+            return DOMAIN_COLOR[n.data?.node?.type]?.border ?? '#4a7090';
+          }}
           maskColor="rgba(0,0,0,0.4)"
           style={{
             background:   'var(--bg-card)',
