@@ -1,8 +1,41 @@
 # CascadeOS
 
+## HACKATHON WINNING IDEA
+
+CascadeOS won **first prize at the Code 4 City Hackathon** at NYU Tandon. It was built by **Raunak Choudhary** as a solo project under team **Core Catalyst**, competing against 44 teams.
+
 CascadeOS is a multi agent urban infrastructure intelligence system for New York City. It predicts how failures can cascade across water, transit, health, and emergency systems, then helps city officials understand the impact through live maps, agent alerts, rerouting, camera signals, and generated briefings.
 
 The project was built by **Core Catalyst**, a solo hackathon team led by **Raunak Choudhary**, an MS Computer Science graduate student at **New York University**, class of 2026.
+
+## Recruiter Snapshot
+
+* **Solo first place hackathon build:** designed, engineered, tested, and presented by one developer.
+* **Full stack AI system:** FastAPI backend, React frontend, real time WebSockets, graph algorithms, agents, computer vision, and city operations UX.
+* **Tech highlights:** FastAPI, React, WebSockets, NetworkX, LangGraph, Claude, YOLOv8, deck.gl, Dijkstra, BFS, priority queue.
+* **Core engineering signal:** combines product thinking, backend architecture, frontend polish, graph reasoning, ML integration, and demo reliability.
+
+## Product Screenshots
+
+<p align="center">
+  <img src="screenshots/CascadeOS_1.png" width="49%" alt="CascadeOS city map with NYC infrastructure nodes" />
+  <img src="screenshots/CascadeOS_2.png" width="49%" alt="CascadeOS node detail panel and infrastructure map" />
+</p>
+
+<p align="center">
+  <img src="screenshots/CascadeOS_3.png" width="49%" alt="CascadeOS cascade simulation and timeline" />
+  <img src="screenshots/CascadeOS_4.png" width="49%" alt="CascadeOS system graph visualization" />
+</p>
+
+<p align="center">
+  <img src="screenshots/CascadeOS_5.png" width="49%" alt="CascadeOS agent intelligence panel" />
+  <img src="screenshots/CascadeOS_6.png" width="49%" alt="CascadeOS alert feed" />
+</p>
+
+<p align="center">
+  <img src="screenshots/CascadeOS_7.png" width="49%" alt="CascadeOS computer vision camera feeds" />
+  <img src="screenshots/CascadeOS_8.png" width="49%" alt="CascadeOS city briefing and rerouting report" />
+</p>
 
 ## What Core Catalyst Built
 
