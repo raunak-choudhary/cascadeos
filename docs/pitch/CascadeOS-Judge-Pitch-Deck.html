@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CascadeOS Judge Pitch Deck</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg: #08111f;
+    --panel: #101b2e;
+    --panel-2: #14243b;
+    --text: #eef7ff;
+    --muted: #92abc5;
+    --line: #274769;
+    --blue: #26d4ff;
+    --green: #35f0a6;
+    --orange: #ff9b45;
+    --red: #ff4f73;
+    --yellow: #ffe066;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: #000;
+    color: var(--text);
+    font-family: Inter, Arial, Helvetica, sans-serif;
+  }
+
+  body { counter-reset: slide; }
+
+  .slide {
+    width: 1920px;
+    height: 1080px;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+    overflow: hidden;
+    padding: 74px 92px 70px;
+    background:
+      radial-gradient(circle at 12% 12%, rgba(38, 212, 255, 0.11), transparent 28%),
+      radial-gradient(circle at 86% 80%, rgba(53, 240, 166, 0.09), transparent 30%),
+      linear-gradient(145deg, var(--bg), #0b1322 48%, #08111f);
+  }
+
+  .slide::after {
+    counter-increment: slide;
+    content: "CASCADEOS / " attr(data-page);
+    position: absolute;
+    left: 92px;
+    bottom: 34px;
+    color: #67839f;
+    font: 700 18px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.18em;
+  }
+
+  .topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font: 700 18px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .mark { color: var(--blue); }
+
+  h1 {
+    margin: 44px 0 20px;
+    max-width: 1460px;
+    font-size: 86px;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  h1.hero {
+    margin-top: 128px;
+    font-size: 126px;
+    max-width: 1500px;
+  }
+
+  h2 {
+    margin: 0;
+    max-width: 1240px;
+    color: var(--muted);
+    font-size: 34px;
+    line-height: 1.34;
+    font-weight: 500;
+  }
+
+  h3 {
+    margin: 0 0 16px;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+  }
+
+  .accent { color: var(--blue); }
+  .good { color: var(--green); }
+  .warn { color: var(--orange); }
+  .danger { color: var(--red); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+    margin-top: 54px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 54px;
+  }
+
+  .card {
+    min-height: 250px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(16, 27, 46, 0.95), rgba(12, 20, 35, 0.88));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+  }
+
+  .card.small { min-height: 194px; }
+
+  .label {
+    margin-bottom: 20px;
+    color: var(--blue);
+    font: 800 18px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+    color: var(--muted);
+    font-size: 29px;
+    line-height: 1.34;
+  }
+
+  li::before {
+    content: "";
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-right: 16px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 14px rgba(38, 212, 255, 0.85);
+    transform: translateY(-3px);
+  }
+
+  .metric-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 70px;
+  }
+
+  .metric {
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(20, 36, 59, 0.74);
+  }
+
+  .metric strong {
+    display: block;
+    color: var(--text);
+    font: 800 56px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  .metric span {
+    display: block;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 22px;
+  }
+
+  .speaker {
+    position: absolute;
+    right: 92px;
+    bottom: 30px;
+    max-width: 1040px;
+    color: #8da6bf;
+    text-align: right;
+    font-size: 23px;
+    line-height: 1.28;
+  }
+
+  .flow {
+    margin-top: 36px;
+    width: 100%;
+    height: 620px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: rgba(6, 14, 27, 0.58);
+  }
+
+  .demo-strip {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+  }
+
+  .step {
+    min-height: 300px;
+    padding: 28px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(16, 27, 46, 0.88);
+  }
+
+  .step b {
+    display: block;
+    color: var(--blue);
+    font: 800 30px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    margin-bottom: 20px;
+  }
+
+  .step span {
+    color: var(--muted);
+    font-size: 24px;
+    line-height: 1.28;
+  }
+
+  .close {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 820px;
+  }
+
+  .credit {
+    margin-top: 72px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 28px;
+    line-height: 1.5;
+  }
+
+  @media print {
+    @page { size: 16in 9in; margin: 0; }
+    html, body { width: 16in; margin: 0; }
+    .slide {
+      width: 16in;
+      height: 9in;
+      page-break-after: always;
+      break-after: page;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+    .slide:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">Core Catalyst</span> / Hackathon Demo</div><div>NYU MS CS 2026</div></div>
+  <h1 class="hero">CascadeOS predicts <span class="accent">infrastructure cascades</span> before cities lose control.</h1>
+  <h2>One operating view for NYC water, transit, health, emergency response, live camera signals, rerouting, and city briefings.</h2>
+  <div class="metric-row">
+    <div class="metric"><strong>40</strong><span>NYC infrastructure nodes</span></div>
+    <div class="metric"><strong>4</strong><span>domain agents</span></div>
+    <div class="metric"><strong>26</strong><span>nodes in demo cascade</span></div>
+    <div class="metric"><strong>6</strong><span>completed build phases</span></div>
+  </div>
+  <div class="credit">Built by Raunak Choudhary as solo team Core Catalyst.</div>
+  <div class="speaker">Say this: CascadeOS is a command center for the moments when one city failure becomes many.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">01</span> Problem</div><div>Disconnected response</div></div>
+  <h1>Infrastructure failures do not stay inside one agency.</h1>
+  <h2>A water incident can become a transit delay, a hospital access issue, and an emergency routing problem within minutes.</h2>
+  <div class="grid-3">
+    <div class="card"><div class="label">Today</div><h3>Siloed screens</h3><ul><li>Water, MTA, hospitals, and responders see separate dashboards.</li><li>Teams react after impact becomes visible.</li></ul></div>
+    <div class="card"><div class="label">Risk</div><h3>Hidden dependencies</h3><ul><li>The critical part is not one failure.</li><li>The critical part is what the failure touches next.</li></ul></div>
+    <div class="card"><div class="label">Need</div><h3>Shared prediction</h3><ul><li>Officials need a single answer fast.</li><li>What failed, what is next, and what should move now.</li></ul></div>
+  </div>
+  <div class="speaker">Say this: The project focuses on the gap between agencies, because cascades happen in that gap.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">02</span> Solution</div><div>One graph, four agents</div></div>
+  <h1>CascadeOS turns live city signals into <span class="accent">operational decisions.</span></h1>
+  <div class="grid-2">
+    <div class="card"><div class="label">How it works</div><ul><li>Model NYC systems as a NetworkX directed graph.</li><li>Run domain agents for water, transit, health, and emergency response.</li><li>Predict cascade spread with weighted BFS.</li><li>Route responders around blocked nodes with Dijkstra.</li></ul></div>
+    <div class="card"><div class="label">What users get</div><ul><li>Live NYC map with affected infrastructure.</li><li>Agent reasoning and priority alerts.</li><li>Cascade timeline and what-if simulation.</li><li>Claude generated city briefing for officials.</li></ul></div>
+  </div>
+  <div class="speaker">Say this: The system does not just show data. It converts data into a predicted impact chain and a recommended response.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">03</span> System Architecture</div><div>End to end data flow</div></div>
+  <h1>Architecture built for real time cascade intelligence.</h1>
+  <svg class="flow" viewBox="0 0 1700 690" role="img" aria-label="CascadeOS system architecture diagram">
+    <defs>
+      <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+        <path d="M 0 0 L 12 6 L 0 12 z" fill="#26d4ff"></path>
+      </marker>
+      <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect x="38" y="52" width="255" height="135" rx="18" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="166" y="92" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">CITY SIGNALS</text>
+    <text x="166" y="130" fill="#eef7ff" text-anchor="middle" font-size="23">311 complaints</text>
+    <text x="166" y="160" fill="#92abc5" text-anchor="middle" font-size="22">DOT cameras, graph data</text>
+
+    <rect x="365" y="52" width="255" height="135" rx="18" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="493" y="92" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">FASTAPI BACKEND</text>
+    <text x="493" y="130" fill="#eef7ff" text-anchor="middle" font-size="23">Routers and WebSockets</text>
+    <text x="493" y="160" fill="#92abc5" text-anchor="middle" font-size="22">Shared live state</text>
+
+    <rect x="692" y="52" width="318" height="135" rx="18" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="851" y="92" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">AGENT LAYER</text>
+    <text x="851" y="130" fill="#eef7ff" text-anchor="middle" font-size="23">Water, transit, health, emergency</text>
+    <text x="851" y="160" fill="#92abc5" text-anchor="middle" font-size="22">Claude plus LangGraph</text>
+
+    <rect x="1082" y="52" width="285" height="135" rx="18" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="1225" y="92" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">GRAPH ENGINE</text>
+    <text x="1225" y="130" fill="#eef7ff" text-anchor="middle" font-size="23">NetworkX DiGraph</text>
+    <text x="1225" y="160" fill="#92abc5" text-anchor="middle" font-size="22">BFS, Dijkstra, centrality</text>
+
+    <rect x="1438" y="52" width="225" height="135" rx="18" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="1551" y="92" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">REACT UI</text>
+    <text x="1551" y="130" fill="#eef7ff" text-anchor="middle" font-size="23">Map, graph, timeline</text>
+    <text x="1551" y="160" fill="#92abc5" text-anchor="middle" font-size="22">Alerts and briefing</text>
+
+    <path d="M293 120 H365" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M620 120 H692" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1010 120 H1082" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1367 120 H1438" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="245" y="300" width="280" height="140" rx="18" fill="#101b2e" stroke="#35f0a6" stroke-width="2"/>
+    <text x="385" y="342" fill="#35f0a6" text-anchor="middle" font-size="25" font-weight="800">PRIORITY QUEUE</text>
+    <text x="385" y="380" fill="#eef7ff" text-anchor="middle" font-size="23">Max heap alerts</text>
+    <text x="385" y="410" fill="#92abc5" text-anchor="middle" font-size="22">Severity ranked signals</text>
+
+    <rect x="610" y="300" width="280" height="140" rx="18" fill="#101b2e" stroke="#ff9b45" stroke-width="2"/>
+    <text x="750" y="342" fill="#ff9b45" text-anchor="middle" font-size="25" font-weight="800">CASCADE SIM</text>
+    <text x="750" y="380" fill="#eef7ff" text-anchor="middle" font-size="23">26 affected nodes</text>
+    <text x="750" y="410" fill="#92abc5" text-anchor="middle" font-size="22">Depth, severity, ETA</text>
+
+    <rect x="975" y="300" width="280" height="140" rx="18" fill="#101b2e" stroke="#ff4f73" stroke-width="2"/>
+    <text x="1115" y="342" fill="#ff4f73" text-anchor="middle" font-size="25" font-weight="800">REROUTING</text>
+    <text x="1115" y="380" fill="#eef7ff" text-anchor="middle" font-size="23">Dijkstra pathfinding</text>
+    <text x="1115" y="410" fill="#92abc5" text-anchor="middle" font-size="22">Blocked red, route green</text>
+
+    <rect x="1340" y="300" width="280" height="140" rx="18" fill="#101b2e" stroke="#ffe066" stroke-width="2"/>
+    <text x="1480" y="342" fill="#ffe066" text-anchor="middle" font-size="25" font-weight="800">CITY BRIEFING</text>
+    <text x="1480" y="380" fill="#eef7ff" text-anchor="middle" font-size="23">Claude Sonnet report</text>
+    <text x="1480" y="410" fill="#92abc5" text-anchor="middle" font-size="22">Copy ready for officials</text>
+
+    <path d="M493 187 C493 250 385 250 385 300" fill="none" stroke="#35f0a6" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M851 187 C851 246 750 248 750 300" fill="none" stroke="#ff9b45" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1225 187 C1225 246 1115 248 1115 300" fill="none" stroke="#ff4f73" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1551 187 C1551 246 1480 248 1480 300" fill="none" stroke="#ffe066" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="420" y="535" width="860" height="84" rx="18" fill="#14243b" stroke="#274769" stroke-width="2" filter="url(#glow)"/>
+    <text x="850" y="568" fill="#26d4ff" text-anchor="middle" font-size="26" font-weight="800">REAL TIME EVENT BUS</text>
+    <text x="850" y="601" fill="#eef7ff" text-anchor="middle" font-size="24">cascade_start, cascade_node, cascade_complete, reroute_update, alert, cv_update</text>
+    <path d="M850 440 V535" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+  </svg>
+  <div class="speaker">Say this: Signals enter through FastAPI, agents reason over them, graph algorithms predict impact, and WebSockets push decisions to the UI.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">04</span> Demo Story</div><div>34th Street water main</div></div>
+  <h1>The judge demo is one incident, one minute, many systems.</h1>
+  <div class="demo-strip">
+    <div class="step"><b>01</b><span>Trigger 34th Street water main failure.</span></div>
+    <div class="step"><b>02</b><span>Weighted BFS predicts cascade across NYC graph.</span></div>
+    <div class="step"><b>03</b><span>26 infrastructure nodes become affected.</span></div>
+    <div class="step"><b>04</b><span>Agents publish alerts and reasoning.</span></div>
+    <div class="step"><b>05</b><span>Dijkstra finds emergency reroute.</span></div>
+    <div class="step"><b>06</b><span>Claude generates city briefing.</span></div>
+  </div>
+  <div class="speaker">Say this: The demo shows prediction, prioritization, response, and communication in one flow.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">05</span> Implemented Features</div><div>Current working product</div></div>
+  <h1>What is working right now.</h1>
+  <div class="grid-3">
+    <div class="card small"><div class="label">Map</div><ul><li>NYC infrastructure nodes with detail panel.</li><li>Cascade and reroute layers.</li></ul></div>
+    <div class="card small"><div class="label">Agents</div><ul><li>Four live domain agents.</li><li>Shared alert priority queue.</li></ul></div>
+    <div class="card small"><div class="label">Simulation</div><ul><li>Weighted BFS cascade engine.</li><li>Timeline and what-if controls.</li></ul></div>
+    <div class="card small"><div class="label">Routing</div><ul><li>Dijkstra emergency reroute.</li><li>Blocked path red, reroute green.</li></ul></div>
+    <div class="card small"><div class="label">Briefing</div><ul><li>Claude Sonnet city report.</li><li>Full structured copy action.</li></ul></div>
+    <div class="card small"><div class="label">Vision</div><ul><li>NYC DOT camera feeds.</li><li>YOLOv8 signal pipeline with fallback.</li></ul></div>
+  </div>
+  <div class="speaker">Say this: This is not a mockup. These are clickable, running features in the current app.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">06</span> Technical Depth</div><div>Algorithms and AI</div></div>
+  <h1>The core is <span class="accent">DSA plus agents</span>, not just prompts.</h1>
+  <div class="grid-2">
+    <div class="card"><div class="label">Algorithms</div><ul><li>NetworkX directed graph with 40 infrastructure nodes.</li><li>Betweenness centrality for node importance.</li><li>Weighted BFS for cascade spread.</li><li>Dijkstra for blocked-node rerouting.</li><li>Max heap for alert priority.</li></ul></div>
+    <div class="card"><div class="label">AI Layer</div><ul><li>Claude Sonnet for agent reasoning and city briefings.</li><li>LangGraph orchestration across domain agents.</li><li>YOLOv8 for traffic camera anomaly signals.</li><li>Fallback detection keeps the demo reliable.</li></ul></div>
+  </div>
+  <div class="speaker">Say this: The AI is useful because it sits on top of real graph algorithms and live state.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">07</span> Why It Matters</div><div>Operational impact</div></div>
+  <h1>CascadeOS helps cities move from <span class="danger">reaction</span> to <span class="good">readiness.</span></h1>
+  <div class="grid-3">
+    <div class="card"><div class="label">Faster Awareness</div><ul><li>Officials see downstream impact before every agency calls it separately.</li></ul></div>
+    <div class="card"><div class="label">Better Coordination</div><ul><li>Water, transit, health, and emergency response share one incident picture.</li></ul></div>
+    <div class="card"><div class="label">Clearer Communication</div><ul><li>The city briefing turns technical state into a public safety summary.</li></ul></div>
+  </div>
+  <div class="speaker">Say this: The value is not replacing humans. It is giving responders a shared prediction while there is still time to act.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">08</span> Stack</div><div>Built full stack</div></div>
+  <h1>Full stack system built for a live hackathon demo.</h1>
+  <div class="grid-3">
+    <div class="card"><div class="label">Backend</div><ul><li>FastAPI</li><li>Python 3.12</li><li>NetworkX</li><li>WebSockets</li></ul></div>
+    <div class="card"><div class="label">Intelligence</div><ul><li>Claude Sonnet</li><li>LangGraph</li><li>Weighted BFS</li><li>Dijkstra</li><li>YOLOv8</li></ul></div>
+    <div class="card"><div class="label">Frontend</div><ul><li>React and Vite</li><li>deck.gl and Mapbox</li><li>React Flow</li><li>Dark and light themes</li></ul></div>
+  </div>
+  <div class="speaker">Say this: The project is end to end: data, intelligence, algorithms, real time transport, and user interface.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">09</span> Future Roadmap</div><div>What comes next</div></div>
+  <h1>Future work turns the proof of concept into a <span class="accent">city resilience platform.</span></h1>
+  <div class="grid-2">
+    <div class="card"><div class="label">Near Term</div><ul><li>Deployment hardening and persistent incident storage.</li><li>More real data feeds across utilities and emergency services.</li><li>Scenario library for storms, heat, water, transit, and grid events.</li></ul></div>
+    <div class="card"><div class="label">Long Term</div><ul><li>Temporal GNN forecast for 24 hour cascade risk.</li><li>3D digital twin view of the city.</li><li>Natural language simulation for officials.</li><li>Multi-city version for resilience planning.</li></ul></div>
+  </div>
+  <div class="speaker">Say this: The current version is reactive prediction. The next version forecasts before the incident happens.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><div><span class="mark">10</span> Close</div><div>Core Catalyst</div></div>
+  <div class="close">
+    <h1 class="hero">CascadeOS: <span class="accent">one graph, four agents, one city operating picture.</span></h1>
+    <h2>Built by Raunak Choudhary, solo team Core Catalyst, MS Computer Science at NYU, class of 2026.</h2>
+    <div class="credit">Ask: help cities predict the next failure before it becomes the next emergency.</div>
+  </div>
+  <div class="speaker">Say this: Thank you. I am happy to walk through the live demo or the architecture in more detail.</div>
+</section>
+
+<script>
+  const requestedSlide = Number(new URLSearchParams(window.location.search).get('slide'));
+  if (requestedSlide) {
+    document.querySelectorAll('.slide').forEach((slide, index) => {
+      slide.dataset.page = String(index + 1).padStart(2, '0');
+      slide.style.display = index + 1 === requestedSlide ? 'block' : 'none';
+    });
+  }
+  if (!requestedSlide) {
+    document.querySelectorAll('.slide').forEach((slide, index) => {
+      slide.dataset.page = String(index + 1).padStart(2, '0');
+    });
+  }
+</script>
+
+</body>
+</html>

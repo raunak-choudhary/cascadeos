@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="CascadeOS system architecture">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08111f"/>
+      <stop offset="0.52" stop-color="#0d1829"/>
+      <stop offset="1" stop-color="#08111f"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#26d4ff"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="170" cy="120" r="260" fill="#26d4ff" opacity="0.08"/>
+  <circle cx="1390" cy="745" r="300" fill="#35f0a6" opacity="0.07"/>
+
+  <text x="80" y="86" fill="#26d4ff" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" letter-spacing="4">CASCADEOS SYSTEM ARCHITECTURE</text>
+  <text x="80" y="127" fill="#92abc5" font-family="Arial, Helvetica, sans-serif" font-size="22">Live city signals become predictions, reroutes, alerts, camera intelligence, and city briefings.</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="72" y="205" width="245" height="145" rx="20" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="194" y="252" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">CITY SIGNALS</text>
+    <text x="194" y="292" fill="#eef7ff" text-anchor="middle" font-size="22">311 complaints</text>
+    <text x="194" y="324" fill="#92abc5" text-anchor="middle" font-size="21">DOT cameras, graph data</text>
+
+    <rect x="382" y="205" width="245" height="145" rx="20" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="504" y="252" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">FASTAPI</text>
+    <text x="504" y="292" fill="#eef7ff" text-anchor="middle" font-size="22">Routers and state</text>
+    <text x="504" y="324" fill="#92abc5" text-anchor="middle" font-size="21">WebSocket manager</text>
+
+    <rect x="692" y="205" width="275" height="145" rx="20" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="830" y="252" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">AGENT LAYER</text>
+    <text x="830" y="292" fill="#eef7ff" text-anchor="middle" font-size="22">Water, transit, health</text>
+    <text x="830" y="324" fill="#92abc5" text-anchor="middle" font-size="21">Emergency plus LangGraph</text>
+
+    <rect x="1032" y="205" width="255" height="145" rx="20" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="1160" y="252" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">GRAPH ENGINE</text>
+    <text x="1160" y="292" fill="#eef7ff" text-anchor="middle" font-size="22">NetworkX DiGraph</text>
+    <text x="1160" y="324" fill="#92abc5" text-anchor="middle" font-size="21">BFS, Dijkstra, centrality</text>
+
+    <rect x="1352" y="205" width="185" height="145" rx="20" fill="#14243b" stroke="#274769" stroke-width="2"/>
+    <text x="1445" y="252" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">REACT UI</text>
+    <text x="1445" y="292" fill="#eef7ff" text-anchor="middle" font-size="22">Map and graph</text>
+    <text x="1445" y="324" fill="#92abc5" text-anchor="middle" font-size="21">Timeline and alerts</text>
+
+    <path d="M317 278 H382" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M627 278 H692" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M967 278 H1032" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1287 278 H1352" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="170" y="490" width="270" height="150" rx="20" fill="#101b2e" stroke="#35f0a6" stroke-width="2"/>
+    <text x="305" y="538" fill="#35f0a6" text-anchor="middle" font-size="24" font-weight="800">PRIORITY QUEUE</text>
+    <text x="305" y="580" fill="#eef7ff" text-anchor="middle" font-size="22">Max heap alerts</text>
+    <text x="305" y="612" fill="#92abc5" text-anchor="middle" font-size="21">Severity ranked response</text>
+
+    <rect x="500" y="490" width="270" height="150" rx="20" fill="#101b2e" stroke="#ff9b45" stroke-width="2"/>
+    <text x="635" y="538" fill="#ff9b45" text-anchor="middle" font-size="24" font-weight="800">CASCADE SIM</text>
+    <text x="635" y="580" fill="#eef7ff" text-anchor="middle" font-size="22">Weighted BFS</text>
+    <text x="635" y="612" fill="#92abc5" text-anchor="middle" font-size="21">Affected nodes and depth</text>
+
+    <rect x="830" y="490" width="270" height="150" rx="20" fill="#101b2e" stroke="#ff4f73" stroke-width="2"/>
+    <text x="965" y="538" fill="#ff4f73" text-anchor="middle" font-size="24" font-weight="800">REROUTING</text>
+    <text x="965" y="580" fill="#eef7ff" text-anchor="middle" font-size="22">Dijkstra pathfinding</text>
+    <text x="965" y="612" fill="#92abc5" text-anchor="middle" font-size="21">Blocked red, reroute green</text>
+
+    <rect x="1160" y="490" width="270" height="150" rx="20" fill="#101b2e" stroke="#ffe066" stroke-width="2"/>
+    <text x="1295" y="538" fill="#ffe066" text-anchor="middle" font-size="24" font-weight="800">CITY BRIEFING</text>
+    <text x="1295" y="580" fill="#eef7ff" text-anchor="middle" font-size="22">Claude Sonnet report</text>
+    <text x="1295" y="612" fill="#92abc5" text-anchor="middle" font-size="21">Official ready summary</text>
+
+    <path d="M504 350 C504 430 305 430 305 490" fill="none" stroke="#35f0a6" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M830 350 C830 430 635 430 635 490" fill="none" stroke="#ff9b45" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1160 350 C1160 430 965 430 965 490" fill="none" stroke="#ff4f73" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1445 350 C1445 430 1295 430 1295 490" fill="none" stroke="#ffe066" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="355" y="735" width="890" height="90" rx="22" fill="#14243b" stroke="#274769" stroke-width="2" filter="url(#glow)"/>
+    <text x="800" y="772" fill="#26d4ff" text-anchor="middle" font-size="25" font-weight="800">REAL TIME EVENT BUS</text>
+    <text x="800" y="807" fill="#eef7ff" text-anchor="middle" font-size="22">cascade events, reroute updates, alerts, agent updates, CV signals</text>
+    <path d="M800 640 V735" stroke="#26d4ff" stroke-width="4" marker-end="url(#arrow)"/>
+  </g>
+</svg>

@@ -318,6 +318,7 @@ More details are available in:
 * [Architecture guide](docs/ARCHITECTURE.md)
 * [Demo guide](docs/DEMO_GUIDE.md)
 * [Deployment guide](docs/DEPLOYMENT.md)
+* [Pitch deck PDF](docs/pitch/CascadeOS-Judge-Pitch-Deck.pdf)
 
 ## Team
 

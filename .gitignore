@@ -18,6 +18,12 @@ frontend/node_modules/
 # Build outputs
 frontend/dist/
 frontend/.vite/
+docs/pitch/rendered-slides/
+docs/pitch/export-pdf.mjs
 
 # OS
 .DS_Store
+
+# Local tool and scratch folders
+.claude/
+vite-project/
