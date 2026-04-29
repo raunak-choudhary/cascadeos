@@ -1,6 +1,6 @@
 # CascadeOS Demo Guide
 
-This guide is written for Core Catalyst to run a clear three to five minute demo for judges, recruiters, or technical reviewers.
+This guide is written to help me run a clear three to five minute demo for judges, recruiters, or technical reviewers.
 
 ## Demo Goal
 
@@ -28,7 +28,7 @@ Class of 2026
 Suggested introduction:
 
 ```text
-Core Catalyst built CascadeOS as a solo hackathon project to explore how cities could reason about infrastructure failures before they spread. The system connects graph algorithms, multi agent monitoring, real time simulation, Dijkstra rerouting, Claude generated briefings, and YOLO camera signals in one operations dashboard.
+I built CascadeOS as a solo hackathon project under team Core Catalyst to explore how cities could reason about infrastructure failures before they spread. The system connects graph algorithms, multi agent monitoring, real time simulation, Dijkstra rerouting, Claude generated briefings, and YOLO camera signals in one operations dashboard.
 ```
 
 ## Before The Demo

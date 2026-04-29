@@ -2,11 +2,11 @@
 
 ## HACKATHON WINNING IDEA
 
-CascadeOS won **first prize at the Code 4 City Hackathon** at NYU Tandon. It was built by **Raunak Choudhary** as a solo project under team **Core Catalyst**, competing against 44 teams.
+CascadeOS won **first prize at the Code 4 City Hackathon** at NYU Tandon. I built it as a solo project under team **Core Catalyst**, competing against 44 teams.
 
 CascadeOS is a multi agent urban infrastructure intelligence system for New York City. It predicts how failures can cascade across water, transit, health, and emergency systems, then helps city officials understand the impact through live maps, agent alerts, rerouting, camera signals, and generated briefings.
 
-The project was built by **Core Catalyst**, a solo hackathon team led by **Raunak Choudhary**, an MS Computer Science graduate student at **New York University**, class of 2026.
+I am **Raunak Choudhary**, an MS Computer Science graduate student at **New York University**, class of 2026. I built CascadeOS as solo team **Core Catalyst**.
 
 ## Recruiter Snapshot
 
@@ -37,9 +37,9 @@ The project was built by **Core Catalyst**, a solo hackathon team led by **Rauna
   <img src="screenshots/CascadeOS_8.png" width="49%" alt="CascadeOS city briefing and rerouting report" />
 </p>
 
-## What Core Catalyst Built
+## What I Built
 
-Core Catalyst built CascadeOS as a full stack demonstration of real time civic infrastructure reasoning.
+I built CascadeOS as a full stack demonstration of real time civic infrastructure reasoning.
 
 The system combines:
 
@@ -326,4 +326,4 @@ More details are available in:
 **Program:** MS Computer Science, New York University  
 **Graduation:** 2026
 
-Core Catalyst built CascadeOS to show how graph algorithms, multi agent reasoning, real time interfaces, and computer vision can work together for city scale resilience.
+I built CascadeOS to show how graph algorithms, multi agent reasoning, real time interfaces, and computer vision can work together for city scale resilience.

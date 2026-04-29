@@ -2,7 +2,7 @@
 
 The CascadeOS backend is a FastAPI service that powers graph data, simulations, agent alerts, rerouting, city briefings, WebSocket events, and computer vision signals.
 
-Core Catalyst built this backend to act as the reasoning layer for the project. It owns the infrastructure graph, the cascade algorithms, the agent queue, and all external city data integrations.
+I built this backend to act as the reasoning layer for the project. It owns the infrastructure graph, the cascade algorithms, the agent queue, and all external city data integrations.
 
 ## What The Backend Does
 

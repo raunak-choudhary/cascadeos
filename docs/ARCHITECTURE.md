@@ -2,7 +2,7 @@
 
 This document explains how CascadeOS is organized and how data moves through the system.
 
-Core Catalyst built CascadeOS as a full stack city operations dashboard. The backend reasons over infrastructure signals. The frontend turns those signals into an interactive command center.
+I built CascadeOS as a full stack city operations dashboard under team Core Catalyst. The backend reasons over infrastructure signals. The frontend turns those signals into an interactive command center.
 
 ## System Overview
 
@@ -227,7 +227,7 @@ GET /cv/latest-frame/{camera_id}
 
 ## Design Rules
 
-Core Catalyst followed these project rules:
+The project followed these rules:
 
 * No real secrets in GitHub
 * CSS variables for theme colors

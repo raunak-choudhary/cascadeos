@@ -2,7 +2,7 @@
 
 The CascadeOS frontend is a React and Vite application for exploring NYC infrastructure risk in real time. It gives judges and users one visual place to see the city graph, agent activity, cascade simulation, emergency rerouting, generated briefings, and computer vision feeds.
 
-Core Catalyst built the frontend as the demo surface for CascadeOS. It is designed to feel like an operations console, not a marketing site.
+I built the frontend as the demo surface for CascadeOS. It is designed to feel like an operations console, not a marketing site.
 
 ## What The Frontend Shows
 

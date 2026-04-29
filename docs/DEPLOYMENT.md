@@ -1,10 +1,10 @@
 # CascadeOS Deployment Guide
 
-This guide explains how a reviewer or teammate can deploy CascadeOS after local setup works.
+This guide explains how a reviewer, recruiter, or future collaborator can deploy CascadeOS after local setup works.
 
-Core Catalyst designed the app as two independent services:
+I designed the app as two independent services:
 
-* Backend on Railway or another Python host
+* Backend on Render, Railway, or another Python host
 * Frontend on Vercel or another static frontend host
 
 ## Local Verification First
@@ -48,7 +48,7 @@ PY
 Recommended host:
 
 ```text
-Railway
+Render or Railway
 ```
 
 Required environment variables:
@@ -74,13 +74,15 @@ Suggested production values:
 
 ```text
 HOST=0.0.0.0
-PORT=8000
+PORT=<platform-provided-port>
 APP_ENV=production
 NYC_311_ENDPOINT=https://data.cityofnewyork.us/resource/erm2-nwe9.json
 NYC_DOT_CAMERA_API_URL=https://webcams.nyctmc.org/api/cameras
 CASCADE_PLAYBACK_SPEED=1.0
 CV_POLL_INTERVAL=30
 ```
+
+For platforms that inject their own `PORT`, use the platform value. For local runs, `8000` is fine.
 
 Set `CORS_ORIGINS` to include the deployed frontend URL.
 
@@ -105,13 +107,19 @@ pip install -r requirements.txt
 pip install -r requirements-ml.txt
 ```
 
-If the platform has memory or build time limits, the team can temporarily set:
+If the platform has memory or build time limits, temporarily set:
 
 ```text
 ENABLE_CV=false
 ```
 
 That keeps the rest of CascadeOS usable, but the full Phase 5 computer vision demo will not be active.
+
+If no Temporal GNN checkpoint is deployed, set:
+
+```text
+ENABLE_TGNN=false
+```
 
 ## YOLO Weights
 
@@ -197,4 +205,4 @@ The frontend hook appends `/main`, so do not include `/main` in the env value.
 
 The app is fully ready for local demo. Hosted deployment is likely straightforward for the frontend. The backend is heavier because Phase 5 installs YOLO, torch, torchvision, opencv, and camera polling. A small hosted container may need more memory or a longer build timeout.
 
-For a judge demo, Core Catalyst should prefer local execution unless deployment has already been tested end to end.
+For a judge demo, local execution is recommended unless deployment has already been tested end to end.
