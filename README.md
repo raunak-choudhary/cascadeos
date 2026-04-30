@@ -2,16 +2,16 @@
 
 ## HACKATHON WINNING IDEA
 
-CascadeOS won **first prize at the Code 4 City Hackathon** at NYU Tandon. I built it as a solo project under team **Core Catalyst**, competing against 44 teams.
+CascadeOS won **first prize at the Code 4 City Hackathon** at NYU Tandon. I built it as a solo project under team **Core Catalyst**, competing against 42 teams.
 
-CascadeOS is a multi agent urban infrastructure intelligence system for New York City. It predicts how failures can cascade across water, transit, health, and emergency systems, then helps city officials understand the impact through live maps, agent alerts, rerouting, camera signals, and generated briefings.
+CascadeOS is a multi-agent urban infrastructure intelligence system for New York City. It predicts how failures can cascade across water, transit, health, and emergency systems, then helps city officials understand the impact through live maps, agent alerts, rerouting, camera signals, and generated briefings.
 
-I am **Raunak Choudhary**, an MS Computer Science graduate student at **New York University**, class of 2026. I built CascadeOS as solo team **Core Catalyst**.
+I am **Raunak Choudhary**, an MS Computer Science graduate student at **New York University**, class of 2026. I built CascadeOS as a solo team **Core Catalyst**.
 
 ## Recruiter Snapshot
 
-* **Solo first place hackathon build:** designed, engineered, tested, and presented by one developer.
-* **Full stack AI system:** FastAPI backend, React frontend, real time WebSockets, graph algorithms, agents, computer vision, and city operations UX.
+* **Solo first-place hackathon build:** designed, engineered, tested, and presented by one developer.
+* **Full-stack AI system:** FastAPI backend, React frontend, real-time WebSockets, graph algorithms, agents, computer vision, and city operations UX.
 * **Tech highlights:** FastAPI, React, WebSockets, NetworkX, LangGraph, Claude, YOLOv8, deck.gl, Dijkstra, BFS, priority queue.
 * **Core engineering signal:** combines product thinking, backend architecture, frontend polish, graph reasoning, ML integration, and demo reliability.
 
