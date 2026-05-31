@@ -1126,11 +1126,12 @@ npm install clsx
 ### Step 5 — Verify .env files are intact after scaffold
 
 ```bash
-cat frontend/.env   # must show VITE_API_URL, VITE_WS_URL, VITE_MAPBOX_TOKEN with real values
-cat backend/.env    # must show ANTHROPIC_API_KEY with real value starting with sk-ant-
+test -f frontend/.env && test -f backend/.env
+# Do not cat or paste real .env values into docs, logs, or prompts.
+# Anthropic-backed features remain disabled until ANTHROPIC_API_KEY is set locally.
 ```
 
-If either file is empty or missing values, stop and tell the user immediately.
+If either file is missing, stop and tell the user immediately. Keep any real key values local-only.
 
 ### Step 6 — Commit the scaffold
 

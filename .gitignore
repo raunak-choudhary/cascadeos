@@ -3,6 +3,7 @@ backend/cv/models/*.torchscript
 .env
 frontend/.env
 backend/.env
+AGENTS.md
 
 # Python
 backend/.venv/

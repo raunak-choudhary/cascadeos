@@ -85,7 +85,10 @@ cp .env.example .env
 Fill in:
 
 ```text
+# Keep real API keys in .env only. Do not commit or paste them into docs/logs.
+# Anthropic-backed features are disabled until ANTHROPIC_API_KEY is set locally.
 ANTHROPIC_API_KEY=
+# Optional local token for higher NYC Open Data rate limits.
 NYC_OPEN_DATA_APP_TOKEN=
 NYC_311_ENDPOINT=https://data.cityofnewyork.us/resource/erm2-nwe9.json
 NYC_DOT_CAMERA_API_URL=https://webcams.nyctmc.org/api/cameras
