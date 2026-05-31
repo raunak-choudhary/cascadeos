@@ -188,7 +188,7 @@ The frontend is ready for Vercel. Set these environment variables in Vercel:
 VITE_API_URL=https://your-backend-domain
 VITE_WS_URL=wss://your-backend-domain/ws
 # Optional public Mapbox token for map tiles. Keep real values in Vercel/local env only.
-VITE_MAPBOX_TOKEN=your-public-mapbox-token
+VITE_MAPBOX_TOKEN=
 ```
 
 The backend CORS setting must include the deployed frontend URL.

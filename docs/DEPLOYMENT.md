@@ -150,7 +150,8 @@ Set:
 ```text
 VITE_API_URL=https://your-backend-domain
 VITE_WS_URL=wss://your-backend-domain/ws
-VITE_MAPBOX_TOKEN=your-mapbox-token
+# Optional public Mapbox token. Set the real value in the deployment UI only.
+VITE_MAPBOX_TOKEN=
 ```
 
 Build command:

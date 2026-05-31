@@ -140,17 +140,20 @@ cascadeos/
 ```
 VITE_API_URL=http://localhost:8000
 VITE_WS_URL=ws://localhost:8000/ws
-VITE_MAPBOX_TOKEN=your_mapbox_token_here
+# Optional public Mapbox token. Keep real values local-only.
+VITE_MAPBOX_TOKEN=
 ```
 
 ### Backend (`backend/.env`)
 
 ```
 # Anthropic
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
+# Disabled until set locally. Keep real values local-only.
+ANTHROPIC_API_KEY=
 
 # NYC Open Data
-NYC_OPEN_DATA_APP_TOKEN=your_nyc_open_data_token_here
+# Optional local token for higher rate limits.
+NYC_OPEN_DATA_APP_TOKEN=
 NYC_311_ENDPOINT=https://data.cityofnewyork.us/resource/erm2-nwe9.json
 
 # NYC DOT Camera — fully public, no key required
